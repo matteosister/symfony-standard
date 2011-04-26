@@ -10,3 +10,8 @@ _demo:
     resource: "@AcmeDemoBundle/Controller/DemoController.php"
     type:     annotation
     prefix:   /demo
+
+cms:
+    resource: "@CypressCmsBundle/Controller/FrontendController.php"
+    type:     annotation
+    prefix:   /cms

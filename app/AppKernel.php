@@ -25,6 +25,9 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebConfiguratorBundle\SymfonyWebConfiguratorBundle();
         }
 
+        // my bunldes
+        $bundles[] =  new Cypress\CmsBundle\CypressCmsBundle();
+
         return $bundles;
     }
 
