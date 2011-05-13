@@ -27,6 +27,9 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Symfony\Bundle\WebConfiguratorBundle\SymfonyWebConfiguratorBundle();
         }
+        
+        $bundles[] = new Vivacom\CmsBundle\CmsBundle();
+        $bundles[] = new FOS\UserBundle\FOSUserBundle();
 
         return $bundles;
     }
