@@ -5,7 +5,6 @@ imports:
 framework:
     secret:        %secret%
     charset:       UTF-8
-    error_handler: null
     csrf_protection:
         enabled: true
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -55,3 +54,10 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+    
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    class:
+        model:
+            user: Vivacom\CmsBundle\Entity\User

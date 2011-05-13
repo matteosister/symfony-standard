@@ -1,0 +1,6 @@
+
+homepage:
+    pattern:  /
+    defaults: { _controller: CmsBundle:Default:index }
+    
+    

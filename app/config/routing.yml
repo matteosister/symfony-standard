@@ -1,17 +1,11 @@
-_welcome:
-    pattern:  /
-    defaults: { _controller: AcmeDemoBundle:Welcome:index }
-
-_demo_secured:
-    resource: "@AcmeDemoBundle/Controller/SecuredController.php"
-    type:     annotation
-
-_demo:
-    resource: "@AcmeDemoBundle/Controller/DemoController.php"
-    type:     annotation
-    prefix:   /demo
-
-cms:
-    resource: "@CypressCmsBundle/Controller/FrontendController.php"
-    type:     annotation
+homepage:
+    resource: "@CmsBundle/Resources/config/routing.yml"
     prefix:   /cms
+    
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /user
+
+fos_user_user:
+    resource: "@FOSUserBundle/Resources/config/routing/user.xml"
+    prefix: /user

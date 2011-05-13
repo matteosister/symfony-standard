@@ -20,8 +20,9 @@ Symfony Standard Edition comes pre-configured with the following bundles:
 Installation from an Archive
 ----------------------------
 
-If you have downloaded an archive, unpack it somewhere under your web server
-root directory.
+The easiest way to get started is to download an archive with vendors included
+(http://symfony.com/download). Unpack it somewhere under your web server root
+directory and you're done.
 
 If you have downloaded an archive without the vendors, run the
 `bin/vendors.sh` script (`git` must be installed on your machine). If you
@@ -53,10 +54,10 @@ The distribution is configured with the following defaults:
 A default bundle, `AcmeDemoBundle`, shows you Symfony2 in action. After
 playing with it, you can remove it by following these steps:
 
- * delete the `src/Acme` directory.
- * remove the routing entry in `app/config/routing.yml`.
- * remove the AcmeBundle from the registered bundles in `app/AppKernel.php`
- * remove the Acme registered namespace in `app/autoload.php`
+ * delete the `src/Acme` directory;
+ * remove the routing entries referencing AcmeBundle in `app/config/routing_dev.yml`;
+ * remove the AcmeBundle from the registered bundles in `app/AppKernel.php`;
+ * remove the Acme registered namespace in `app/autoload.php`.
 
 Configure the distribution by editing `app/config/parameters.ini` or by
 accessing `web/config.php` in a browser.
