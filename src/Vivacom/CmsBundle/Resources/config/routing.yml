@@ -3,4 +3,8 @@ homepage:
     pattern:  /
     defaults: { _controller: CmsBundle:Default:index }
     
+page:
+    pattern:  /page
+    defaults: { _controller: CmsBundle:Default:page }
+    
     

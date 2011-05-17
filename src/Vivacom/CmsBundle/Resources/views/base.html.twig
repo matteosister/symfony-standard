@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets "@CmsBundle/Resources/compass/sass/screen.scss" filter="compass" output="css/screen.css" %}
+                <link href="{{ asset_url }}" media="screen, projection" rel="stylesheet" type="text/css" />
+            {% endstylesheets %}
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="bp">
+        <div id="container">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

@@ -1,1 +1,8 @@
-Hello!
+{% extends 'CmsBundle::base.html.twig' %}
+
+{% block body %}
+<div class="header">
+    <h1>Hello!</h1>
+    <a class="homepage" href="{{ path('page') }}">page</a>
+</div>
+{% endblock %}
