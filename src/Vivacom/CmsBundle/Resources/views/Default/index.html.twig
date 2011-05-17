@@ -1,1 +1,14 @@
-Hello!
+{% extends 'CmsBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {% stylesheets "@CmsBundle/Resources/compass/sass/screen.scss" filter="compass" output="css/screen.css" %}
+        <link href="{{ asset_url }}" media="screen, projection" rel="stylesheet" type="text/css" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div id="container">
+        <h1>Hello!</h1>
+        <a class="homepage" href="{{ path('page') }}">page</a>
+    </div>
+{% endblock %}

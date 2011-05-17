@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('CmsBundle:Default:index.html.twig');
     }
+    
+    public function pageAction()
+    {
+        return $this->render('CmsBundle:Default:page.html.twig');
+    }
 }
