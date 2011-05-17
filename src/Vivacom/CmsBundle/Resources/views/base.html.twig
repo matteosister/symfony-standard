@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets "@CmsBundle/Resources/compass/sass/screen.scss" filter="compass" output="css/screen.css" %}
+            {% stylesheets "@CmsBundle/Resources/compass/sass/screen.scss" filter="compass" %}
                 <link href="{{ asset_url }}" media="screen, projection" rel="stylesheet" type="text/css" />
             {% endstylesheets %}
         {% endblock %}
@@ -12,8 +12,8 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body class="bp">
-        <div id="container">
+        <section id="container">
             {% block body %}{% endblock %}
-        </div>
+        </section>
     </body>
 </html>

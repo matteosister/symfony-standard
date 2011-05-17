@@ -1,8 +1,18 @@
 {% extends 'CmsBundle::base.html.twig' %}
 
 {% block body %}
-<div class="header">
-    <h1>Hello!</h1>
-    <a class="homepage" href="{{ path('page') }}">page</a>
-</div>
+<header>
+    <h1><a href="{{ path('homepage') }}">Hello!</a></h1>
+    <nav>
+        <a href="#">voice 1</a>
+        <a href="#">voice 2</a>
+        <a href="#">voice 3</a>
+        <a href="#">voice 4</a>
+        <a href="#">voice 5</a>
+    </nav>
+</header>
+<section id="main">
+    <section class="content">content</section>
+    <aside>column</aside>
+</section>
 {% endblock %}

@@ -1,6 +1,0 @@
-@import "partials/base";
-
-#container {
-    @include container;
-    @include showgrid("grid.png");
-}
