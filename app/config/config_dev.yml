@@ -21,3 +21,22 @@ monolog:
 
 assetic:
     use_controller: true
+
+
+propel:
+    dbal:
+        driver:               mysql
+        user:                 sf2
+        password:             ""
+        dsn:                  mysql:host=localhost;dbname=sf2
+        options:              {}
+        attributes:           {}
+#        default_connection:       default
+#        connections:
+#           default:
+#               driver:               mysql
+#               user:                 root
+#               password:             null
+#               dsn:                  mysql:host=localhost;dbname=test
+#               options:              {}
+#               attributes:           {}

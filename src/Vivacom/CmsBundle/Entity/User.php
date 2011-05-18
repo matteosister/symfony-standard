@@ -5,7 +5,7 @@
  * just for fun...
  */
 
-namespace Vivacom\CmsBundle\Entity;
+//namespace Vivacom\CmsBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
 

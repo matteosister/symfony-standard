@@ -2,10 +2,10 @@ homepage:
     resource: "@CmsBundle/Resources/config/routing.yml"
     prefix:   /cms
     
-fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
-    prefix: /user
-
-fos_user_user:
-    resource: "@FOSUserBundle/Resources/config/routing/user.xml"
-    prefix: /user
+#fos_user_security:
+#    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+#    prefix: /user
+#
+#fos_user_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/user.xml"
+#    prefix: /user

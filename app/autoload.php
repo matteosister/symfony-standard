@@ -14,7 +14,8 @@ $loader->registerNamespaces(array(
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Acme'             => __DIR__.'/../src',
     'Vivacom'          => __DIR__.'/../src',
-    'FOS'              => __DIR__.'/../src'
+    'FOS'              => __DIR__.'/../src',
+    'Propel'           => __DIR__.'/../vendor/bundles'
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

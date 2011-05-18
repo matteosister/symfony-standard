@@ -36,17 +36,17 @@ assetic:
         #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
 
 # Doctrine Configuration
-doctrine:
-    dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
-
-    orm:
-        auto_generate_proxy_classes: %kernel.debug%
-        auto_mapping: true
+#doctrine:
+#    dbal:
+#        driver:   %database_driver%
+#        host:     %database_host%
+#        dbname:   %database_name%
+#        user:     %database_user%
+#        password: %database_password%
+#
+#    orm:
+#        auto_generate_proxy_classes: %kernel.debug%
+#        auto_mapping: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -59,9 +59,19 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
     
-fos_user:
-    db_driver: orm
-    firewall_name: main
-    class:
-        model:
-            user: Vivacom\CmsBundle\Entity\User
+#fos_user:
+#    db_driver: orm
+#    firewall_name: main
+#    class:
+#        model:
+#            user: Vivacom\CmsBundle\Entity\User
+
+
+propel:
+    path:       "%kernel.root_dir%/../vendor/propel"
+    phing_path: "%kernel.root_dir%/../vendor/phing"
+#    charset:   "UTF8"
+#    logging:   %kernel.debug%
+#    build_properties:
+#        xxxxx.xxxxx: xxxxxx
+#        xxxxx.xxxxx: xxxxxx

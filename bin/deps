@@ -10,3 +10,6 @@
 /bundles/Sensio/Bundle  FrameworkExtraBundle  http://github.com/sensio/SensioFrameworkExtraBundle.git
 /bundles/JMS            SecurityExtraBundle   http://github.com/schmittjoh/SecurityExtraBundle.git
 /bundles/Symfony/Bundle WebConfiguratorBundle http://github.com/symfony/WebConfiguratorBundle.git
+/bundles/Propel         PropelBundle          https://github.com/willdurand/PropelBundle.git
+/                       phing                 https://github.com/Xosofox/phing.git
+/                       propel                https://github.com/Xosofox/propel.git
