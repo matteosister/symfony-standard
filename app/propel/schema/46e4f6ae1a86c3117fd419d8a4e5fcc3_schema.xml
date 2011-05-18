@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="propel" defaultIdMethod="native" namespace="Vivacom\CmsBundle\Model" xsi:noNamespaceSchemaLocation="http://svn.propelorm.org/branches/1.5/generator/resources/xsd/database.xsd" package="media.Dati.internet.sf2.src.Vivacom.CmsBundle.Model">
+
+    <table name="page" package="media.Dati.internet.sf2.src.Vivacom.CmsBundle.Model">
+        <behavior name="timestampable"/>
+        <column name="id" type="integer" required="true" primaryKey="true"/>
+        <column name="name"/>
+    </table>
+
+</database>
