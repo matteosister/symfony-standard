@@ -7,4 +7,14 @@ page:
     pattern:  /page
     defaults: { _controller: CmsBundle:Default:page }
     
+be_dashboard:
+    pattern:  /webadmin
+    defaults: { _controller: CmsBundle:Backend:dashboard }
     
+be_pages:
+    pattern:  /webadmin/pages
+    defaults: { _controller: CmsBundle:Backend:pages }
+    
+be_pages_new:
+    pattern:  /webadmin/pages/new
+    defaults: { _controller: CmsBundle:Backend:pagesNew }

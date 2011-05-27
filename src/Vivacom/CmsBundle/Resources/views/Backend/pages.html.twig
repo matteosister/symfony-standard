@@ -1,0 +1,14 @@
+{% extends 'CmsBundle::backend.html.twig' %}
+
+{% block body %}
+<section id="main">
+    <h2>{% trans %}Pages{% endtrans %}</h2>
+    <section class="content">
+        <a href="{{ path('be_pages_new') }}" class="icon new">Nuova pagina</a>
+        <section class="elenco">
+            elenco pagine
+        </section>
+    </section>
+    <aside>column</aside>
+</section>
+{% endblock %}

@@ -5,7 +5,7 @@
  * just for fun...
  */
 
-//namespace Vivacom\CmsBundle\Entity;
+namespace Vivacom\CmsBundle\Entity;
 
 /**
  * @orm:Entity
@@ -24,6 +24,11 @@ class Page {
      * @orm:Column
      */
     private $name;
+    
+    /**
+     * @orm:Unique
+     */
+    private $url;
     
     public function getId()
     {
