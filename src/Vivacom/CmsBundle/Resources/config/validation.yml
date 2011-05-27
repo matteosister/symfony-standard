@@ -1,0 +1,10 @@
+#matteosister
+#just for fun...
+
+Vivacom\CmsBundle\Entity\Page:
+  properties:
+    name:
+      - NotBlank: ~
+      - MinLength: 5
+    url:
+      - NotBlank: ~

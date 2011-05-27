@@ -11,10 +11,18 @@ be_dashboard:
     pattern:  /webadmin
     defaults: { _controller: CmsBundle:Backend:dashboard }
     
-be_pages:
+be_page_list:
     pattern:  /webadmin/pages
     defaults: { _controller: CmsBundle:Backend:pages }
     
-be_pages_new:
+be_page_new:
     pattern:  /webadmin/pages/new
     defaults: { _controller: CmsBundle:Backend:pagesNew }
+    
+be_page_edit:
+    pattern:  /webadmin/pages/edit/{id}
+    defaults: { _controller: CmsBundle:Backend:pagesEdit }
+    
+be_page_delete:
+    pattern:  /webadmin/pages/delete/{id}
+    defaults: { _controller: CmsBundle:Backend:pagesDelete }

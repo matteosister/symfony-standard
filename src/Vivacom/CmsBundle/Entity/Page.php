@@ -4,29 +4,30 @@
  * matteosister
  * just for fun...
  */
-
 namespace Vivacom\CmsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
- * @orm:Entity
- * @orm:Table(name="page")
+ * @ORM\Entity
+ * @ORM\Table(name="page")
  */
 class Page {
     
     /**
-     * @orm:Column(type="integer")
-     * @orm:Id
-     * @orm:GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
     
     /**
-     * @orm:Column
+     * @ORM\Column
      */
     private $name;
     
     /**
-     * @orm:Unique
+     * @ORM\Column(unique=true)
      */
     private $url;
     
@@ -42,5 +43,12 @@ class Page {
     
     public function setName($name) {
         $this->name = $name;
+    }
+    
+    public function getUrl() {
+        return $this->url;
+    }
+    public function setUrl($val) {
+        $this->url = $val;
     }
 }

@@ -9,10 +9,12 @@ namespace Vivacom\CmsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+
 use Vivacom\CmsBundle\Entity\Page;
 
+
 class BackendController  extends Controller 
-{
+{   
     public function dashboardAction()
     {
         return $this->render('CmsBundle:Backend:dashboard.html.twig');
@@ -20,17 +22,83 @@ class BackendController  extends Controller
     
     public function pagesAction()
     {
-        return $this->render('CmsBundle:Backend:pages.html.twig');
+        $em = $this->get('doctrine')->getEntityManager();
+        $pages = $em->getRepository('Vivacom\CmsBundle\Entity\Page')->findAll();
+        
+        
+        return $this->render('CmsBundle:Backend:pages.html.twig', array(
+            'pages' => $pages
+        ));
     }
     
     public function pagesNewAction()
     {
         $page = new Page();
-        $factory = $this->get('form.factory');
-        var_dump($factory);
         
-        return $this->render('CmsBundle:Backend:pagesnew.html.twig', array(
-            'form' => ''
+        $form = $this->get('form.factory')
+            ->createBuilder('form', $page)
+            ->add('name', 'text')
+            ->add('url', 'text')
+            ->getForm();
+        
+        $request = $this->get('request');
+        if ($request->getMethod() == 'POST')
+        {
+            $form->bindRequest($request);
+            
+            if ($form->isValid()) {
+                $em = $this->get('doctrine')->getEntityManager();
+                $em->persist($page);
+                $em->flush();
+                
+                return $this->redirect($this->generateUrl('be_page_edit', array(
+                    'id' => $page->getId()
+                )));
+            }
+        }
+        
+        return $this->render('CmsBundle:Backend:pageform.html.twig', array(
+            'form' => $form->createView(),
         ));
+    }
+    
+    public function pagesEditAction($id)
+    {
+        $page = $this->get('doctrine')->getEntityManager()->find('Vivacom\CmsBundle\Entity\Page', $id);
+        
+        $form = $this->get('form.factory')
+            ->createBuilder('form', $page)
+            ->add('name', 'text')
+            ->add('url', 'text')
+            ->getForm();
+        
+        $request = $this->get('request');
+        if ($request->getMethod() == 'POST')
+        {
+            $form->bindRequest($request);
+            
+            if ($form->isValid()) {
+                $em = $this->get('doctrine')->getEntityManager();
+                $em->persist($page);
+                $em->flush();
+            }
+        }
+        
+        return $this->render('CmsBundle:Backend:pageform.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+    
+    public function pagesDeleteAction($id)
+    {
+        $query = $this->get('doctrine')->getEntityManager()
+            ->createQuery('DELETE FROM Vivacom\CmsBundle\Entity\Page p WHERE p.id = :id');
+        
+        $query->setParameters(array(
+            'id' => $id
+        ));
+        $query->execute();
+        
+        return $this->redirect($this->generateUrl('be_page_list'));
     }
 }
