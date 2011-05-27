@@ -23,14 +23,14 @@ assetic:
     use_controller: true
 
 
-propel:
-    dbal:
-        driver:               mysql
-        user:                 sf2
-        password:             ""
-        dsn:                  mysql:host=localhost;dbname=sf2
-        options:              {}
-        attributes:           {}
+#propel:
+#    dbal:
+#        driver:               mysql
+#        user:                 sf2
+#        password:             ""
+#        dsn:                  mysql:host=localhost;dbname=sf2
+#        options:              {}
+#        attributes:           {}
 #        default_connection:       default
 #        connections:
 #           default:

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets "@CmsBundle/Resources/compass/sass/screen.scss" filter="compass" %}
+                <link href="{{ asset_url }}" media="screen, projection" rel="stylesheet" type="text/css" />
+            {% endstylesheets %}
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="bp">
+        <section id="container">
+            {% block header %}
+            <header>
+                <h1><a href="{{ path('be_dashboard') }}">Webadmin</a></h1>
+                <nav>
+                    <a href="{{ path('be_page_list') }}">pagine</a>
+                </nav>
+            </header>
+            {% endblock %}
+            {% block body %}{% endblock %}
+        </section>
+    </body>
+</html>

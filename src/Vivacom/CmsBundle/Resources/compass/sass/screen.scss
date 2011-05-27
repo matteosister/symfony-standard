@@ -36,7 +36,6 @@ form.bp {
 
 #container {
     @include container;
-    @include showgrid("/bundles/cms/images/grid.png");
     h1 {
         @include column(10);
     }
@@ -60,4 +59,18 @@ section.content {
 }
 aside {
     @include column(8, true); 
+}
+
+a.icon {
+    padding-left: 20px;
+    &.add {
+        background: image-url("icon/add.png") no-repeat left;
+    }
+    &.edit {
+        background: image-url("icon/edit.png") no-repeat left;
+    }
+    &.delete {
+        background: image-url("icon/delete.png") no-repeat left;
+    }
+
 }

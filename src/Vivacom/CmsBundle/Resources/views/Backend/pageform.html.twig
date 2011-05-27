@@ -1,0 +1,27 @@
+{% extends 'CmsBundle::backend.html.twig' %}
+
+{% block body %}
+<section id="main">
+    <h2>{% trans %}Pages{% endtrans %}</h2>
+    <section class="content">
+        <a href="{{ path('be_page_list') }}">Torna alla lista</a>
+        <section class="form">
+            <form class="bp" action="" method="post" {{ form_enctype(form) }}>
+                <section class="row">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                    {{ form_errors(form.name) }}
+                </section>
+                <section class="row">
+                    {{ form_label(form.url) }}
+                    {{ form_widget(form.url) }}
+                    {{ form_errors(form.url) }}
+                </section>
+                {{ form_rest(form) }}
+                <input type="submit" />
+            </form>
+        </section>
+    </section>
+    <aside>column</aside>
+</section>
+{% endblock %}

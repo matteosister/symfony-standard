@@ -1,0 +1,30 @@
+{% extends 'CmsBundle::backend.html.twig' %}
+
+{% block body %}
+<section id="main">
+    <h2>{% trans %}Pages{% endtrans %}</h2>
+    <section class="content">
+        <a href="{{ path('be_page_new') }}" class="icon add">Nuova pagina</a>
+        <section class="elenco">
+            <table>
+                <tr>
+                    <th>nome pagina</th>
+                    <th>actions</th>
+                </tr>
+                {% for page in pages %}
+                <tr>
+                    <td>{{ page.name }}</td>
+                    <td>
+                        <ul>
+                            <li><a href="{{ path ('be_page_edit' ,{ 'id': page.id }) }}" class="icon edit">edit</a></li>
+                            <li><a href="{{ path ('be_page_delete' ,{ 'id': page.id }) }}" class="icon delete">delete</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </section>
+    <aside>column</aside>
+</section>
+{% endblock %}
