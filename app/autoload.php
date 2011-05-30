@@ -16,6 +16,7 @@ $loader->registerNamespaces(array(
     'Acme'             => __DIR__.'/../src',
     'Vivacom'          => __DIR__.'/../src',
     'FOS'              => __DIR__.'/../src',
+    'Cypress'          => __DIR__.'/../src',
     'Propel'           => __DIR__.'/../vendor/bundles'
 ));
 $loader->registerPrefixes(array(

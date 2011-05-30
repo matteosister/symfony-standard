@@ -29,6 +29,7 @@ class AppKernel extends Kernel
         }
         
         $bundles[] = new Vivacom\CmsBundle\CmsBundle();
+        $bundles[] = new Cypress\CompassGemBundle\CypressCompassGemBundle();
         //$bundles[] = new Propel\PropelBundle\PropelBundle();
         //$bundles[] = new FOS\UserBundle\FOSUserBundle();
 

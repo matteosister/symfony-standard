@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
+    - { resource: "@CypressCompassGemBundle/Resources/config/compass_gem.xml" }
 
 framework:
     secret:          %secret%

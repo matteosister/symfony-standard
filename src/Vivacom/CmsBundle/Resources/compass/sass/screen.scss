@@ -10,6 +10,11 @@
 // Import the non-default scaffolding module.
 @import "blueprint/scaffolding";
 
+
+@import "compass/utilities/sprites";
+@import "icon/*.png";
+//@include all-icon-sprites;
+
 // To generate css equivalent to the blueprint css but with your
 // configuration applied, uncomment:
 // @include blueprint
@@ -30,47 +35,43 @@ body.bp {
 form.bp {
   @include blueprint-form;
   // You'll probably want to remove the scaffolding once you start styling your site.
-  @include blueprint-scaffolding; 
-}
-
+  @include blueprint-scaffolding; }
 
 #container {
-    @include container;
-    h1 {
-        @include column(10);
-    }
-}
+  @include blueprint-typography(true);
+  @include container;
+  h1 {
+    @include column(10); } }
+
 nav {
-    @include column(16, true);
-    font-size: 1.6em;
-    ul {
-        @include inline-list();
-    }
-}
+  @include column(16, true);
+  font-size: 1.6em;
+  ul {
+    @include inline-list; } }
+
 header {
-    @include clearfix();
-}
+  @include clearfix; }
+
 section#main {
-    @include column(26, true);
-    font-size: 1.4em;
-}
+  @include column(26, true);
+  font-size: 1.4em; }
+
 section.content {
-    @include column(18);
-}
+  @include column(18); }
+
 aside {
-    @include column(8, true); 
-}
+  @include column(8, true); }
 
-a.icon {
-    padding-left: 20px;
-    &.add {
-        background: image-url("icon/add.png") no-repeat left;
-    }
-    &.edit {
-        background: image-url("icon/edit.png") no-repeat left;
-    }
-    &.delete {
-        background: image-url("icon/delete.png") no-repeat left;
-    }
+//a.icon
+//  padding-left: 20px
+//  &.add
+//    background: image-url("/bundles/cms/images/icon/add.png") no-repeat left
+//  &.edit
+//    background: image-url("/bundles/cms/images/icon/edit.png") no-repeat left
+//  &.delete
+//    background: image-url("/bundles/cms/images/icon/delete.png") no-repeat left
 
-}
+ul.actions {
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding-left: 0 !important; }

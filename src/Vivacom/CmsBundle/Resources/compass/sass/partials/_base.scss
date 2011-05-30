@@ -9,7 +9,8 @@ $blueprint-grid-margin: 8px;
 // Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
 //$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
+@import "compass/typography/lists";
 
-@import "compass/typography/lists/inline-list";
 
-$bg-color: #DDD;
+
+$bg-color: #dddddd;

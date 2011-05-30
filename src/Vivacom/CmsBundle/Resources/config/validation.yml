@@ -6,5 +6,3 @@ Vivacom\CmsBundle\Entity\Page:
     name:
       - NotBlank: ~
       - MinLength: 5
-    url:
-      - NotBlank: ~

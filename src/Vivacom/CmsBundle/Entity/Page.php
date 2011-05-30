@@ -27,7 +27,7 @@ class Page {
     private $name;
     
     /**
-     * @ORM\Column(unique=true)
+     * @ORM\Column(nullable=true)
      */
     private $url;
     
