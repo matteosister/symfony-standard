@@ -2,29 +2,38 @@
 
 {% block body %}
 <section id="main">
-    <h2>{% trans %}Pages{% endtrans %}</h2>
-    <section class="content">
-        <a href="{{ path('be_page_new') }}" class="icon add">Nuova pagina</a>
-        <section class="elenco">
-            <table>
-                <tr>
-                    <th>nome pagina</th>
-                    <th>actions</th>
-                </tr>
-                {% for page in pages %}
-                <tr>
-                    <td>{{ page.name }}</td>
-                    <td>
-                        <ul class="actions">
-                            <li><a href="{{ path ('be_page_edit' ,{ 'id': page.id }) }}" class="icon-edit">edit</a></li>
-                            <li><a href="{{ path ('be_page_delete' ,{ 'id': page.id }) }}" class="icon-delete">delete</a></li>
-                        </ul>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-        </section>
+  <h2>{% trans %}Pages{% endtrans %}</h2>
+  <section class="content all">
+    <section class="main-actions">
+      <ul>
+        <li><a href="{{ path('be_page_new') }}" class="icon icon-add main-action">Nuova pagina</a></li>
+      </ul>
     </section>
-    <aside>column</aside>
+    <section class="list">
+      <table>
+        <thead>
+          <tr>
+            <th>nome pagina</th>
+            <th>url</th>
+            <th>actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for page in pages %}
+          <tr class="{{ loop.index is even ? 'even' : 'odd' }}">
+            <td class="label"><a href="{{ path ('be_page_edit' ,{ 'id': page.id }) }}" class="icon icon-edit">{{ page.name }}</a></td>
+            <td class="label">{{ page.url }}</td>
+            <td>
+              <ul class="actions">
+                <li><a href="{{ path ('be_page_edit' ,{ 'id': page.id }) }}" class="icon icon-edit">edit</a></li>
+                <li><a href="{{ path ('be_page_delete' ,{ 'id': page.id }) }}" class="icon icon-delete">delete</a></li>
+              </ul>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </section>
 </section>
 {% endblock %}

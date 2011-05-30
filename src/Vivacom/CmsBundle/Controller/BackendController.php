@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 use Vivacom\CmsBundle\Entity\Page;
+use Vivacom\CmsBundle\Form\PageType;
 
 
 class BackendController  extends Controller 
@@ -35,11 +36,7 @@ class BackendController  extends Controller
     {
         $page = new Page();
         
-        $form = $this->get('form.factory')
-            ->createBuilder('form', $page)
-            ->add('name', 'text')
-            ->add('url', 'text')
-            ->getForm();
+        $form = $this->get('form.factory')->create(new PageType(), $page);
         
         $request = $this->get('request');
         if ($request->getMethod() == 'POST')
@@ -66,11 +63,7 @@ class BackendController  extends Controller
     {
         $page = $this->get('doctrine')->getEntityManager()->find('Vivacom\CmsBundle\Entity\Page', $id);
         
-        $form = $this->get('form.factory')
-            ->createBuilder('form', $page)
-            ->add('name', 'text')
-            ->add('url', 'text')
-            ->getForm();
+        $form = $this->get('form.factory')->create(new PageType(), $page);
         
         $request = $this->get('request');
         if ($request->getMethod() == 'POST')

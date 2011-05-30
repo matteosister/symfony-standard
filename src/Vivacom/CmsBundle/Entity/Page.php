@@ -27,7 +27,7 @@ class Page {
     private $name;
     
     /**
-     * @ORM\Column(nullable=true)
+     * @ORM\Column(unique=true)
      */
     private $url;
     
@@ -43,6 +43,9 @@ class Page {
     
     public function setName($name) {
         $this->name = $name;
+        if ($this->url == null) {
+            $this->url = str_replace(' ', '-', $name);
+        }
     }
     
     public function getUrl() {
