@@ -10,7 +10,11 @@
         <li><a href="{{ path('be_page_list') }}" class="icon icon-back">Torna alla lista</a></li>
       </ul>
     </section>
-    
+    {% if app.session.hasFlash('notice') %}
+      <section class="message ok">
+        {{ app.session.flash('notice') }}
+      </section>
+    {% endif %}
     <section class="form">
       <form class="bp" action="" method="post" {{ form_enctype(form) }}>
         <table>

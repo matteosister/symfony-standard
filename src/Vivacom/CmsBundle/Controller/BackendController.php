@@ -44,6 +44,7 @@ class BackendController  extends Controller
             $form->bindRequest($request);
             
             if ($form->isValid()) {
+                $this->get('session')->setFlash('notice', 'Your changes were saved!');
                 $em = $this->get('doctrine')->getEntityManager();
                 $em->persist($page);
                 $em->flush();
@@ -71,6 +72,7 @@ class BackendController  extends Controller
             $form->bindRequest($request);
             
             if ($form->isValid()) {
+                $this->get('session')->setFlash('notice', 'Your changes were saved!');
                 $em = $this->get('doctrine')->getEntityManager();
                 $em->persist($page);
                 $em->flush();

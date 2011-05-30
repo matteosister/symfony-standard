@@ -12,6 +12,7 @@
 
 @import compass/utilities/sprites
 @import compass/utilities/tables
+@import compass/css3/border-radius
 @import icon/*.png
 +all-icon-sprites
 
@@ -98,3 +99,14 @@ ul.actions
   list-style-type: none !important
   margin: 0 !important
   padding-left: 0 !important
+
+section.message
+  +border-radius(5px)
+  padding: 5px
+  margin: 4px 0
+  font-size: 1.2em
+  color: #333
+  font-weight: bold
+  &.ok
+    border: 2px solid #0F0
+    background-color: #0F0 + #AAA
