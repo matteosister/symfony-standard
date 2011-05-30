@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Assetic\Filter\Sass;
+namespace Cypress\CompassGemBundle\Assetic\Filter;
 
 use Assetic\Asset\AssetInterface;
 use Assetic\Filter\FilterInterface;
@@ -213,6 +213,7 @@ class CompassFilter implements FilterInterface
             }
 
             $config = implode("\n", $config) . "\n";
+            echo $config;
             $this->config = tempnam($tempDir, 'assetic_compass');
             file_put_contents($this->config, $config);
         }
@@ -243,7 +244,7 @@ class CompassFilter implements FilterInterface
 
         // output
         $output = $tempName . '.css';
-
+        //echo implode(' ', array_map('escapeshellarg', $options));
         $proc = new Process(
             'export HOME=' . $_SERVER['DOCUMENT_ROOT'] . '; ' .  // it's not really usefull but... https://github.com/chriseppstein/compass/issues/376
             implode(' ', array_map('escapeshellarg', $options))
@@ -257,10 +258,10 @@ class CompassFilter implements FilterInterface
 
         $asset->setContent(file_get_contents($output));
 
-        unlink($input);
-        unlink($output);
+        //unlink($input);
+        //unlink($output);
         if (is_file($this->config)) {
-            unlink($this->config);
+            //unlink($this->config);
         }
     }
 

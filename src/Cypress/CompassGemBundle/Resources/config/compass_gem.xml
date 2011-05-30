@@ -19,6 +19,12 @@ Just for fun...
         <service id="cypress_compass_gem.compass_gem" class="%cypress_compass_gem.compass_gem.class%">
             <argument>%cypress_compass_gem.compass_gem.compass_path%</argument>
             <tag name="assetic.filter" alias="compass_gem" />
+            <call method="setImagesDir">
+                <argument>/home/matteo/internet/sf2/src/Vivacom/CmsBundle/Resources/public/images</argument>
+            </call>
+            <call method="setHttpPath">
+                <argument>/bundles/cms</argument>
+            </call>
         </service>
     </services>
 </container>

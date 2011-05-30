@@ -13,7 +13,9 @@
 
 @import "compass/utilities/sprites";
 @import "icon/*.png";
-//@include all-icon-sprites;
+@include all-icon-sprites;
+
+
 
 // To generate css equivalent to the blueprint css but with your
 // configuration applied, uncomment:
