@@ -32,13 +32,7 @@ class Page {
      * @ORM\Column(unique=true)
      */
     private $url;
-    
-    protected $container;
-    
-    public function __construct(ContainerInterface $container) {
-        $this->container = $container;
-    }
-   
+
     
     public function getId()
     {
