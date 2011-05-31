@@ -29,7 +29,8 @@ assetic:
         cssrewrite: ~
         scss:       ~
         sass:       ~
-        compass:    ~
+        yui_js:
+          jar:      %kernel.root_dir%/java/yuicompressor-2.4.6.jar
         # closure:
         #     jar: %kernel.root_dir%/java/compiler.jar
         # yui_css:

@@ -7,6 +7,9 @@
             {% stylesheets "@CmsBundle/Resources/compass/sass/screen.sass" filter="compass" %}
                 <link href="{{ asset_url }}" media="screen, projection" rel="stylesheet" type="text/css" />
             {% endstylesheets %}
+            {% javascripts "@CmsBundle/Resources/Javascripts/*.js" filter="yui_js" %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
         {% endblock %}
         {% block javascripts %}{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
