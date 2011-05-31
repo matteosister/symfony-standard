@@ -7,6 +7,8 @@
 namespace Vivacom\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * @ORM\Entity
@@ -30,6 +32,13 @@ class Page {
      * @ORM\Column(unique=true)
      */
     private $url;
+    
+    protected $container;
+    
+    public function __construct(ContainerInterface $container) {
+        $this->container = $container;
+    }
+   
     
     public function getId()
     {

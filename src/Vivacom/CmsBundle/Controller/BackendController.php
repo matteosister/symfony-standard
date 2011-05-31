@@ -14,7 +14,7 @@ use Vivacom\CmsBundle\Entity\Page;
 use Vivacom\CmsBundle\Form\PageType;
 
 
-class BackendController  extends Controller 
+class BackendController extends Controller 
 {   
     public function dashboardAction()
     {
@@ -23,6 +23,7 @@ class BackendController  extends Controller
     
     public function pagesAction()
     {
+        $util = $this->get('utilities');
         $em = $this->get('doctrine')->getEntityManager();
         $pages = $em->getRepository('Vivacom\CmsBundle\Entity\Page')->findAll();
         

@@ -1,10 +1,14 @@
 ## YAML Template.
 
 parameters:
-  assetic.compass.class: "Cypress\CompassGemBundle\Assetic\Filter\CompassFilter"
+  assetic.compass.class: Cypress\CompassGemBundle\Assetic\Filter\CompassFilter
   assetic.compass.compass_path: "/var/lib/gems/1.8/bin/compass"
   assetic.compass.images_dir: "%kernel.root_dir%/../src/Vivacom/CmsBundle/Resources/public/images"
-  assetic.compass.http_path: "/bundles/cms"
+  assetic.compass.http_path: /bundles/cms
+  utilities.class: Vivacom\CmsBundle\Util\Util
+  page.class: Vivacom\CmsBundle\Entity\Page
+  
+  
 
 services:
   compass:
@@ -15,3 +19,11 @@ services:
       - [ "setHttpPath", [ %assetic.compass.http_path% ] ]
     tags:
       - { name: assetic.filter, alias: compass }
+      
+  utilities:
+    class:     %utilities.class%
+    arguments: ["@doctrine.orm.entity_manager"]
+    
+  page:
+    class:  %page.class%
+    arguments: ["@doctrine.orm.entity_manager"]
