@@ -76,6 +76,10 @@ class BackendController  extends Controller
                 $em = $this->get('doctrine')->getEntityManager();
                 $em->persist($page);
                 $em->flush();
+                
+                return $this->redirect($this->generateUrl('be_page_edit', array(
+                    'id' => $page->getId()
+                )));
             }
         }
         
