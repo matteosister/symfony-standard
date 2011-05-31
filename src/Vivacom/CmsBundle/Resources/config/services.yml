@@ -1,0 +1,17 @@
+## YAML Template.
+
+parameters:
+  assetic.compass.class: "Cypress\CompassGemBundle\Assetic\Filter\CompassFilter"
+  assetic.compass.compass_path: "/var/lib/gems/1.8/bin/compass"
+  assetic.compass.images_dir: "%kernel.root_dir%/../src/Vivacom/CmsBundle/Resources/public/images"
+  assetic.compass.http_path: "/bundles/cms"
+
+services:
+  compass:
+    class:     %assetic.compass.class%
+    arguments: [%assetic.compass.compass_path%]
+    calls:
+      - [ "setImagesDir", [ %assetic.compass.images_dir% ] ]
+      - [ "setHttpPath", [ %assetic.compass.http_path% ] ]
+    tags:
+      - { name: assetic.filter, alias: compass }
