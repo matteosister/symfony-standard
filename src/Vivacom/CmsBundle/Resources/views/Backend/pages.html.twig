@@ -11,27 +11,37 @@
     </section>
     <section class="list">
       <table>
-        <thead>
-          <tr>
-            <th>nome pagina</th>
-            <th>url</th>
-            <th>actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for page in pages %}
-          <tr class="{{ loop.index is even ? 'even' : 'odd' }}">
-            <td class="label"><a href="{{ path ('be_page_edit' ,{ 'id': page.id }) }}" class="icon icon-edit">{{ page.name }}</a></td>
-            <td class="label">{{ page.url }}</td>
-            <td>
-              <ul class="actions">
-                <li><a href="{{ path ('be_page_edit' ,{ 'id': page.id }) }}" class="icon icon-edit">edit</a></li>
-                <li><a href="{{ path ('be_page_delete' ,{ 'id': page.id }) }}" class="icon icon-delete">delete</a></li>
-              </ul>
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
+        {% for page in pages %}
+          {% if loop.index == 1 %}
+          <thead>
+            <tr>
+              <th>nome pagina</th>
+              <th>actions</th>
+            </tr>
+          </thead>
+          {% endif %}
+          <tbody>
+            <tr class="{{ loop.index is even ? 'even' : 'odd' }}">
+              <td class="label"><a href="{{ path ('be_page_edit' ,{ 'id': page.id }) }}" class="icon icon-edit">{{ page.name }}</a></td>
+              <td>
+                <ul class="actions">
+                  <li><a href="{{ path ('be_page_edit' ,{ 'id': page.id }) }}" class="icon icon-edit">edit</a></li>
+                  <li>
+                    <a onclick="javascript:return confirm('Are you sure?');" href="{{ path ('be_page_delete' ,{ 'id': page.id }) }}" class="icon icon-delete">delete</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        {% else %}
+          <tbody>
+            <tr>
+              <td>
+                <a href="{{ path('be_page_new') }}" class="icon icon-add">{% trans %}Create your first page{% endtrans %}</a>
+              </td>
+            </tr>
+          </tbody>
+        {% endfor %}
       </table>
     </section>
   </section>
