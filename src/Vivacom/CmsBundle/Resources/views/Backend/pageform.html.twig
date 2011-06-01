@@ -20,7 +20,13 @@
         <table>
           <thead>
             <tr>
-              <th colspan="2"><h2>Nuova pagina</h2></th>
+              <th colspan="2">
+                {% if isNew %}
+                  <h2>{% trans %}New Page{% endtrans %}</h2>
+                {% else %}
+                  <h2>{% trans %}Edit Page{% endtrans %}</h2>
+                {% endif %}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -29,6 +35,8 @@
             </tr>
             {{ form_row(form.name) }}
             {{ form_row(form.url) }}
+            {{ form_row(form.content) }}
+            {# form_row(form.metas) #}
             <tr>
               <td colspan="2"><input type="submit" value="submit" /></td>
             </tr>

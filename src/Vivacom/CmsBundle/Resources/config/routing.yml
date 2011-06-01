@@ -13,16 +13,16 @@ be_dashboard:
     
 be_page_list:
     pattern:  /webadmin/pages
-    defaults: { _controller: CmsBundle:Backend:pages }
+    defaults: { _controller: CmsBundle:Page:pages }
     
 be_page_new:
     pattern:  /webadmin/pages/new
-    defaults: { _controller: CmsBundle:Backend:pagesNew }
+    defaults: { _controller: CmsBundle:Page:pagesNew }
     
 be_page_edit:
     pattern:  /webadmin/pages/edit/{id}
-    defaults: { _controller: CmsBundle:Backend:pagesEdit }
+    defaults: { _controller: CmsBundle:Page:pagesEdit }
     
 be_page_delete:
     pattern:  /webadmin/pages/delete/{id}
-    defaults: { _controller: CmsBundle:Backend:pagesDelete }
+    defaults: { _controller: CmsBundle:Page:pagesDelete }
