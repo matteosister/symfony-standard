@@ -17,9 +17,8 @@ class PageAdmin extends Admin {
 
 
     protected $list = array(
-        'name',
-        'url' => array('identifier' => true),
-        'content',
+        'name' => array('identifier' => true),
+        'url',
     );
 
     protected $form = array(
@@ -36,7 +35,7 @@ class PageAdmin extends Admin {
     {
         $formMapper
           ->add('name')
-          ->add('url')
+          ->add('url', array('required' => false))
           ->add('content');
     }
 }
