@@ -18,7 +18,9 @@ $loader->registerNamespaces(array(
     'Vivacom'          => __DIR__.'/../src',
     'FOS'              => __DIR__.'/../src',
     'Cypress'          => __DIR__.'/../src',
-    'Propel'           => __DIR__.'/../vendor/bundles'
+    'Propel'           => __DIR__.'/../vendor/bundles',
+    'Sonata'           => __DIR__.'/../src',
+    'Knplabs'          => __DIR__.'/../src',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
