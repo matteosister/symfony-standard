@@ -24,13 +24,8 @@ services:
     class:     %utilities.class%
     arguments: ["@doctrine.orm.entity_manager"]
     
-  page:
-    class:  %page.class%
-    arguments: ["@doctrine.orm.entity_manager"]
-    
-    
   vivacom.cms.admin.page:
     class: Vivacom\CmsBundle\Admin\PageAdmin
     arguments: [ null, Vivacom\CmsBundle\Entity\Page, "CmsBundle:PageAdmin" ]
     tags:
-      - { name: sonata.admin, manager_type: orm, group: sonata_page, label: Page }
+      - { name: sonata.admin, manager_type: orm, group: Pages, label: Page }
