@@ -8,10 +8,11 @@ namespace Vivacom\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Vivacom\CmsBundle\Util\Util;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="page")
+ * @ORM\Table(name="cms_page")
  * @ORM\HasLifecycleCallbacks
  */
 class Page {
@@ -36,7 +37,8 @@ class Page {
     private $url;
     
     /**
-     * @ORM\Column(type="array")
+     * @ORM\ManyToMany(targetEntity="Meta", inversedBy="pages")
+     * @ORM\JoinTable(name="cms_page_meta")
      */
     private $metas;
     
@@ -45,8 +47,12 @@ class Page {
      */
     private $content;
 
-    public function __construct() {
-        $this->util = new Util();
+    public function __construct($util = null) {
+        if ($util == null) {
+            $util = new Util();
+        }
+        $this->util = $util;
+        $this->metas = new ArrayCollection();
     }
     
     /**

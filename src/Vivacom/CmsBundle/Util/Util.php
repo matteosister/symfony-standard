@@ -44,4 +44,11 @@ class Util {
 	
 		return $slug;
     }
+    
+    static public function trimAt($string, $size = 50, $addDots = true)
+    {
+        $string = substr($string, 0, $size);
+        if ($addDots) $string .= '...';
+        return $string;
+    }
 }

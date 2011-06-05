@@ -11,34 +11,30 @@ namespace Vivacom\CmsBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class PageAdmin extends Admin {
-    protected $baseRouteName = 'page';
-    protected $baseRoutePattern = 'page';
+class MetaAdmin extends Admin {
+    protected $baseRouteName = 'meta';
+    protected $baseRoutePattern = 'meta';
 
 
     protected $list = array(
         'name' => array('identifier' => true),
-        'url',
+        'content',
     );
 
     protected $form = array(
         'name',
-        'url',
-        'metas',
         'content',
     );
 
     protected $filter = array(
         'name',
+        'content',
     );
 
     public function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name')
-            ->add('url', array('required' => false))
-            ->add('metas', array('required' => false, 'expanded' => false))
             ->add('content');
     }
 }
-
