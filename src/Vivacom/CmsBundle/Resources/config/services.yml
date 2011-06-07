@@ -20,10 +20,23 @@ services:
     tags:
       - { name: assetic.filter, alias: compass }
       
-  utilities:
-    class:     %utilities.class%
-    arguments: ["@doctrine.orm.entity_manager"]
+      
+  utilities_page:
+    class: Vivacom\CmsBundle\Entity\Page
+    arguments: [%utilities.class%]
     
-  page:
-    class:  %page.class%
-    arguments: ["@doctrine.orm.entity_manager"]
+  utilities_meta:
+    class: Vivacom\CmsBundle\Entity\Meta
+    arguments: [%utilities.class%]
+    
+  vivacom.cms.admin.page:
+    class: Vivacom\CmsBundle\Admin\PageAdmin
+    arguments: [ null, Vivacom\CmsBundle\Entity\Page, "CmsBundle:PageAdmin" ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Pages, label: Page }
+      
+  vivacom.cms.admin.meta:
+    class: Vivacom\CmsBundle\Admin\MetaAdmin
+    arguments: [ null, Vivacom\CmsBundle\Entity\Meta, "CmsBundle:MetaAdmin" ]
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: Pages, label: Meta }

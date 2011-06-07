@@ -14,3 +14,6 @@
 /bundles/Propel         PropelBundle          https://github.com/willdurand/PropelBundle.git
 /                       phing                 https://github.com/Xosofox/phing.git
 /                       propel                https://github.com/Xosofox/propel.git
+/                       doctrine-fixtures     http://github.com/doctrine/data-fixtures.git
+/bundles/Symfony/Bundle DoctrineFixturesBundle http://github.com/symfony/DoctrineFixturesBundle.git
+

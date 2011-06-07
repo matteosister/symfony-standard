@@ -30,8 +30,16 @@ class AppKernel extends Kernel
         
         $bundles[] = new Vivacom\CmsBundle\CmsBundle();
         $bundles[] = new Cypress\CompassGemBundle\CypressCompassGemBundle();
+        $bundles[] = new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle();
+        
         //$bundles[] = new Propel\PropelBundle\PropelBundle();
         //$bundles[] = new FOS\UserBundle\FOSUserBundle();
+        
+        // Admin bundle deps
+        $bundles[] = new Sonata\jQueryBundle\SonatajQueryBundle();
+        $bundles[] = new Sonata\BluePrintBundle\SonataBluePrintBundle();
+        $bundles[] = new Sonata\AdminBundle\SonataAdminBundle();
+        $bundles[] = new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle();
 
         return $bundles;
     }

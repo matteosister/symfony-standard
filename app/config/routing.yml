@@ -2,6 +2,16 @@ homepage:
     resource: "@CmsBundle/Resources/config/routing.yml"
     prefix:   /cms
     
+    
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+    
 #fos_user_security:
 #    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 #    prefix: /user

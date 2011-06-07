@@ -26,3 +26,4 @@ be_page_edit:
 be_page_delete:
     pattern:  /webadmin/pages/delete/{id}
     defaults: { _controller: CmsBundle:Page:pagesDelete }
+    
