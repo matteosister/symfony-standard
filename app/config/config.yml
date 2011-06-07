@@ -26,6 +26,12 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
+    assets:
+        compass_screen:
+            inputs: [ "@CmsBundle/Resources/compass/sass/screen.sass" ]
+        screen_css:
+            inputs: "@compass_screen"
+            filters: compass
     filters:
         cssrewrite: ~
         scss:       ~
