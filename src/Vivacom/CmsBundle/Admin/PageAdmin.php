@@ -30,6 +30,7 @@ class PageAdmin extends Admin {
 
     protected $filter = array(
         'name',
+        'metas',
     );
 
     public function configureFormFields(FormMapper $formMapper)

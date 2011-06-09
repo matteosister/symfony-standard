@@ -23,7 +23,6 @@ class PageController extends Controller
     
     public function pagesAction()
     {
-        $util = $this->get('utilities');
         $em = $this->get('doctrine')->getEntityManager();
         $pages = $em->getRepository('Vivacom\CmsBundle\Entity\Page')->findAll();
         

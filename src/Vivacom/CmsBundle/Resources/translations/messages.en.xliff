@@ -114,6 +114,18 @@
                 <source>link_page_create</source>
                 <target>New page</target>
             </trans-unit>
+            <trans-unit id="link_meta_list">
+                <source>link_meta_list</source>
+                <target>Meta list</target>
+            </trans-unit>
+            <trans-unit id="link_meta_edit">
+                <source>link_meta_edit</source>
+                <target>Edit meta</target>
+            </trans-unit>
+            <trans-unit id="link_meta_create">
+                <source>link_meta_create</source>
+                <target>New meta</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
