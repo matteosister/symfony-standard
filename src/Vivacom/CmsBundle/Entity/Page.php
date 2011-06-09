@@ -7,8 +7,9 @@
 namespace Vivacom\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Vivacom\CmsBundle\Util\Util;
 use Doctrine\Common\Collections\ArrayCollection;
+use Vivacom\CmsBundle\Util\Util;
+use Vivacom\CmsBundle\Entity\Meta;
 
 /**
  * @ORM\Entity
@@ -96,9 +97,9 @@ class Page {
     {
         return $this->metas;
     }
-    public function setMetas($metas)
+    public function setMetas(Meta $meta)
     {
-        $this->metas = $metas;
+        $this->metas->add($meta);
     }
     
     // CONTENT
