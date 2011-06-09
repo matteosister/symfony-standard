@@ -13,3 +13,6 @@
 [submodule "src/Knplabs/Bundle/MenuBundle"]
 	path = src/Knplabs/Bundle/MenuBundle
 	url = git@github.com:sonata-project/MenuBundle.git
+[submodule "src/Cypress/BlogBundle"]
+	path = src/Cypress/BlogBundle
+	url = git@github.com:matteosister/BlogBundle.git

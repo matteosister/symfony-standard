@@ -12,6 +12,11 @@ _sonata_admin:
     type: sonata_admin
     prefix: /admin
     
+    
+blog:
+    resource: "@CypressBlogBundle/Resources/config/routing.yml"
+    prefix: /blog
+    
 #fos_user_security:
 #    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 #    prefix: /user
