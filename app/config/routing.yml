@@ -14,8 +14,12 @@ _sonata_admin:
     
     
 blog:
-    resource: "@CypressBlogBundle/Resources/config/routing.yml"
+    resource: "@CypressBlogBundle/Resources/config/frontend_routing.yml"
     prefix: /blog
+    
+blog_backend:
+    resource: "@CypressBlogBundle/Resources/config/backend_routing.yml"
+    prefix: /blog/backend
     
 #fos_user_security:
 #    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
