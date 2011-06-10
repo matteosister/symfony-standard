@@ -2,7 +2,6 @@ imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
     - { resource: "@CmsBundle/Resources/config/services.yml" }
-    - { resource: "@CypressBlogBundle/Resources/config/services.xml" }
 
 framework:
     secret:          %secret%
