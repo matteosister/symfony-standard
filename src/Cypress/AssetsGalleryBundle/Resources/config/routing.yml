@@ -1,0 +1,12 @@
+#homepage:
+#    pattern:  /
+#    defaults: { _controller: CypressAssetsGalleryBundle:Default:index }
+
+
+gallery:
+    pattern: /gallery
+    defaults: { _controller: assets_gallery.controller:listAction }
+    
+gallery_add:
+    pattern: /gallery/add
+    defaults: { _controller: assets_gallery.controller:addAction }

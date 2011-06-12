@@ -1,0 +1,41 @@
+<?php
+
+/*
+ * @matteosister
+ * https://github.com/matteosister
+ * Just for fun...
+ */
+
+namespace Cypress\AssetsGalleryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="cypress_assets_gallery")
+ */
+class GalleryAsset {
+    
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    
+    /**
+     * @ORM\Column
+     */
+    private $name;
+    
+    /**
+     * @ORM\Column
+     */
+    private $filename;
+    
+    /**
+     * @ORM\Column
+     */
+    private $description;
+    
+}
