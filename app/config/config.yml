@@ -67,6 +67,12 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
     
+avalanche_imagine:
+    filters:
+        small:
+            type:    thumbnail
+            options: { size: [120, 120], mode: outbound }    
+
 #fos_user:
 #    db_driver: orm
 #    firewall_name: main

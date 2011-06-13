@@ -1,18 +1,99 @@
 
 section#assets-gallery {
     font-size: 62.5%;
-    @include blueprint-typography;
+    font-family: 'Ubuntu', arial, serif;
     @include container;
     @include defaultlinks;
-    //@include icons;
     color: $font-color;
-    min-height: 200px;
     a.icon {
         padding-left: 20px;
+        font-size: 1.1em;
+    }
+    h1 {
+        @include single-text-shadow(#AAA, 4px, 4px, 4px);
+        font-size: 4em;
+    }
+    ul.actions {
+        @include no-bullets;
+        @include append-bottom(3em);
         font-size: 1.2em;
+        li a {
+            height: 1.3em;
+        }
+    }
+    form {
+        @include prepend-top(2em);
+        @include column(24, true);
+        fieldset {
+            margin: 2em;
+            padding: 1em;
+            background-color: #EEE;
+            border: 1px solid #CCC;
+            @include single-box-shadow(#DDD, $blur: 2em, $spread: 0.2em);
+        }
+        section.submit {
+            text-align: right;
+            input {
+                @include button-button;
+            }
+        }
+        input[type=text] {
+            width: 30em;
+        }
+        textarea {
+            width: 500px;
+            height: 10em;
+        }
     }
 
-    form {
-        @include blueprint-form;
+    section.form-field {
+        @include clearfix;
+        width: auto;
+        position: relative;
+        padding: 1em 0;
+        label {
+            position: absolute;
+            left: 0;
+            top: 0.5em;
+            width: 10em;
+            color: $complementary;
+            font-size: 1.5em;
+            line-height: 1.5em;
+            &:first-letter {
+                font-weight: bold;
+            }
+        }
+        section.field {
+            float: left;
+            padding-left: 15em;
+        }
+    }
+    
+    section.assets-list {
+        article {
+            margin-top: 2em;
+            position: relative;
+            float: left;
+            width: 12em;
+            height: 15em;
+            padding: 1em;
+            border: 1px solid #EEE;
+            margin-right: 1em;
+            h2 {
+                font-size: 1.3em;
+            }
+            .delete {
+                position: absolute;
+                top: 2px;
+                right: 2px;
+                line-height: 16px;
+                display: block;
+                font-size: 16px;
+                background-color: #EEE;
+                padding: 4px 4px 4px 20px;
+                background: #EEE image-url("icon/delete.png") no-repeat 2px;
+                @include border-radius(5px 0px 5px 5px);
+            }
+        }
     }
 }

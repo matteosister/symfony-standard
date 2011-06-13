@@ -1,5 +1,18 @@
 {% extends "AssetsGalleryBundle::base.html.twig" %}
 
 {% block content %}
-    <a class="icon icon-add" href="{{ path('gallery_add') }}">Inserisci un nuovo asset</a>
+    <ul class="actions">
+        <li><a class="icon icon-add" href="{{ path('cypress_gallery_add') }}">Inserisci un nuovo asset</a></li>
+    </ul>
+    
+    
+    <section class="assets-list">
+        {% for asset in assets %}
+        <article class="asset">
+            <img src="{{ asset.filename | apply_filter('small') }}" alt="{{ asset.name }}" title="{{ asset.name }}" />
+            <h2>{{ asset.name }}</h2>
+            <a href="#" class="delete">delete</a>
+        </article>
+        {% endfor %}
+    </section>
 {% endblock %}

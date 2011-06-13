@@ -33,6 +33,7 @@ class AppKernel extends Kernel
         $bundles[] = new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle();
         $bundles[] = new Cypress\BlogBundle\CypressBlogBundle();
         $bundles[] = new Cypress\AssetsGalleryBundle\AssetsGalleryBundle();
+        $bundles[] = new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle();
         
         //$bundles[] = new Propel\PropelBundle\PropelBundle();
         //$bundles[] = new FOS\UserBundle\FOSUserBundle();

@@ -18,5 +18,13 @@ $font-color: #333;
 
 
 @import "compass/utilities/sprites";
+@import "compass/css3/box-shadow";
+@import "blueprint/fancy-type";
+@import "compass/css3/text-shadow";
+@import "blueprint/buttons";
+@import "compass/typography/lists";
+@import "compass/css3/border-radius";
+
+
 @import "icon/*.png";
 @include all-icon-sprites;

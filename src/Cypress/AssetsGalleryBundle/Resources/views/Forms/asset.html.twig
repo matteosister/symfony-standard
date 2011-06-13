@@ -1,7 +1,18 @@
-{# empty Twig template #}
+{% form_theme form 'AssetsGalleryBundle:Forms:themes.html.twig' %}
 
 <form action="" class="bp" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-
-    <input type="submit" />
+    <h1>New asset</h1>
+    <ul class="actions">
+        <li><a href="{{ path("cypress_gallery") }}">Back to list</a></li>
+    </ul>
+    <fieldset>
+        {{ form_errors(form) }}
+        {{ form_row(form.filename) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_rest(form) }}
+        <section class="submit">
+            <input type="submit" value="submit" />
+        </section>
+    </fieldset>
 </form>

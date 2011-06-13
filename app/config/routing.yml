@@ -21,6 +21,9 @@ blog_backend:
     resource: "@CypressBlogBundle/Resources/config/backend_routing.yml"
     prefix: /blog/backend
 
+_imagine:
+    resource: .
+    type:     imagine
 
 gallery:
     resource: "@AssetsGalleryBundle/Resources/config/routing.yml"

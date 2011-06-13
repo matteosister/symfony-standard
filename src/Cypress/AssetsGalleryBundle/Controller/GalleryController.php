@@ -16,6 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
 use Cypress\AssetsGalleryBundle\Form\AssetType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class GalleryController extends ContainerAware
 {
@@ -40,10 +41,14 @@ class GalleryController extends ContainerAware
     
     public function listAction()
     {
+        $assets = $this->getEM()->getRepository('Cypress\AssetsGalleryBundle\Entity\GalleryAsset')->findAll();
+        
         return $this
             ->container
             ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:list.html.twig');
+            ->renderResponse('AssetsGalleryBundle:Gallery:list.html.twig', array(
+                'assets' => $assets
+            ));
     }
     
     public function addAction()
@@ -55,6 +60,7 @@ class GalleryController extends ContainerAware
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
+                $this->manageAssetSave($asset);
                 $this->getEM()->persist($asset);
                 $this->getEM()->flush();
             }
@@ -66,5 +72,14 @@ class GalleryController extends ContainerAware
             ->renderResponse('AssetsGalleryBundle:Gallery:new.html.twig', array(
                 'form' => $form->createView()
             ));
+    }
+    
+    private function manageAssetSave(GalleryAsset &$asset)
+    {
+        $uploadedFile = $asset->getFilename();
+        $path = '/media/Sata/internet/sf2/web/uploads';
+        $newName = str_replace(' ', '_', $asset->getName()).'.'.$uploadedFile->getExtension();
+        $uploadedFile->move($path, $newName);
+        $asset->setFilename('/uploads/'.$newName);
     }
 }
