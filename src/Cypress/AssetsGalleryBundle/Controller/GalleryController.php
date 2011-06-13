@@ -29,6 +29,15 @@ class GalleryController extends ContainerAware
         $this->container = $container;
     }
     
+    /**
+     * dump method for autocompletion
+     * @return Doctrine\ORM\EntityManager
+     */
+    private function getEM()
+    {
+        return $this->container->get('doctrine')->getEntityManager();
+    }
+    
     public function listAction()
     {
         return $this
@@ -42,6 +51,15 @@ class GalleryController extends ContainerAware
         $asset = new GalleryAsset;
         $form = $this->container->get('form.factory')->create(new AssetType(), $asset);
         
+        $request = $this->container->get('request');
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->getEM()->persist($asset);
+                $this->getEM()->flush();
+            }
+        }
+
         return $this
             ->container
             ->get('templating')

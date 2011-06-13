@@ -1,1 +1,5 @@
-<a href="{{ path('gallery_add') }}">Inserisci un nuovo asset</a>
+{% extends "AssetsGalleryBundle::base.html.twig" %}
+
+{% block content %}
+    <a class="icon icon-add" href="{{ path('gallery_add') }}">Inserisci un nuovo asset</a>
+{% endblock %}

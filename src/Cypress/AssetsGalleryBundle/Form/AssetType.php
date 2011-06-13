@@ -21,5 +21,6 @@ class AssetType extends AbstractType {
     public function buildForm(FormBuilder $builder, array $options) {
         $builder->add('name');
         $builder->add('filename', 'file');
+        $builder->add('description', 'textarea');
     }
 }

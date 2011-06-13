@@ -1,4 +1,5 @@
-{# empty Twig template #}
+{% extends "AssetsGalleryBundle::base.html.twig" %}
 
-
-{% include "AssetsGalleryBundle:Forms:asset.html.twig" %}
+{% block content %}
+    {% include "AssetsGalleryBundle:Forms:asset.html.twig" %}
+{% endblock %}

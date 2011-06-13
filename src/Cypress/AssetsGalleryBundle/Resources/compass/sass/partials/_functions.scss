@@ -1,0 +1,9 @@
+@mixin defaultlinks() {
+    a {
+        @include link-colors($complementary, $main-color, $complementary-dark, $complementary-dark);
+        text-decoration: none !important;
+        &:hover {
+            text-decoration: underline !important;
+        }
+    }
+}

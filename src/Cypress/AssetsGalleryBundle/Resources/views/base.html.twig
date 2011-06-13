@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <link href="/bundles/assetsgallery/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/bundles/assetsgallery/css/print.css" media="print" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+      <link href="/bundles/assetsgallery/css/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+{% endblock %}
+    
+{% block body %}
+    <section id="assets-gallery">
+        {% block content %}{% endblock %}
+    </section>
+{% endblock %}

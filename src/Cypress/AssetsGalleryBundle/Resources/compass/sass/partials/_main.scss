@@ -1,0 +1,18 @@
+
+section#assets-gallery {
+    font-size: 62.5%;
+    @include blueprint-typography;
+    @include container;
+    @include defaultlinks;
+    //@include icons;
+    color: $font-color;
+    min-height: 200px;
+    a.icon {
+        padding-left: 20px;
+        font-size: 1.2em;
+    }
+
+    form {
+        @include blueprint-form;
+    }
+}
