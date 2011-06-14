@@ -7,18 +7,17 @@
 
 namespace Cypress\AssetsGalleryBundle\Entity;
 
-use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Mapping\Annotation as GEDMO;
 use Doctrine\ORM\Mapping as ORM;
 use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @Gedmo\Tree(type="nested")
- * @ORM\HasLifecycleCallbacks
- * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
+ * @ORM\Entity
  * @ORM\Table(name="cypress_gallery_folders")
  */
-class GalleryFolder {
+class GalleryFolder
+{
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -30,45 +29,14 @@ class GalleryFolder {
      * @ORM\Column
      */
     private $name;
-    
-    /**
-     * @ORM\Column
-     */
-    private $relative_path;
-    
-    /**
-     * @Gedmo\TreeLevel
-     * @ORM\Column(type="integer")
-     */
-    private $lvl;
-    
-    /**
-     * @Gedmo\TreeLeft
-     * @ORM\Column(type="integer")
-     */
-    private $lft;
-    
-    /**
-     * @Gedmo\TreeRight
-     * @ORM\Column(type="integer")
-     */
-    private $rgt;
      
     /**
-     * @Gedmo\TreeRoot
-     * @ORM\Column(type="integer")
-     */
-    private $root;
-     
-    /**
-     * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="GalleryFolder", inversedBy="children")
      */
     private $parent;
      
     /**
      * @ORM\OneToMany(targetEntity="GalleryFolder", mappedBy="parent")
-     * @ORM\OrderBy({"lft" = "ASC"})
      */
     private $children;
     
@@ -77,6 +45,10 @@ class GalleryFolder {
      * @ORM\OrderBy({"name" = "ASC"});
      */
     private $asset;
+    
+    public function __toString() {
+        return $this->getName();
+    }
     
     public function __construct()
     {
@@ -111,106 +83,6 @@ class GalleryFolder {
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set relative_path
-     *
-     * @param string $relativePath
-     */
-    public function setRelativePath($relativePath)
-    {
-        $this->relative_path = $relativePath;
-    }
-
-    /**
-     * Get relative_path
-     *
-     * @return string $relativePath
-     */
-    public function getRelativePath()
-    {
-        return $this->relative_path;
-    }
-
-    /**
-     * Set lvl
-     *
-     * @param integer $lvl
-     */
-    public function setLvl($lvl)
-    {
-        $this->lvl = $lvl;
-    }
-
-    /**
-     * Get lvl
-     *
-     * @return integer $lvl
-     */
-    public function getLvl()
-    {
-        return $this->lvl;
-    }
-
-    /**
-     * Set lft
-     *
-     * @param integer $lft
-     */
-    public function setLft($lft)
-    {
-        $this->lft = $lft;
-    }
-
-    /**
-     * Get lft
-     *
-     * @return integer $lft
-     */
-    public function getLft()
-    {
-        return $this->lft;
-    }
-
-    /**
-     * Set rgt
-     *
-     * @param integer $rgt
-     */
-    public function setRgt($rgt)
-    {
-        $this->rgt = $rgt;
-    }
-
-    /**
-     * Get rgt
-     *
-     * @return integer $rgt
-     */
-    public function getRgt()
-    {
-        return $this->rgt;
-    }
-
-    /**
-     * Set root
-     *
-     * @param integer $root
-     */
-    public function setRoot($root)
-    {
-        $this->root = $root;
-    }
-
-    /**
-     * Get root
-     *
-     * @return integer $root
-     */
-    public function getRoot()
-    {
-        return $this->root;
     }
 
     /**

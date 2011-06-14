@@ -15,7 +15,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
+use Cypress\AssetsGalleryBundle\Entity\GalleryFolder;
 use Cypress\AssetsGalleryBundle\Form\AssetType;
+use Cypress\AssetsGalleryBundle\Form\GalleryFolderType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -43,8 +45,6 @@ class GalleryController extends ContainerAware
     public function listAction()
     {
         $repo = $this->getEM()->getRepository('Cypress\AssetsGalleryBundle\Entity\GalleryFolder');
-        var_dump($repo);
-        die();
         $assets = $this->getEM()->getRepository('Cypress\AssetsGalleryBundle\Entity\GalleryAsset')->findAll();
         
         return $this
@@ -75,6 +75,28 @@ class GalleryController extends ContainerAware
             ->container
             ->get('templating')
             ->renderResponse('AssetsGalleryBundle:Gallery:new.html.twig', array(
+                'form' => $form->createView()
+            ));
+    }
+    
+    public function addFolderAction()
+    {
+        $gallery_folder = new GalleryFolder();
+        $form = $this->container->get('form.factory')->create(new GalleryFolderType(), $gallery_folder);
+        
+        $request = $this->container->get('request');
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->getEM()->persist($gallery_folder);
+                $this->getEM()->flush();
+            }
+        }
+
+        return $this
+            ->container
+            ->get('templating')
+            ->renderResponse('AssetsGalleryBundle:Gallery:new_folder.html.twig', array(
                 'form' => $form->createView()
             ));
     }

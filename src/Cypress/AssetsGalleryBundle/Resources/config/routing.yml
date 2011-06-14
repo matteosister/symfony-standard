@@ -18,3 +18,7 @@ cypress_gallery_delete:
 cypress_gallery_edit:
     pattern: /gallery/{id}/edit
     defaults: { _controller: assets_gallery.controller:editAction }
+    
+cypress_gallery_folder_add:
+    pattern: /gallery/folder/add
+    defaults: { _controller: assets_gallery.controller:addFolderAction }

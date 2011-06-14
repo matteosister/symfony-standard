@@ -11,18 +11,15 @@ namespace Cypress\AssetsGalleryBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class AssetType extends AbstractType
+class GalleryFolderType extends AbstractType
 {
-    
     /**
-     * Build asset form
+     * Build folder form
      * @param FormBuilder $builder
      * @param array $options 
      */
     public function buildForm(FormBuilder $builder, array $options) {
         $builder->add('name');
-        $builder->add('filename', 'file');
-        $builder->add('description', 'textarea');
-        $builder->add('folder');
+        $builder->add('parent');
     }
 }

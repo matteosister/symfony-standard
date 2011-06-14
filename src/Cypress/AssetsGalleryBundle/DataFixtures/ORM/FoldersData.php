@@ -14,7 +14,6 @@ class FoldersData implements FixtureInterface {
     public function load($manager) {
         $root = new GalleryFolder();
         $root->setName('root');
-        $root->setRelativePath('/');
         
 //        $child = new GalleryFolder();
 //        $child->setName('child');
