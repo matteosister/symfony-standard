@@ -3,10 +3,18 @@
 #    defaults: { _controller: CypressAssetsGalleryBundle:Default:index }
 
 
-cypress_gallery:
+cypress_gallery_list:
     pattern: /gallery
     defaults: { _controller: assets_gallery.controller:listAction }
     
 cypress_gallery_add:
     pattern: /gallery/add
     defaults: { _controller: assets_gallery.controller:addAction }
+    
+cypress_gallery_delete:
+    pattern: /gallery/{id}/delete
+    defaults: { _controller: assets_gallery.controller:deleteAction }
+    
+cypress_gallery_edit:
+    pattern: /gallery/{id}/edit
+    defaults: { _controller: assets_gallery.controller:editAction }

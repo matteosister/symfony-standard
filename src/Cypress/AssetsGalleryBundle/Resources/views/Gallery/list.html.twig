@@ -11,7 +11,7 @@
         <article class="asset">
             <img src="{{ asset.filename | apply_filter('small') }}" alt="{{ asset.name }}" title="{{ asset.name }}" />
             <h2>{{ asset.name }}</h2>
-            <a href="#" class="delete">delete</a>
+            <a href="{{ path('cypress_gallery_delete', {'id': asset.id }) }}" class="delete">delete</a>
         </article>
         {% endfor %}
     </section>

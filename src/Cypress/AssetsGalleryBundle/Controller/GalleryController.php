@@ -17,6 +17,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
 use Cypress\AssetsGalleryBundle\Form\AssetType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class GalleryController extends ContainerAware
 {
@@ -74,11 +75,22 @@ class GalleryController extends ContainerAware
             ));
     }
     
+    public function deleteAction($id)
+    {
+        $asset = $this->getEM()->getRepository('Cypress\AssetsGalleryBundle\Entity\GalleryAsset')->find($id);
+        if ($asset) {
+            $this->getEM()->remove($asset);
+            $this->getEM()->flush();
+        }
+        return new RedirectResponse($this->container->get('router')->generate('cypress_gallery_list'));
+    }
+    
     private function manageAssetSave(GalleryAsset &$asset)
     {
         $uploadedFile = $asset->getFilename();
-        $path = '/media/Sata/internet/sf2/web/uploads';
-        $newName = str_replace(' ', '_', $asset->getName()).'.'.$uploadedFile->getExtension();
+        $path = $this->container->getParameter('kernel.root_dir').'/../web/uploads';
+        $newName = $this->container->get('assets_gallery.util')->generateToken().
+                '.'.$uploadedFile->getExtension();
         $uploadedFile->move($path, $newName);
         $asset->setFilename('/uploads/'.$newName);
     }
