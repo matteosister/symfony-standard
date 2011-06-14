@@ -10,12 +10,16 @@ $(document).ready( function() {
     if ($('section.assets-list').exists) {
         $('section.assets-list article').each (function() {
             $(this).children('a.delete').hide();
-            $(this).hover(onHover, onOut);
-            function onHover() {
+            var config = {    
+                over: showActions, // function = onMouseOver callback (REQUIRED)    
+                timeout: 200, // number = milliseconds delay before onMouseOut    
+                out: hideActions // function = onMouseOut callback (REQUIRED)    
+            };
+            $(this).hoverIntent(config);
+            function showActions() {
                 $(this).children('a.delete').fadeIn('fast')
             }
-            
-            function onOut() {
+            function hideActions() {
                 $(this).children('a.delete').fadeOut('slow')
             }
         });

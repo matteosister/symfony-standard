@@ -89,3 +89,6 @@ avalanche_imagine:
 #    build_properties:
 #        xxxxx.xxxxx: xxxxxx
 #        xxxxx.xxxxx: xxxxxx
+
+assets_gallery:
+    base_path: assets_gallery

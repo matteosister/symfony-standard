@@ -48,7 +48,8 @@ class GalleryController extends ContainerAware
             ->container
             ->get('templating')
             ->renderResponse('AssetsGalleryBundle:Gallery:list.html.twig', array(
-                'assets' => $assets
+                'assets' => $assets,
+                'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
             ));
     }
     
@@ -88,10 +89,10 @@ class GalleryController extends ContainerAware
     private function manageAssetSave(GalleryAsset &$asset)
     {
         $uploadedFile = $asset->getFilename();
-        $path = $this->container->getParameter('kernel.root_dir').'/../web/uploads';
+        $path = $this->container->getParameter('assets_gallery.base_path');
         $newName = $this->container->get('assets_gallery.util')->generateToken().
                 '.'.$uploadedFile->getExtension();
         $uploadedFile->move($path, $newName);
-        $asset->setFilename('/uploads/'.$newName);
+        $asset->setFilename($newName);
     }
 }
