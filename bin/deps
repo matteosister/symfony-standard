@@ -18,4 +18,5 @@
 /bundles/Symfony/Bundle    DoctrineFixturesBundle  http://github.com/symfony/DoctrineFixturesBundle.git
 /                          imagine                 git://github.com/avalanche123/Imagine.git
 /bundles/Avalanche/Bundle  ImagineBundle           git://github.com/avalanche123/AvalancheImagineBundle.git
-
+/                          gedmo-doctrine-extensions git://github.com/l3pp4rd/DoctrineExtensions.git
+/bundles/Stof              DoctrineExtensionsBundle  git://github.com/stof/DoctrineExtensionsBundle.git

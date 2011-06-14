@@ -73,7 +73,7 @@ $interpreter = PHP_OS == 'WINNT' ? 'php.exe' : '';
 system(sprintf('%s %s/bin/build_bootstrap.php', $interpreter, $rootDir));
 
 // Update assets
-system(sprintf('%s %s/app/console assets:install %s/web/', $interpreter, $rootDir, $rootDir));
+system(sprintf('%s %s/app/console assets:install --symlink %s/web/', $interpreter, $rootDir, $rootDir));
 
 // Remove the cache
 system(sprintf('%s %s/app/console cache:clear --no-warmup', $interpreter, $rootDir));

@@ -34,6 +34,7 @@ class AppKernel extends Kernel
         $bundles[] = new Cypress\BlogBundle\CypressBlogBundle();
         $bundles[] = new Cypress\AssetsGalleryBundle\AssetsGalleryBundle();
         $bundles[] = new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle();
+        $bundles[] = new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle();
         
         //$bundles[] = new Propel\PropelBundle\PropelBundle();
         //$bundles[] = new FOS\UserBundle\FOSUserBundle();

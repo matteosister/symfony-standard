@@ -23,6 +23,8 @@ $loader->registerNamespaces(array(
     'Knplabs'          => __DIR__.'/../src',
     'Imagine'          => __DIR__.'/../vendor/imagine/lib',
     'Avalanche'        => __DIR__.'/../vendor/bundles',
+    'Stof'             => __DIR__.'/../vendor/bundles',
+    'Gedmo'            => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib'
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

@@ -25,7 +25,7 @@ class PagesData implements FixtureInterface {
         $manager->persist($metaD);
         
         // load 100 pages
-        for ($i = 1; $i <= 100; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             switch (strlen($i)) {
                 case 1:
                     $i = "00".$i;

@@ -9,10 +9,11 @@
 namespace Cypress\AssetsGalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Cypress\AssetsGalleryBundle\Entity\GalleryFolder;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="cypress_assets_gallery")
+ * @ORM\Table(name="cypress_gallery_assets")
  */
 class GalleryAsset {
     
@@ -37,6 +38,11 @@ class GalleryAsset {
      * @ORM\Column
      */
     private $description;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="GalleryFolder", inversedBy="asset")
+     */
+    private $folder;
     
 
     /**
@@ -107,5 +113,25 @@ class GalleryAsset {
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set folder
+     *
+     * @param Cypress\AssetsGalleryBundle\Entity\GalleryFolder $folder
+     */
+    public function setFolder(GalleryFolder $folder)
+    {
+        $this->folder = $folder;
+    }
+
+    /**
+     * Get folder
+     *
+     * @return Cypress\AssetsGalleryBundle\Entity\GalleryFolder $folder
+     */
+    public function getFolder()
+    {
+        return $this->folder;
     }
 }

@@ -22,5 +22,6 @@ class AssetType extends AbstractType {
         $builder->add('name');
         $builder->add('filename', 'file');
         $builder->add('description', 'textarea');
+        $builder->add('folder');
     }
 }

@@ -42,6 +42,9 @@ class GalleryController extends ContainerAware
     
     public function listAction()
     {
+        $repo = $this->getEM()->getRepository('Cypress\AssetsGalleryBundle\Entity\GalleryFolder');
+        var_dump($repo);
+        die();
         $assets = $this->getEM()->getRepository('Cypress\AssetsGalleryBundle\Entity\GalleryAsset')->findAll();
         
         return $this

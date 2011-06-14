@@ -55,6 +55,8 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+        mappings:
+            StofDoctrineExtensionsBundle: false
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -68,6 +70,7 @@ jms_security_extra:
     secure_all_services: false
     
 avalanche_imagine:
+    driver: gd
     filters:
         small:
             type:    thumbnail
