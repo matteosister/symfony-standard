@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
 use Cypress\AssetsGalleryBundle\Entity\GalleryFolder;
-use Cypress\AssetsGalleryBundle\Form\AssetType;
+use Cypress\AssetsGalleryBundle\Form\GalleryAssetType;
 use Cypress\AssetsGalleryBundle\Form\GalleryFolderType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -42,24 +42,25 @@ class GalleryController extends ContainerAware
         return $this->container->get('doctrine')->getEntityManager();
     }
     
-    public function listAction()
+    public function listAction($level = 1)
     {
-        $repo = $this->getEM()->getRepository('Cypress\AssetsGalleryBundle\Entity\GalleryFolder');
-        $assets = $this->getEM()->getRepository('Cypress\AssetsGalleryBundle\Entity\GalleryAsset')->findAll();
+        $assets = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryAsset')->findAll();
+        $folders = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findChildrenOf($level);
         
         return $this
             ->container
             ->get('templating')
             ->renderResponse('AssetsGalleryBundle:Gallery:list.html.twig', array(
-                'assets' => $assets,
+                'assets'    => $assets,
+                'folders'   => $folders,
                 'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
             ));
     }
     
-    public function addAction()
+    public function addAssetAction()
     {
         $asset = new GalleryAsset;
-        $form = $this->container->get('form.factory')->create(new AssetType(), $asset);
+        $form = $this->container->get('form.factory')->create(new GalleryAssetType(), $asset);
         
         $request = $this->container->get('request');
         if ($request->getMethod() == 'POST') {
@@ -101,9 +102,33 @@ class GalleryController extends ContainerAware
             ));
     }
     
-    public function deleteAction($id)
+    public function editFolderAction($id)
     {
-        $asset = $this->getEM()->getRepository('Cypress\AssetsGalleryBundle\Entity\GalleryAsset')->find($id);
+        $gallery_folder = $this->getEM()
+                ->getRepository('AssetsGalleryBundle:GalleryFolder')
+                ->find($id);
+        $form = $this->container->get('form.factory')->create(new GalleryFolderType(), $gallery_folder);
+        
+        $request = $this->container->get('request');
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->getEM()->persist($gallery_folder);
+                $this->getEM()->flush();
+            }
+        }
+        
+        return $this
+            ->container
+            ->get('templating')
+            ->renderResponse('AssetsGalleryBundle:Gallery:new_folder.html.twig', array(
+                'form' => $form->createView()
+            ));
+    }
+    
+    public function deleteAssetAction($id)
+    {
+        $asset = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryAsset')->find($id);
         if ($asset) {
             $this->getEM()->remove($asset);
             $this->getEM()->flush();
@@ -111,13 +136,23 @@ class GalleryController extends ContainerAware
         return new RedirectResponse($this->container->get('router')->generate('cypress_gallery_list'));
     }
     
+    public function deleteFolderAction($id)
+    {
+        $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->find($id);
+        if ($folder) {
+            $this->getEM()->remove($folder);
+            $this->getEM()->flush();
+        }
+        return new RedirectResponse($this->container->get('router')->generate('cypress_gallery_list'));
+    }
+    
     private function manageAssetSave(GalleryAsset &$asset)
     {
-        $uploadedFile = $asset->getFilename();
-        $path = $this->container->getParameter('assets_gallery.base_path');
-        $newName = $this->container->get('assets_gallery.util')->generateToken().
-                '.'.$uploadedFile->getExtension();
-        $uploadedFile->move($path, $newName);
-        $asset->setFilename($newName);
+//        $uploadedFile = $asset->getFilename();
+//        $path = $this->container->getParameter('assets_gallery.base_path');
+//        $newName = $this->container->get('assets_gallery.util')->generateToken().
+//                '.'.$uploadedFile->getExtension();
+//        $uploadedFile->move($path, $newName);
+//        $asset->setFilename($newName);
     }
 }

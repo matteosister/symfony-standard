@@ -7,14 +7,14 @@
 
 namespace Cypress\AssetsGalleryBundle\Entity;
 
-use Gedmo\Mapping\Annotation as GEDMO;
 use Doctrine\ORM\Mapping as ORM;
 use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cypress\AssetsGalleryBundle\Entity\GalleryFolderRepository")
  * @ORM\Table(name="cypress_gallery_folders")
+ * @ORM\HasLifecycleCallbacks
  */
 class GalleryFolder
 {
@@ -41,6 +41,11 @@ class GalleryFolder
     private $children;
     
     /**
+     * @ORM\Column(type="integer", nullable="false")
+     */
+    private $level;
+    
+    /**
      * @ORM\OneToMany(targetEntity="GalleryAsset", mappedBy="folder")
      * @ORM\OrderBy({"name" = "ASC"});
      */
@@ -53,6 +58,13 @@ class GalleryFolder
     public function __construct()
     {
         $this->children = new ArrayCollection();
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function test()
+    {
     }
     
     /**
@@ -143,5 +155,25 @@ class GalleryFolder
     public function getAsset()
     {
         return $this->asset;
+    }
+
+    /**
+     * Set level
+     *
+     * @param integer $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
+
+    /**
+     * Get level
+     *
+     * @return integer $level
+     */
+    public function getLevel()
+    {
+        return $this->level;
     }
 }

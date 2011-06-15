@@ -74,7 +74,7 @@ avalanche_imagine:
     filters:
         small:
             type:    thumbnail
-            options: { size: [120, 120], mode: outbound }    
+            options: { size: [128, 128], mode: outbound }    
 
 #fos_user:
 #    db_driver: orm

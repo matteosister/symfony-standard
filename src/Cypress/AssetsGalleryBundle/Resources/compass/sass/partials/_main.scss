@@ -74,25 +74,31 @@ section#assets-gallery {
             margin-top: 2em;
             position: relative;
             float: left;
-            width: 12em;
-            height: 15em;
+            width: 12.8em;
+            height: 15.8em;
             padding: 1em;
             border: 1px solid #EEE;
             margin-right: 1em;
             h2 {
                 font-size: 1.3em;
             }
-            .delete {
-                position: absolute;
-                top: 2px;
+            .action {
+                @include border-radius(5px 0px 5px 5px);
+                position: absolute;          
                 right: 2px;
                 line-height: 16px;
                 display: block;
                 font-size: 16px;
                 background-color: #EEE;
                 padding: 4px 4px 4px 20px;
-                background: #EEE image-url("icon/delete.png") no-repeat 2px;
-                @include border-radius(5px 0px 5px 5px);
+                &.delete {
+                    top: 2px;
+                    background: #EEE image-url("icon/delete.png") no-repeat 2px;
+                }
+                &.edit {
+                    top: 30px;
+                    background: #EEE image-url("icon/edit.png") no-repeat 2px;
+                }
             }
         }
     }

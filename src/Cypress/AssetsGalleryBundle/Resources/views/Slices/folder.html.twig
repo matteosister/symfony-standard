@@ -1,0 +1,8 @@
+<article class="folder">
+    <a href="{{ path("cypress_gallery_list", { "level": folder.level + 1 }) }}">
+        <img src="/bundles/assetsgallery/images/folder.png" alt="{{ folder.name }}" title="{{ folder.name }}" />
+    </a>
+    <h2>{{ folder.name }}</h2>
+    <a href="{{ path('cypress_gallery_folder_delete', {'id': folder.id }) }}" class="action delete">delete</a>
+    <a href="{{ path('cypress_gallery_folder_edit', {'id': folder.id }) }}" class="action edit">edit</a>
+</article>

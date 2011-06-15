@@ -1,15 +1,21 @@
-{% extends "AssetsGalleryBundle::base.html.twig" %}
+{% extends 'AssetsGalleryBundle::base.html.twig' %}
 
 {% block content %}
     <ul class="actions">
-        <li><a class="icon icon-add" href="{{ path('cypress_gallery_add') }}">Inserisci un nuovo asset</a></li>
+        <li><a class="icon icon-add" href="{{ path('cypress_gallery_asset_add') }}">Inserisci un nuovo asset</a></li>
         <li><a class="icon icon-add" href="{{ path('cypress_gallery_folder_add') }}">Inserisci una nuova cartella</a></li>
     </ul>
     
     
     <section class="assets-list">
+        {% if app.request.get('level') > 1 %}
+            {% include 'AssetsGalleryBundle:Slices:back.html.twig' %}
+        {% endif %}
+        {% for folder in folders %}
+            {% include 'AssetsGalleryBundle:Slices:folder.html.twig' %}
+        {% endfor %}
         {% for asset in assets %}
-            {% include "AssetsGalleryBundle:Slices:asset.html.twig" %}
+            {% include 'AssetsGalleryBundle:Slices:asset.html.twig' %}
         {% endfor %}
     </section>
 {% endblock %}

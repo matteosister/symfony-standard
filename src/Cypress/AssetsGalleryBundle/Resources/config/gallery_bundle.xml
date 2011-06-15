@@ -15,12 +15,16 @@ Just for fun...
     </parameters>
     
     <services>
+        <service id="assets_gallery.util" class="%assets_gallery.util.class%" />
+        <service id="assets_gallery.entities_listener" class="Cypress\AssetsGalleryBundle\Entity\GalleryEntitiesListener" public="false">
+            <argument type="service" id="service_container" />
+            <tag name="doctrine.event_subscriber" />
+        </service>
         <service id="assets_gallery.controller" class="%assets_gallery.controller.class%">
             <call method="setContainer">
                 <argument type="service" id="service_container" />
             </call>
         </service>
-        <service id="assets_gallery.util" class="%assets_gallery.util.class%" />
     </services>
         
 </container>

@@ -11,7 +11,7 @@ namespace Cypress\AssetsGalleryBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class AssetType extends AbstractType
+class GalleryAssetType extends AbstractType
 {
     
     /**
