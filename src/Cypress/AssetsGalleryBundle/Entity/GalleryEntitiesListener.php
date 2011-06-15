@@ -12,6 +12,7 @@ use Doctrine\ORM\Events;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Cypress\AssetsGalleryBundle\Entity\GalleryFolder;
+use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
 
 class GalleryEntitiesListener implements EventSubscriber
 {
@@ -27,7 +28,8 @@ class GalleryEntitiesListener implements EventSubscriber
     
     public function getSubscribedEvents() {
         return array(
-            Events::prePersist
+            Events::prePersist,
+            Events::preRemove
         );
     }
     
@@ -40,6 +42,15 @@ class GalleryEntitiesListener implements EventSubscriber
             } else {
                 $entity->setLevel($entity->getParent()->getLevel() + 1);
             }
+        }
+    }
+    
+    public function preRemove(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+        if ($entity instanceof GalleryAsset) {
+            $filename = $this->container->getParameter('assets_gallery.base_path').DIRECTORY_SEPARATOR.$entity->getFilename();
+            @unlink($filename);
         }
     }
 }

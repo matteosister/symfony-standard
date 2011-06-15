@@ -1,9 +1,10 @@
 
 section#assets-gallery {
-    font-size: 62.5%;
-    font-family: 'Ubuntu', arial, serif;
     @include container;
     @include defaultlinks;
+    @include prepend-top(1em);
+    font-size: 62.5%;
+    font-family: 'Ubuntu', arial, serif;
     color: $font-color;
     a.icon {
         padding-left: 20px;
@@ -16,9 +17,13 @@ section#assets-gallery {
     ul.actions {
         @include no-bullets;
         @include append-bottom(3em);
+        @include inline-list;
         font-size: 1.2em;
-        li a {
-            height: 1.3em;
+        li {
+            margin-right: 1em;
+            a {
+                height: 1.3em;
+            }
         }
     }
     form {
@@ -70,33 +75,50 @@ section#assets-gallery {
     }
     
     section.assets-list {
+        @include clearfix;
+        padding: span(1);
         article {
+            @include border-radius($border-radius);
+            @include single-box-shadow(#DDD, $blur: 2em, $spread: 0.2em);
             margin-top: 2em;
             position: relative;
             float: left;
             width: 12.8em;
             height: 15.8em;
             padding: 1em;
-            border: 1px solid #EEE;
+            border: 1px solid #DDD;
             margin-right: 1em;
+            overflow: hidden;
+            &.hover {
+                border: 1px solid #BBB;
+                @include single-box-shadow(#CCC, $blur: 2em, $spread: 0.4em);
+            }
+            a {
+                outline: none;
+            }
             h2 {
                 font-size: 1.3em;
+                text-align: center;
+                font-weight: bold;
             }
             .action {
-                @include border-radius(5px 0px 5px 5px);
+                height: $actionHeight;
                 position: absolute;          
-                right: 2px;
                 line-height: 16px;
                 display: block;
-                font-size: 16px;
+                font-size: 14px;
                 background-color: #EEE;
+                border: 1px solid #BBB;
                 padding: 4px 4px 4px 20px;
-                &.delete {
-                    top: 2px;
+                left: $actionPad;
+                &.first {
+                    @include border-radius($border-radius $border-radius $border-radius 0);
                     background: #EEE image-url("icon/delete.png") no-repeat 2px;
+                    top: $actionPad;
                 }
-                &.edit {
-                    top: 30px;
+                &.second {
+                    @include border-radius(0 $border-radius $border-radius 0);
+                    top: ($actionPad * 2) + $actionHeight + 10px;
                     background: #EEE image-url("icon/edit.png") no-repeat 2px;
                 }
             }

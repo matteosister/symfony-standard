@@ -15,7 +15,9 @@ $main-color-dark: #A65200;
 $complementary: #038CAC;
 $complementary-dark: #015B70;
 $font-color: #333;
-
+$border-radius: 10px;
+$actionHeight: 16px;
+$actionPad: 2px;
 
 @import "compass/utilities/sprites";
 @import "compass/css3/box-shadow";

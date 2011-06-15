@@ -8,29 +8,21 @@ cypress_gallery_list:
     defaults: { _controller: assets_gallery.controller:listAction, level: 1 }
 
 
-#ASSETS
-cypress_gallery_asset_add:
-    pattern: /gallery/asset/add
-    defaults: { _controller: assets_gallery.controller:addAssetAction }
+#ASSETS 
+cypress_gallery_asset_manage:
+    pattern: /gallery/asset/manage/{id}
+    defaults: { _controller: assets_gallery.controller:manageAssetAction, id: ~ }
     
 cypress_gallery_asset_delete:
     pattern: /gallery/asset/{id}/delete
     defaults: { _controller: assets_gallery.controller:deleteAssetAction }
     
-cypress_gallery_asset_edit:
-    pattern: /gallery/asset/{id}/edit
-    defaults: { _controller: assets_gallery.controller:editAssetAction }
-    
     
 #FOLDERS
-cypress_gallery_folder_add:
-    pattern: /gallery/folder/add
-    defaults: { _controller: assets_gallery.controller:addFolderAction }
+cypress_gallery_folder_manage:
+    pattern: /gallery/folder/manage/{id}
+    defaults: { _controller: assets_gallery.controller:manageFolderAction, id: ~ }
     
 cypress_gallery_folder_delete:
     pattern: /gallery/folder/{id}/delete
     defaults: { _controller: assets_gallery.controller:deleteFolderAction }
-
-cypress_gallery_folder_edit:
-    pattern: /gallery/folder/{id}/edit
-    defaults: { _controller: assets_gallery.controller:editFolderAction }

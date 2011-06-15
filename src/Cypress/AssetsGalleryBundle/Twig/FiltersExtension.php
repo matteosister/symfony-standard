@@ -1,16 +1,24 @@
 <?php
 
 /*
- * matteosister
- * just for fun...
+ * @matteosister
+ * https://github.com/matteosister
+ * Just for fun...
  */
 
-namespace Cypress\AssetsGalleryBundle\Util;
+namespace Cypress\AssetsGalleryBundle\Twig;
 
-class Util {  
-    public function generateToken()
+class FiltersExtension extends \Twig_Extension {
+    
+    public function getFilters()
     {
-        return $token = md5(uniqid(rand(),1));
+        return array(
+            'trim_at_space' => new \Twig_Filter_Method($this, 'trimAtSpace'),
+        );
+    }
+    
+    public function getName() {
+        return 'assets_library';
     }
     
     /**
@@ -20,7 +28,7 @@ class Util {
     * @param int $maxSize
     * @return stringa tagliata
     */
-    public function trimAtSpace($string, $maxSize, $addDots = true, $strip_tags = true) {
+    public function trimAtSpace($string, $maxSize = 35, $addDots = true, $strip_tags = true) {
         $strlen = strlen($string);
         if ($strlen <= $maxSize) {
             return $strip_tags ? strip_tags($string) : $string;

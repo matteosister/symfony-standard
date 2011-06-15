@@ -32,6 +32,7 @@ class GalleryFolder
      
     /**
      * @ORM\ManyToOne(targetEntity="GalleryFolder", inversedBy="children")
+     * @ORM\JoinColumn(onDelete="cascade")
      */
     private $parent;
      

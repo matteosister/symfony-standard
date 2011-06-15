@@ -72,7 +72,7 @@ jms_security_extra:
 avalanche_imagine:
     driver: gd
     filters:
-        small:
+        cypress_assets_gallery_asset:
             type:    thumbnail
             options: { size: [128, 128], mode: outbound }    
 

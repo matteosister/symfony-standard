@@ -45,7 +45,7 @@ class GalleryController extends ContainerAware
     public function listAction($level = 1)
     {
         $assets = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryAsset')->findByFolderLevel($level);
-        $folders = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findChildrenOf($level);
+        $folders = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findChildrenOf($level + 1);
         
         return $this
             ->container
@@ -57,9 +57,14 @@ class GalleryController extends ContainerAware
             ));
     }
     
-    public function addAssetAction()
+    public function manageAssetAction($id)
     {
-        $asset = new GalleryAsset;
+        if ($id) {
+            $asset = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryAsset')->find($id);
+        } else {
+            $asset = new GalleryAsset();
+        }
+        
         $form = $this->container->get('form.factory')->create(new GalleryAssetType(), $asset);
         
         $request = $this->container->get('request');
@@ -75,45 +80,25 @@ class GalleryController extends ContainerAware
         return $this
             ->container
             ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:new.html.twig', array(
+            ->renderResponse('AssetsGalleryBundle:Gallery:form_asset.html.twig', array(
                 'form' => $form->createView()
             ));
     }
     
-    public function addFolderAction()
+    public function manageFolderAction($id)
     {
-        $gallery_folder = new GalleryFolder();
-        $form = $this->container->get('form.factory')->create(new GalleryFolderType(), $gallery_folder);
-        
-        $request = $this->container->get('request');
-        if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
-            if ($form->isValid()) {
-                $this->getEM()->persist($gallery_folder);
-                $this->getEM()->flush();
-            }
+        if ($id) {
+            $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->find($id);
+        } else {
+            $folder = new GalleryFolder();
         }
-
-        return $this
-            ->container
-            ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:new_folder.html.twig', array(
-                'form' => $form->createView()
-            ));
-    }
-    
-    public function editFolderAction($id)
-    {
-        $gallery_folder = $this->getEM()
-                ->getRepository('AssetsGalleryBundle:GalleryFolder')
-                ->find($id);
-        $form = $this->container->get('form.factory')->create(new GalleryFolderType(), $gallery_folder);
+        $form = $this->container->get('form.factory')->create(new GalleryFolderType(), $folder);
         
         $request = $this->container->get('request');
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-                $this->getEM()->persist($gallery_folder);
+                $this->getEM()->persist($folder);
                 $this->getEM()->flush();
             }
         }
@@ -121,7 +106,7 @@ class GalleryController extends ContainerAware
         return $this
             ->container
             ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:new_folder.html.twig', array(
+            ->renderResponse('AssetsGalleryBundle:Gallery:form_folder.html.twig', array(
                 'form' => $form->createView()
             ));
     }
@@ -148,11 +133,10 @@ class GalleryController extends ContainerAware
     
     private function manageAssetSave(GalleryAsset &$asset)
     {
-//        $uploadedFile = $asset->getFilename();
-//        $path = $this->container->getParameter('assets_gallery.base_path');
-//        $newName = $this->container->get('assets_gallery.util')->generateToken().
-//                '.'.$uploadedFile->getExtension();
-//        $uploadedFile->move($path, $newName);
-//        $asset->setFilename($newName);
+        $uploadedFile = $asset->getFilename();
+        $path = $this->container->getParameter('assets_gallery.base_path');
+        $newName = $this->container->get('assets_gallery.util')->generateToken().'.'.$uploadedFile->guessExtension();
+        $uploadedFile->move($path, $newName);
+        $asset->setFilename($newName);
     }
 }

@@ -12,6 +12,7 @@ Just for fun...
     <parameters>
         <parameter key="assets_gallery.controller.class">Cypress\AssetsGalleryBundle\Controller\GalleryController</parameter>
         <parameter key="assets_gallery.util.class">Cypress\AssetsGalleryBundle\Util\Util</parameter>
+        <parameter key="assets_gallery.twig_extension.class">Cypress\AssetsGalleryBundle\Twig\FiltersExtension</parameter>
     </parameters>
     
     <services>
@@ -24,6 +25,9 @@ Just for fun...
             <call method="setContainer">
                 <argument type="service" id="service_container" />
             </call>
+        </service>
+        <service id="assets_gallery.twig_extension_filters" class="%assets_gallery.twig_extension.class%">
+            <tag name="twig.extension" />
         </service>
     </services>
         
