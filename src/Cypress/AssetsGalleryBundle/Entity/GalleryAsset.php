@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Cypress\AssetsGalleryBundle\Entity\GalleryFolder;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cypress\AssetsGalleryBundle\Entity\GalleryAssetRepository")
  * @ORM\Table(name="cypress_gallery_assets")
  */
 class GalleryAsset {

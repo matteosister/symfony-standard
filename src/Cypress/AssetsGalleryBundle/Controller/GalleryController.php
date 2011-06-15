@@ -44,7 +44,7 @@ class GalleryController extends ContainerAware
     
     public function listAction($level = 1)
     {
-        $assets = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryAsset')->findAll();
+        $assets = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryAsset')->findByFolderLevel($level);
         $folders = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findChildrenOf($level);
         
         return $this
