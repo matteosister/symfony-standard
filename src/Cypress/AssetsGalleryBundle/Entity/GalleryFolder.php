@@ -177,4 +177,13 @@ class GalleryFolder
     {
         return $this->level;
     }
+    
+    /**
+     * return true if the folder is at first level
+     * @return Boolean
+     */
+    public function isRoot()
+    {
+        return $this->getLevel() == 1;
+    }
 }

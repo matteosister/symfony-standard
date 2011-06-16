@@ -1,5 +1,5 @@
 <article class="folder">
-    <a href="{{ path("cypress_gallery_list", { "level": folder.level }) }}">
+    <a href="{{ path("cypress_gallery_list", { "folder_id": folder.id }) }}">
         <img src="/bundles/assetsgallery/images/folder.png" alt="{{ folder.name }}" title="{{ folder.name }}" />
     </a>
     <h2>{{ folder.name | trim_at_space }}</h2>

@@ -43,6 +43,10 @@ class GalleryEntitiesListener implements EventSubscriber
                 $entity->setLevel($entity->getParent()->getLevel() + 1);
             }
         }
+        
+        if ($entity instanceof GalleryAsset) {
+            $this->manageAssetSave($entity);
+        }
     }
     
     public function preRemove(LifecycleEventArgs $args)
@@ -52,5 +56,14 @@ class GalleryEntitiesListener implements EventSubscriber
             $filename = $this->container->getParameter('assets_gallery.base_path').DIRECTORY_SEPARATOR.$entity->getFilename();
             @unlink($filename);
         }
+    }
+    
+    private function manageAssetSave(GalleryAsset $asset)
+    {
+        $uploadedFile = $asset->getFilename();
+        $path = $this->container->getParameter('assets_gallery.base_path');
+        $newName = $this->container->get('assets_gallery.util')->generateToken().'.'.$uploadedFile->guessExtension();
+        $uploadedFile->move($path, $newName);
+        $asset->setFilename($newName);
     }
 }

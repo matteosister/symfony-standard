@@ -74,7 +74,7 @@ avalanche_imagine:
     filters:
         cypress_assets_gallery_asset:
             type:    thumbnail
-            options: { size: [128, 128], mode: outbound }    
+            options: { size: [128, 128], mode: inset }    
 
 #fos_user:
 #    db_driver: orm
