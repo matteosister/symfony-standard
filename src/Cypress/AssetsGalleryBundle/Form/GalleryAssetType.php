@@ -20,9 +20,9 @@ class GalleryAssetType extends AbstractType
      * @param array $options 
      */
     public function buildForm(FormBuilder $builder, array $options) {
-        $builder->add('name');
-        $builder->add('filename', 'file');
-        $builder->add('description', 'textarea');
-        $builder->add('folder');
+        $builder->add('name')
+                ->add('filename', 'file')
+                ->add('description', 'textarea', array('required' => false))
+                ->add('folder');
     }
 }

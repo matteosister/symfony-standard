@@ -13,21 +13,29 @@ Just for fun...
         <parameter key="assets_gallery.controller.class">Cypress\AssetsGalleryBundle\Controller\GalleryController</parameter>
         <parameter key="assets_gallery.util.class">Cypress\AssetsGalleryBundle\Util\Util</parameter>
         <parameter key="assets_gallery.twig_extension.class">Cypress\AssetsGalleryBundle\Twig\FiltersExtension</parameter>
+        <parameter key="assets_gallery.form.editable_file_type.class">Cypress\AssetsGalleryBundle\Form\Type\EditableFileType</parameter>
     </parameters>
     
     <services>
         <service id="assets_gallery.util" class="%assets_gallery.util.class%" />
+        
         <service id="assets_gallery.entities_listener" class="Cypress\AssetsGalleryBundle\Entity\GalleryEntitiesListener" public="false">
             <argument type="service" id="service_container" />
             <tag name="doctrine.event_subscriber" />
         </service>
+        
         <service id="assets_gallery.controller" class="%assets_gallery.controller.class%">
             <call method="setContainer">
                 <argument type="service" id="service_container" />
             </call>
         </service>
+        
         <service id="assets_gallery.twig_extension_filters" class="%assets_gallery.twig_extension.class%">
             <tag name="twig.extension" />
+        </service>
+        
+        <service id="assets_gallery.form.editable_file_type" class="%assets_gallery.form.editable_file_type.class%">
+            <tag name="form.type" alias="assets_gallery_type_editable_file" />
         </service>
     </services>
         

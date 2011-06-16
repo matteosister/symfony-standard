@@ -62,7 +62,10 @@ class GalleryEntitiesListener implements EventSubscriber
     {
         $uploadedFile = $asset->getFilename();
         $path = $this->container->getParameter('assets_gallery.base_path');
-        $newName = $this->container->get('assets_gallery.util')->generateToken().'.'.$uploadedFile->guessExtension();
+        $ext = $uploadedFile->guessExtension() == null ? $uploadedFile->getExtension() : $uploadedFile->guessExtension();
+        //var_dump($uploadedFile->getClientOriginalName());
+        //die();
+        $newName = $this->container->get('assets_gallery.util')->generateToken().'.'.$ext;
         $uploadedFile->move($path, $newName);
         $asset->setFilename($newName);
     }
