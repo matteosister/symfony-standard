@@ -2,7 +2,7 @@
     <a href="{{ path("cypress_gallery_list", { "folder_id": folder.id }) }}">
         <img src="/bundles/assetsgallery/images/folder.png" alt="{{ folder.name }}" title="{{ folder.name }}" />
     </a>
-    <h2>{{ folder.name | trim_at_space }}</h2>
+    <h2>{{ folder.name | trim_at_space }} ({{ folder.children.count }})</h2>
     <a href="{{ path('cypress_gallery_folder_delete', {'id': folder.id }) }}" class="action first delete">delete</a>
     <a href="{{ path('cypress_gallery_folder_manage', {'id': folder.id }) }}" class="action second">edit</a>
 </article>

@@ -16,16 +16,22 @@ class FoldersData implements FixtureInterface {
         $root->setName('root');
         
         $child = new GalleryFolder();
-        $child->setName('child');
+        $child->setName('child with a very logn name');
         $child->setParent($root);
         
         $child2 = new GalleryFolder();
         $child2->setName('second child');
         $child2->setParent($child);
         
+        $child3 = new GalleryFolder();
+        $child3->setName('second child 2');
+        $child3->setParent($child);
+        
         $manager->persist($root);
         $manager->persist($child);
         $manager->persist($child2);
+        $manager->persist($child3);
+        
         $manager->flush();
     }
 }
