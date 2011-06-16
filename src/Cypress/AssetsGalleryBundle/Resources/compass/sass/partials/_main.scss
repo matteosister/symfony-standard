@@ -16,13 +16,38 @@ section#assets-gallery {
     }
     ul.actions {
         @include no-bullets;
-        @include append-bottom(3em);
         @include inline-list;
+        @include column(24, true);
+        margin-bottom: 1em !important;
         font-size: 1.2em;
         li {
             margin-right: 1em;
             a {
                 height: 1.3em;
+            }
+        }
+    }
+    ul.breadcrumb {
+        @include no-bullets;
+        @include clearfix;
+        width: span(24) - 2px;
+        border: 1px solid #dedede;
+        height: 2.8em;
+        li {
+            float:left;
+            line-height: 2.3em;
+            font-size: 1.2em;
+            padding-left: 0.75em;
+            color:#777;
+            &.home {
+                background: image-url("folder-home.png") no-repeat 0.4em;
+                padding-left: 2.2em;
+            }
+            a {
+                display:block;
+                padding:0 15px 0 0;
+                background: image-url("crumbs.gif") no-repeat right center;
+                outline: none;
             }
         }
     }
@@ -76,10 +101,11 @@ section#assets-gallery {
     
     section.assets-list {
         @include clearfix;
-        padding: span(1);
+        clear: both;
+        padding: span(0.5);
         article {
             @include border-radius($border-radius);
-            @include single-box-shadow(#DDD, $blur: 2em, $spread: 0.2em);
+            @include single-box-shadow(#DDD, $blur: 1em, $spread: 0.1em);
             margin-top: 2em;
             position: relative;
             float: left;
@@ -91,7 +117,7 @@ section#assets-gallery {
             overflow: hidden;
             &.hover {
                 border: 1px solid #BBB;
-                @include single-box-shadow(#CCC, $blur: 2em, $spread: 0.4em);
+                @include single-box-shadow(#CCC, $blur: 1em, $spread: 0.2em);
             }
             a {
                 outline: none;
@@ -108,18 +134,20 @@ section#assets-gallery {
                 display: block;
                 font-size: 14px;
                 background-color: #EEE;
-                border: 1px solid #BBB;
-                padding: 4px 4px 4px 20px;
-                left: $actionPad;
+                border-top: 1px solid #BBB;
+                border-right: 1px solid #BBB;
+                border-bottom: 1px solid #BBB;
+                padding: 4px 4px 4px 8px;
+                left: 0;
                 &.first {
-                    @include border-radius($border-radius $border-radius $border-radius 0);
-                    background: #EEE image-url("icon/delete.png") no-repeat 2px;
-                    top: $actionPad;
+                    @include border-radius(0 $border-radius $border-radius 0);
+                    background-color: #EEE;
+                    top: $actionPad + $border-radius;
                 }
                 &.second {
                     @include border-radius(0 $border-radius $border-radius 0);
-                    top: ($actionPad * 2) + $actionHeight + 10px;
-                    background: #EEE image-url("icon/edit.png") no-repeat 2px;
+                    top: ($actionPad * 2) + $actionHeight + 10px + $border-radius;
+                    background-color: #EEE;
                 }
             }
         }

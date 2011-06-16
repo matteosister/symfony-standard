@@ -1,0 +1,18 @@
+<ul class="breadcrumb">
+    <li class="home">
+        {% if folder.root %}
+        <span>HOME</span>
+        {% else %}
+        <a href="{{ path("cypress_gallery_list") }}">HOME</a>
+        {% endif %}
+    </li>
+    {% if not folder.root %}
+        {% for parent in folder.fullParentTree %}
+            {% if not loop.last %}
+                <li><a href="{{ path("cypress_gallery_list", { "folder_id": parent.id }) }}">{{ parent }}</a></li>
+            {% else %}
+                <li><span>{{ parent }}</span></li>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</ul>

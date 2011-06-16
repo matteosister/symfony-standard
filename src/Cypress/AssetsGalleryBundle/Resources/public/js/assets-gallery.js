@@ -15,31 +15,31 @@ $(document).ready( function() {
             $(this).children('a.action').animate({
                 left: '-=100px'
             }, 0);
-            var config = {    
-                over: showActions,   
-                timeout: 150,    
-                out: hideActions  
-            };
+
             $(this).hover( function() {
                 $(this).addClass('hover');
             }, function() {
                 $(this).removeClass('hover');
             });
             
-            $(this).hoverIntent(config);
+            var config = {    
+                over: showActions,   
+                timeout: 50,    
+                out: hideActions  
+            };
+            $(this).hoverIntent(showActions, hideActions);
             
             function showActions() {
                 //$(this).children('a.action').fadeIn('fast');
                 $(this).children('a.action').animate({
                     left: '+=100px'
-                }, { duration: 400, 'easing': 'easeOutQuad' });
-                
+                }, {duration: 400, 'easing': 'easeOutQuad'});
             }
             function hideActions() {
                 //$(this).children('a.action').fadeOut('slow');
                 $(this).children('a.action').animate({
                     left: '-=100px'
-                }, { duration: 600, 'easing': 'easeOutQuad' });
+                }, {duration: 600, 'easing': 'easeOutQuad'});
             }
         });
     }

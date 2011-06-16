@@ -117,6 +117,25 @@ class GalleryFolder
     {
         return $this->parent;
     }
+    
+    /**
+     * Get recursively the parents until root
+     * @return array
+     */
+    public function getFullParentTree()
+    {
+        if ($this->isRoot()) {
+            return array();
+        }
+        $tree = array();
+        $tree[] = $this;
+        $previuosFolder = $this->getParent();
+        while (!$previuosFolder->isRoot()) {
+            $tree[] = $previuosFolder;
+            $previuosFolder = $previuosFolder->getParent();
+        }
+        return array_reverse($tree);
+    }
 
     /**
      * Add children

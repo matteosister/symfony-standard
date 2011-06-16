@@ -1,8 +1,12 @@
 <article class="folder">
     <a href="{{ path("cypress_gallery_list", { "folder_id": folder.id }) }}">
-        <img src="/bundles/assetsgallery/images/folder.png" alt="{{ folder.name }}" title="{{ folder.name }}" />
+        <img src="/bundles/assetsgallery/images/folder.png" alt="{{ folder }}" title="{{ folder }}" />
     </a>
-    <h2>{{ folder.name | trim_at_space }} ({{ folder.children.count }})</h2>
-    <a href="{{ path('cypress_gallery_folder_delete', {'id': folder.id }) }}" class="action first delete">delete</a>
-    <a href="{{ path('cypress_gallery_folder_manage', {'id': folder.id }) }}" class="action second">edit</a>
+    <h2>{{ folder | trim_at_space }} ({{ folder.children.count }})</h2>
+    <a href="{{ path('cypress_gallery_folder_delete', {'id': folder.id }) }}" class="action first delete">
+        <img src="/bundles/assetsgallery/images/icon/delete.png" alt="delete folder" title="delete folder" />
+    </a>
+    <a href="{{ path('cypress_gallery_folder_manage', {'id': folder.id }) }}" class="action second">
+        <img src="/bundles/assetsgallery/images/icon/edit.png" alt="edit folder" title="edit folder" />
+    </a>
 </article>
