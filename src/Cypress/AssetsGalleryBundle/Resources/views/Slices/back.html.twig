@@ -1,5 +1,9 @@
 <article class="folder">
-    <a href="{{ path("cypress_gallery_list", { "level": app.request.get('level') - 1 }) }}">
+    <a href="{% if folder.parent.root %}
+            {{ path("cypress_gallery_list") }}
+        {% else %}
+            {{ path("cypress_gallery_list", {'folder_id': folder.parent.id}) }}
+        {% endif %}">
         <img src="/bundles/assetsgallery/images/folder-back.png" alt="Go Back" title="Go back" />
     </a>
     <h2>Back</h2>
