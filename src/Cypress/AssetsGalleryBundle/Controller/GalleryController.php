@@ -20,6 +20,8 @@ use Cypress\AssetsGalleryBundle\Form\GalleryAssetType;
 use Cypress\AssetsGalleryBundle\Form\GalleryFolderType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\Request;
 
 class GalleryController extends ContainerAware
 {
@@ -50,8 +52,7 @@ class GalleryController extends ContainerAware
             $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findOneBy(array('level' => 0));
         }
         $assets = $folder->getAsset();
-        //$folders = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findBy(array('level' => $folder->getLevel() + 1));
-        
+
         return $this
             ->container
             ->get('templating')
@@ -69,10 +70,23 @@ class GalleryController extends ContainerAware
         } else {
             $asset = new GalleryAsset();
         }
+
+        return $this->getFormResponse($this->processAssetForm($asset));
+    }
+    
+    public function addAssetInFolder($id)
+    {
+        $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->find($id);
+        $asset = new GalleryAsset();
+        $asset->setFolder($folder);
         
-        $form = $this->container->get('form.factory')->create(new GalleryAssetType(), $asset);
-        
+        return $this->getFormResponse($this->processAssetForm($asset));
+    }
+    
+    private function processAssetForm(GalleryAsset $asset)
+    {
         $request = $this->container->get('request');
+        $form = $this->container->get('form.factory')->create(new GalleryAssetType(), $asset);
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
@@ -80,16 +94,7 @@ class GalleryController extends ContainerAware
                 $this->getEM()->flush();
             }
         }
-
-        return $this
-            ->container
-            ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
-                'form'      => $form->createView(),
-                'asset'     => $asset,
-                'context'   => 'asset',
-                'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
-            ));
+        return $form;
     }
     
     public function manageFolderAction($id)
@@ -99,9 +104,23 @@ class GalleryController extends ContainerAware
         } else {
             $folder = new GalleryFolder();
         }
-        $form = $this->container->get('form.factory')->create(new GalleryFolderType(), $folder);
         
+        return $this->getFormResponse($this->processFolderForm($folder));
+    }
+    
+    public function addFolderInFolder($id)
+    {
+        $parent = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->find($id);
+        $folder = new GalleryFolder();
+        $folder->setParent($parent);
+        
+        return $this->getFormResponse($this->processFolderForm($folder));
+    }
+    
+    private function processFolderForm(GalleryFolder $folder)
+    {
         $request = $this->container->get('request');
+        $form = $this->container->get('form.factory')->create(new GalleryFolderType(), $folder);
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
@@ -109,15 +128,23 @@ class GalleryController extends ContainerAware
                 $this->getEM()->flush();
             }
         }
-        
-        $v = new \Symfony\Component\Form\FormView();
-        
+        return $form;
+    }
+    
+    private function getFormResponse(Form $form)
+    {
+        if ($form->getData() instanceof GalleryAsset) {
+            $context = 'asset';
+        }
+        if ($form->getData() instanceof GalleryFolder) {
+            $context = 'folder';
+        }
         return $this
             ->container
             ->get('templating')
             ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
-                'form'    => $form->createView(),
-                'context' => 'folder',
+                'form'      => $form->createView(),
+                'context'   => $context,
                 'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
             ));
     }

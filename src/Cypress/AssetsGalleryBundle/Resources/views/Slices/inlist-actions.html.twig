@@ -1,0 +1,18 @@
+<article class="folder inlist-actions">
+    {% if not folder.root %}
+        <a href="{% spaceless %}
+            {% if folder.parent.root %}
+                {{ path("cypress_gallery_list") }}
+            {% else %}
+                {{ path("cypress_gallery_list", {'folder_id': folder.parent.id}) }}
+            {% endif %}{% endspaceless %}">
+            <img src="/bundles/assetsgallery/images/folder-back.png" alt="Go Back" title="Go back" />
+        </a>
+    {% endif %}
+    <a href="{{ path('cypress_gallery_folder_add_in_folder', { 'id': folder.id }) }}">
+        <img src="/bundles/assetsgallery/images/folder-add.png" alt="Add Folder here" title="Add Folder here" />
+    </a>
+    <a href="{{ path('cypress_gallery_asset_add_in_folder', { 'id': folder.id }) }}">
+        <img src="/bundles/assetsgallery/images/asset-add.png" alt="Add Asset here" title="Add Asset here" />
+    </a>
+</article>

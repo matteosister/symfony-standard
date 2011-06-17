@@ -141,9 +141,16 @@ section#assets-gallery {
             border: 1px solid #DDD;
             margin-right: 1em;
             overflow: hidden;
+            &.inlist-actions {
+                height: 3.2em;
+                a {
+                    padding: 0 0.46em;
+                }
+            }
             .preview {
                 width: $previewWidth;
                 height: $previewHeight;
+                text-align: center;
             }
             &.hover {
                 border: 1px solid #BBB;

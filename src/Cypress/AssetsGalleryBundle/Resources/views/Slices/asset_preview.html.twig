@@ -1,3 +1,6 @@
+{% if asset is not defined and form is defined %}
+    {% set asset = form.get('value') %}
+{% endif %}
 <section class="preview">
     <img src="{{ (base_path ~ asset.filename) | apply_filter('cypress_assets_gallery_asset') }}" alt="{{ asset.name }}" title="{{ asset.name }}" />
 </section>

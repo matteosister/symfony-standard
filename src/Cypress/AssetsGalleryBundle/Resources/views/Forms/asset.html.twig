@@ -4,7 +4,7 @@
     <fieldset>
         {{ form_errors(form) }}
         {{ form_row(form.file) }}
-        {% if asset.id is not null %}
+        {% if form.get('value').id is not null %}
             {% include 'AssetsGalleryBundle:Slices:asset_preview.html.twig' %}
         {% endif %}
         {{ form_row(form.name) }}

@@ -24,9 +24,7 @@
 
 {% block content %}
     <section class="assets-list">
-        {% if not folder.root %}
-            {% include 'AssetsGalleryBundle:Slices:back.html.twig' %}
-        {% endif %}
+        {% include 'AssetsGalleryBundle:Slices:inlist-actions.html.twig' %}
         {% for folder in folder.children %}
             {% include 'AssetsGalleryBundle:Slices:folder.html.twig' %}
         {% endfor %}

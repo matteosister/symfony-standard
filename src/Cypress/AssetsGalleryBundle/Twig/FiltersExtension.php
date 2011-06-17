@@ -14,6 +14,7 @@ class FiltersExtension extends \Twig_Extension {
     {
         return array(
             'trim_at_space' => new \Twig_Filter_Method($this, 'trimAtSpace'),
+            'var_dump'      => new \Twig_Filter_Function('var_dump'),
         );
     }
     

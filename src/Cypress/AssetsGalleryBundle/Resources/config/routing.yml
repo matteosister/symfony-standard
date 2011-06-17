@@ -17,6 +17,10 @@ cypress_gallery_asset_delete:
     pattern: /gallery/asset/{id}/delete
     defaults: { _controller: assets_gallery.controller:deleteAssetAction }
     
+cypress_gallery_asset_add_in_folder:
+    pattern: /gallery/asset/add-in-folder/{id}
+    defaults: { _controller: assets_gallery.controller:addAssetInFolder }
+    
     
 #FOLDERS
 cypress_gallery_folder_manage:
@@ -26,3 +30,7 @@ cypress_gallery_folder_manage:
 cypress_gallery_folder_delete:
     pattern: /gallery/folder/{id}/delete
     defaults: { _controller: assets_gallery.controller:deleteFolderAction }
+    
+cypress_gallery_folder_add_in_folder:
+    pattern: /gallery/folder/add-in-folder/{id}
+    defaults: { _controller: assets_gallery.controller:addFolderInFolder }
