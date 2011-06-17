@@ -93,5 +93,10 @@ avalanche_imagine:
 #        xxxxx.xxxxx: xxxxxx
 #        xxxxx.xxxxx: xxxxxx
 
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default: ~
+
 assets_gallery:
     base_path: assets_gallery

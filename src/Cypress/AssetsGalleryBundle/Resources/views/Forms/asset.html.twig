@@ -1,10 +1,6 @@
 {% form_theme form 'AssetsGalleryBundle:Forms:themes.html.twig' %}
 
 <form action="" class="bp" method="post" {{ form_enctype(form) }}>
-    <h1>New asset</h1>
-    <ul class="actions">
-        <li><a href="{{ path("cypress_gallery_list") }}">Back to list</a></li>
-    </ul>
     <fieldset>
         {{ form_errors(form) }}
         {{ form_row(form.filename) }}

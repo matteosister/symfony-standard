@@ -6,18 +6,35 @@ section#assets-gallery {
     font-size: 62.5%;
     font-family: 'Ubuntu', arial, serif;
     color: $font-color;
+    a {
+        outline: none;
+    }
     a.icon {
         padding-left: 20px;
         font-size: 1.1em;
     }
     h1 {
-        @include single-text-shadow(#AAA, 4px, 4px, 4px);
-        font-size: 4em;
+        @include single-text-shadow(#DDD, 2px, 2px, 2px);
+        @include border-radius(0.2em);
+        @include single-box-shadow(#DDD, $blur: 0.3em, $spread: 0.1em);
+        font-size: 3em;
+        margin: 0.5em 0;
+        border: 1px solid #CCC;
+        background-color: #EEE;
+        text-align: center;
+        padding: 0.2em 0.2em 0.4em;
+    }
+
+    .header {
+        @include column(23, true);
+        @include prepend(0.5);
+        @include append(0.5);
     }
     ul.actions {
         @include no-bullets;
         @include inline-list;
-        @include column(24, true);
+        @include clearfix;
+        @include column(23, true);
         margin-bottom: 1em !important;
         font-size: 1.2em;
         li {
@@ -30,7 +47,7 @@ section#assets-gallery {
     ul.breadcrumb {
         @include no-bullets;
         @include clearfix;
-        width: span(24) - 2px;
+        @include column(23, true);
         border: 1px solid #dedede;
         height: 2.8em;
         li {
@@ -90,7 +107,7 @@ section#assets-gallery {
             font-size: 1.5em;
             line-height: 1.5em;
             &:first-letter {
-                font-weight: bold;
+                color: $main-color;
             }
         }
         section.field {
@@ -101,8 +118,10 @@ section#assets-gallery {
     
     section.assets-list {
         @include clearfix;
+        @include column(23, true);
+        @include prepend(0.5);
+        @include append(0.5);
         clear: both;
-        padding: span(0.5);
         article {
             @include border-radius($border-radius);
             @include single-box-shadow(#DDD, $blur: 1em, $spread: 0.1em);

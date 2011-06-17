@@ -29,7 +29,8 @@ class GalleryFolderType extends AbstractType
             'class'    => 'Cypress\\AssetsGalleryBundle\\Entity\\GalleryFolder',
             'property' => 'indented_name',
             'query_builder' => function(EntityRepository $er) {
-                return $er->getTreeOrderQueryBuilder();
+                return $er->createQueryBuilder('f')
+                        ->orderBy('f.lft', 'ASC');
             }
         ));
         

@@ -47,7 +47,7 @@ class GalleryController extends ContainerAware
         if ($folder_id) {
             $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->find($folder_id);
         } else {
-            $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findOneBy(array('level' => 1));
+            $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findOneBy(array('level' => 0));
         }
         $assets = $folder->getAsset();
         //$folders = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findBy(array('level' => $folder->getLevel() + 1));
@@ -84,8 +84,9 @@ class GalleryController extends ContainerAware
         return $this
             ->container
             ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:form_asset.html.twig', array(
-                'form' => $form->createView()
+            ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
+                'form'    => $form->createView(),
+                'context' => 'asset'
             ));
     }
     
@@ -110,28 +111,40 @@ class GalleryController extends ContainerAware
         return $this
             ->container
             ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:form_folder.html.twig', array(
-                'form' => $form->createView()
+            ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
+                'form'    => $form->createView(),
+                'context' => 'folder'
             ));
     }
     
     public function deleteAssetAction($id)
     {
         $asset = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryAsset')->find($id);
+        $folder_id = null;
         if ($asset) {
+            if ($asset->getFolder() != null) {
+                $folder_id = $asset->getFolder()->getId();
+            }
             $this->getEM()->remove($asset);
             $this->getEM()->flush();
         }
-        return new RedirectResponse($this->container->get('router')->generate('cypress_gallery_list'));
+        return new RedirectResponse($this->container->get('router')->generate(
+                'cypress_gallery_list', array ('folder_id' => $folder_id)
+        ));
     }
     
     public function deleteFolderAction($id)
     {
         $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->find($id);
-        if ($folder) {
+        $parent_id = null;
+        if ($folder && !$folder->isRoot()) {
+            $parent_id = $folder->getParent()->getId();
             $this->getEM()->remove($folder);
             $this->getEM()->flush();
         }
-        return new RedirectResponse($this->container->get('router')->generate('cypress_gallery_list'));
+        
+        return new RedirectResponse($this->container->get('router')->generate(
+                'cypress_gallery_list', array('folder_id' => $parent_id)
+        ));
     }
 }

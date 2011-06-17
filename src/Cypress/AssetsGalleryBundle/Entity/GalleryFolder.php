@@ -8,11 +8,13 @@
 namespace Cypress\AssetsGalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as GEDMO;
 use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="Cypress\AssetsGalleryBundle\Entity\GalleryFolderRepository")
+ * @GEDMO\Tree(type="nested")
+ * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
  * @ORM\Table(name="cypress_gallery_folders")
  * @ORM\HasLifecycleCallbacks
  */
@@ -31,20 +33,34 @@ class GalleryFolder
     private $name;
      
     /**
+     * @GEDMO\TreeParent
      * @ORM\ManyToOne(targetEntity="GalleryFolder", inversedBy="children")
-     * @ORM\JoinColumn(onDelete="cascade")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $parent;
+    
+    /**
+     * @ORM\Column(type="integer")
+     * @GEDMO\TreeLeft
+     */
+    private $lft;
+    
+    /**
+     * @ORM\Column(type="integer")
+     * @GEDMO\TreeRight
+     */
+    private $rgt;
+    
+    /**
+     * @GEDMO\TreeLevel
+     * @ORM\Column(type="integer", nullable="false")
+     */
+    private $level;
      
     /**
      * @ORM\OneToMany(targetEntity="GalleryFolder", mappedBy="parent")
      */
     private $children;
-    
-    /**
-     * @ORM\Column(type="integer", nullable="false")
-     */
-    private $level;
     
     /**
      * @ORM\OneToMany(targetEntity="GalleryAsset", mappedBy="folder")
@@ -104,7 +120,7 @@ class GalleryFolder
      */
     public function getIndentedName()
     {
-        return str_repeat('--', $this->getLevel() - 1) . $this;
+        return str_repeat('--', $this->getLevel()) . $this;
     }
 
     /**
@@ -212,6 +228,46 @@ class GalleryFolder
      */
     public function isRoot()
     {
-        return $this->getLevel() == 1;
+        return $this->getLft() == 1;
+    }
+
+    /**
+     * Set lft
+     *
+     * @param integer $lft
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+    }
+
+    /**
+     * Get lft
+     *
+     * @return integer $lft
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * Set rgt
+     *
+     * @param integer $rgt
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+    }
+
+    /**
+     * Get rgt
+     *
+     * @return integer $rgt
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
     }
 }

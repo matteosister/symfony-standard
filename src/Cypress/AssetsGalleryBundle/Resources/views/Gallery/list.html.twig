@@ -1,30 +1,37 @@
 {% extends 'AssetsGalleryBundle::base.html.twig' %}
 
-{% block content %}
-<ul class="actions">
-    <li>
-        <a class="icon icon-add" href="{{ path('cypress_gallery_asset_manage') }}">
-            {% trans %}Add a new asset{% endtrans %}
+{% block header %}
+    <h1>
+        <a href="{{ path('cypress_gallery_list') }}">
+            {% trans %}Assets Gallery{% endtrans %}
         </a>
-    </li>
-    <li>
-        <a class="icon icon-add" href="{{ path('cypress_gallery_folder_manage') }}">
-            {% trans %}Add a new folder{% endtrans %}
-        </a>
-    </li>
-</ul>
+    </h1>
+    <ul class="actions">
+        <li>
+            <a class="icon icon-add" href="{{ path('cypress_gallery_asset_manage') }}">
+                {% trans %}Add a new asset{% endtrans %}
+            </a>
+        </li>
+        <li>
+            <a class="icon icon-add" href="{{ path('cypress_gallery_folder_manage') }}">
+                {% trans %}Add a new folder{% endtrans %}
+            </a>
+        </li>
+    </ul>
 
-{% include 'AssetsGalleryBundle:Slices:breadcrumb.html.twig' %}
-    
-<section class="assets-list">
-    {% if not folder.root %}
-        {% include 'AssetsGalleryBundle:Slices:back.html.twig' %}
-    {% endif %}
-    {% for folder in folder.children %}
-        {% include 'AssetsGalleryBundle:Slices:folder.html.twig' %}
-    {% endfor %}
-    {% for asset in assets %}
-        {% include 'AssetsGalleryBundle:Slices:asset.html.twig' %}
-    {% endfor %}
-</section>
+    {% include 'AssetsGalleryBundle:Slices:breadcrumb.html.twig' %}
+{% endblock %}
+
+{% block content %}
+    <section class="assets-list">
+        {% if not folder.root %}
+            {% include 'AssetsGalleryBundle:Slices:back.html.twig' %}
+        {% endif %}
+        {% for folder in folder.children %}
+            {% include 'AssetsGalleryBundle:Slices:folder.html.twig' %}
+        {% endfor %}
+        {% for asset in assets %}
+            {% include 'AssetsGalleryBundle:Slices:asset.html.twig' %}
+        {% endfor %}
+    </section>
 {% endblock %}

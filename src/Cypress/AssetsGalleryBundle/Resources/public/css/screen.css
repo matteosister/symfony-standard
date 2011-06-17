@@ -58,9 +58,9 @@ a img {
   border: none;
 }
 
-/* line 39, icon */
-.icon-sprite, .icon-add, .icon-delete, .icon-edit {
-  background: url('../images/icon-s6eb7b4bc15.png') no-repeat;
+/* line 45, icon */
+.icon-sprite, .icon-add, .icon-back, .icon-delete, .icon-edit {
+  background: url('../images/icon-se068dc9246.png') no-repeat;
 }
 
 /* line 60, ../../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -69,13 +69,18 @@ a img {
 }
 
 /* line 60, ../../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.icon-delete {
+.icon-back {
   background-position: 0 -16px;
 }
 
 /* line 60, ../../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.icon-edit {
+.icon-delete {
   background-position: 0 -32px;
+}
+
+/* line 60, ../../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.icon-edit {
+  background-position: 0 -48px;
 }
 
 /* line 2, ../../compass/sass/partials/_main.scss */
@@ -111,23 +116,57 @@ section#assets-gallery a:hover {
   text-decoration: underline !important;
 }
 /* line 9, ../../compass/sass/partials/_main.scss */
+section#assets-gallery a {
+  outline: none;
+}
+/* line 12, ../../compass/sass/partials/_main.scss */
 section#assets-gallery a.icon {
   padding-left: 20px;
   font-size: 1.1em;
 }
-/* line 13, ../../compass/sass/partials/_main.scss */
+/* line 16, ../../compass/sass/partials/_main.scss */
 section#assets-gallery h1 {
-  text-shadow: #aaaaaa 4px 4px 4px;
-  font-size: 4em;
+  text-shadow: #dddddd 2px 2px 2px;
+  -moz-border-radius: 0.2em;
+  -webkit-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -khtml-border-radius: 0.2em;
+  border-radius: 0.2em;
+  -moz-box-shadow: 0px 0px 0.3em 0.1em #dddddd;
+  -webkit-box-shadow: 0px 0px 0.3em 0.1em #dddddd;
+  -o-box-shadow: 0px 0px 0.3em 0.1em #dddddd;
+  box-shadow: 0px 0px 0.3em 0.1em #dddddd;
+  font-size: 3em;
+  margin: 0.5em 0;
+  border: 1px solid #CCC;
+  background-color: #EEE;
+  text-align: center;
+  padding: 0.2em 0.2em 0.4em;
 }
-/* line 17, ../../compass/sass/partials/_main.scss */
-section#assets-gallery ul.actions {
-  list-style: none;
-  list-style-type: none;
+/* line 28, ../../compass/sass/partials/_main.scss */
+section#assets-gallery .header {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 950px;
+  width: 910px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* line 147, ../../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.3/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html section#assets-gallery .header {
+  overflow-x: hidden;
+}
+/* line 33, ../../compass/sass/partials/_main.scss */
+section#assets-gallery ul.actions {
+  list-style: none;
+  list-style-type: none;
+  overflow: hidden;
+  *zoom: 1;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 910px;
   margin-bottom: 1em !important;
   font-size: 1.2em;
 }
@@ -147,20 +186,23 @@ section#assets-gallery ul.actions, section#assets-gallery ul.actions li {
 * html section#assets-gallery ul.actions {
   overflow-x: hidden;
 }
-/* line 23, ../../compass/sass/partials/_main.scss */
+/* line 40, ../../compass/sass/partials/_main.scss */
 section#assets-gallery ul.actions li {
   margin-right: 1em;
 }
-/* line 25, ../../compass/sass/partials/_main.scss */
+/* line 42, ../../compass/sass/partials/_main.scss */
 section#assets-gallery ul.actions li a {
   height: 1.3em;
 }
-/* line 30, ../../compass/sass/partials/_main.scss */
+/* line 47, ../../compass/sass/partials/_main.scss */
 section#assets-gallery ul.breadcrumb {
   list-style: none;
   overflow: hidden;
   *zoom: 1;
-  width: 948px;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 910px;
   border: 1px solid #dedede;
   height: 2.8em;
 }
@@ -170,7 +212,11 @@ section#assets-gallery ul.breadcrumb li {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 36, ../../compass/sass/partials/_main.scss */
+/* line 147, ../../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.3/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html section#assets-gallery ul.breadcrumb {
+  overflow-x: hidden;
+}
+/* line 53, ../../compass/sass/partials/_main.scss */
 section#assets-gallery ul.breadcrumb li {
   float: left;
   line-height: 2.3em;
@@ -178,19 +224,19 @@ section#assets-gallery ul.breadcrumb li {
   padding-left: 0.75em;
   color: #777;
 }
-/* line 42, ../../compass/sass/partials/_main.scss */
+/* line 59, ../../compass/sass/partials/_main.scss */
 section#assets-gallery ul.breadcrumb li.home {
   background: url('../images/folder-home.png?1308230466') no-repeat 0.4em;
   padding-left: 2.2em;
 }
-/* line 46, ../../compass/sass/partials/_main.scss */
+/* line 63, ../../compass/sass/partials/_main.scss */
 section#assets-gallery ul.breadcrumb li a {
   display: block;
   padding: 0 15px 0 0;
   background: url('../images/crumbs.gif?1308229665') no-repeat right center;
   outline: none;
 }
-/* line 54, ../../compass/sass/partials/_main.scss */
+/* line 71, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form {
   margin-top: 2em;
   display: inline;
@@ -202,7 +248,7 @@ section#assets-gallery form {
 * html section#assets-gallery form {
   overflow-x: hidden;
 }
-/* line 57, ../../compass/sass/partials/_main.scss */
+/* line 74, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form fieldset {
   margin: 2em;
   padding: 1em;
@@ -213,11 +259,11 @@ section#assets-gallery form fieldset {
   -o-box-shadow: 0px 0px 2em 0.2em #dddddd;
   box-shadow: 0px 0px 2em 0.2em #dddddd;
 }
-/* line 64, ../../compass/sass/partials/_main.scss */
+/* line 81, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form section.submit {
   text-align: right;
 }
-/* line 66, ../../compass/sass/partials/_main.scss */
+/* line 83, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form section.submit input {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -259,16 +305,16 @@ section#assets-gallery form section.submit input[type] {
 *:first-child + html section#assets-gallery form section.submit input[type] {
   padding: 4px 10px 3px 7px;
 }
-/* line 70, ../../compass/sass/partials/_main.scss */
+/* line 87, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form input[type=text] {
   width: 30em;
 }
-/* line 73, ../../compass/sass/partials/_main.scss */
+/* line 90, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form textarea {
   width: 500px;
   height: 10em;
 }
-/* line 79, ../../compass/sass/partials/_main.scss */
+/* line 96, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.form-field {
   overflow: hidden;
   *zoom: 1;
@@ -276,7 +322,7 @@ section#assets-gallery section.form-field {
   position: relative;
   padding: 1em 0;
 }
-/* line 84, ../../compass/sass/partials/_main.scss */
+/* line 101, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.form-field label {
   position: absolute;
   left: 0;
@@ -286,23 +332,32 @@ section#assets-gallery section.form-field label {
   font-size: 1.5em;
   line-height: 1.5em;
 }
-/* line 92, ../../compass/sass/partials/_main.scss */
+/* line 109, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.form-field label:first-letter {
-  font-weight: bold;
+  color: #ff7f00;
 }
-/* line 96, ../../compass/sass/partials/_main.scss */
+/* line 113, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.form-field section.field {
   float: left;
   padding-left: 15em;
 }
-/* line 102, ../../compass/sass/partials/_main.scss */
+/* line 119, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list {
   overflow: hidden;
   *zoom: 1;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 910px;
+  padding-left: 20px;
+  padding-right: 20px;
   clear: both;
-  padding: 10px;
 }
-/* line 106, ../../compass/sass/partials/_main.scss */
+/* line 147, ../../../../../../../../../../var/lib/gems/1.8/gems/compass-0.11.3/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html section#assets-gallery section.assets-list {
+  overflow-x: hidden;
+}
+/* line 125, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -324,7 +379,7 @@ section#assets-gallery section.assets-list article {
   margin-right: 1em;
   overflow: hidden;
 }
-/* line 118, ../../compass/sass/partials/_main.scss */
+/* line 137, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article.hover {
   border: 1px solid #BBB;
   -moz-box-shadow: 0px 0px 1em 0.2em #cccccc;
@@ -332,17 +387,17 @@ section#assets-gallery section.assets-list article.hover {
   -o-box-shadow: 0px 0px 1em 0.2em #cccccc;
   box-shadow: 0px 0px 1em 0.2em #cccccc;
 }
-/* line 122, ../../compass/sass/partials/_main.scss */
+/* line 141, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article a {
   outline: none;
 }
-/* line 125, ../../compass/sass/partials/_main.scss */
+/* line 144, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article h2 {
   font-size: 1.3em;
   text-align: center;
   font-weight: bold;
 }
-/* line 130, ../../compass/sass/partials/_main.scss */
+/* line 149, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article .action {
   height: 16px;
   position: absolute;
@@ -356,7 +411,7 @@ section#assets-gallery section.assets-list article .action {
   padding: 4px 4px 4px 8px;
   left: 0;
 }
-/* line 142, ../../compass/sass/partials/_main.scss */
+/* line 161, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article .action.first {
   -moz-border-radius: 0 10px 10px 0;
   -webkit-border-radius: 0 10px 10px 0;
@@ -367,7 +422,7 @@ section#assets-gallery section.assets-list article .action.first {
   background-color: #EEE;
   top: 12px;
 }
-/* line 147, ../../compass/sass/partials/_main.scss */
+/* line 166, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article .action.second {
   -moz-border-radius: 0 10px 10px 0;
   -webkit-border-radius: 0 10px 10px 0;
