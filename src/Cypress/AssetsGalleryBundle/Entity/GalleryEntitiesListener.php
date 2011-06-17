@@ -13,6 +13,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Cypress\AssetsGalleryBundle\Entity\GalleryFolder;
 use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
+use Symfony\Component\HttpFoundation\File\Exception\UploadException;
+use Symfony\Component\HttpFoundation\File\File;
 
 class GalleryEntitiesListener implements EventSubscriber
 {
@@ -29,6 +31,7 @@ class GalleryEntitiesListener implements EventSubscriber
     public function getSubscribedEvents() {
         return array(
             Events::prePersist,
+            Events::postPersist,
             Events::preRemove
         );
     }
@@ -48,7 +51,20 @@ class GalleryEntitiesListener implements EventSubscriber
         
         // GalleryAsset
         if ($entity instanceof GalleryAsset) {
-            $this->manageAssetSave($entity);
+            $entity->setFilename($this->generateFilename($entity));
+        }
+    }
+    
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getEntity();
+        
+        if ($entity instanceof GalleryAsset) {
+            if ($entity->getFile()->move($this->container->getParameter('assets_gallery.base_path'), $entity->getFilename()) instanceof File) {
+                $entity->setFile(null);
+            } else {
+                throw new UploadException();
+            }
         }
     }
     
@@ -61,15 +77,20 @@ class GalleryEntitiesListener implements EventSubscriber
         }
     }
     
-    private function manageAssetSave(GalleryAsset $asset)
+    public function preUpdate(LifecycleEventArgs $args)
     {
-        $uploadedFile = $asset->getFilename();
-        $path = $this->container->getParameter('assets_gallery.base_path');
+        $entity = $args->getEntity();
+        // GalleryAsset
+        if ($entity instanceof GalleryAsset) {
+            $this->manageAssetSave($entity);
+        }
+    }
+    
+    private function generateFilename(GalleryAsset $asset)
+    {
+        $uploadedFile = $asset->getFile();
         $ext = $uploadedFile->guessExtension() == null ? $uploadedFile->getExtension() : $uploadedFile->guessExtension();
-        //var_dump($uploadedFile->getClientOriginalName());
-        //die();
         $newName = $this->container->get('assets_gallery.util')->generateToken().'.'.$ext;
-        $uploadedFile->move($path, $newName);
-        $asset->setFilename($newName);
+        return $newName;
     }
 }

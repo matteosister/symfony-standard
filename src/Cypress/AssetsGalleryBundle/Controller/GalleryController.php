@@ -85,8 +85,10 @@ class GalleryController extends ContainerAware
             ->container
             ->get('templating')
             ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
-                'form'    => $form->createView(),
-                'context' => 'asset'
+                'form'      => $form->createView(),
+                'asset'     => $asset,
+                'context'   => 'asset',
+                'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
             ));
     }
     
@@ -108,12 +110,15 @@ class GalleryController extends ContainerAware
             }
         }
         
+        $v = new \Symfony\Component\Form\FormView();
+        
         return $this
             ->container
             ->get('templating')
             ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
                 'form'    => $form->createView(),
-                'context' => 'folder'
+                'context' => 'folder',
+                'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
             ));
     }
     

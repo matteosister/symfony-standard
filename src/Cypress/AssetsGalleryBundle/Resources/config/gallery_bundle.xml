@@ -33,10 +33,6 @@ Just for fun...
         <service id="assets_gallery.twig_extension_filters" class="%assets_gallery.twig_extension.class%">
             <tag name="twig.extension" />
         </service>
-        
-        <service id="assets_gallery.form.editable_file_type" class="%assets_gallery.form.editable_file_type.class%">
-            <tag name="form.type" alias="assets_gallery_type_editable_file" />
-        </service>
     </services>
         
 </container>

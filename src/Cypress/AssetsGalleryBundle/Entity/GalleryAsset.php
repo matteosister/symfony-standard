@@ -31,8 +31,12 @@ class GalleryAsset {
     private $name;
     
     /**
+     *  @Assert\File(maxSize="10000000")
+     */
+    public $file;
+    
+    /**
      * @ORM\Column
-     * @Assert\File(maxSize="6000000")
      */
     private $filename;
     
@@ -75,6 +79,26 @@ class GalleryAsset {
     public function getName()
     {
         return $this->name;
+    }
+    
+    /**
+     * Set file
+     *
+     * @param string $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string $file
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 
     /**

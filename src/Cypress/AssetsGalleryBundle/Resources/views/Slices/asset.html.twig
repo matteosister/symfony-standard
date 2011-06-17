@@ -1,5 +1,5 @@
 <article class="asset">
-    <img src="{{ (base_path ~ asset.filename) | apply_filter('cypress_assets_gallery_asset') }}" alt="{{ asset.name }}" title="{{ asset.name }}" />
+    {% include 'AssetsGalleryBundle:Slices:asset_preview.html.twig' %}
     <h2>{{ asset.name | trim_at_space }}</h2>
     <a href="{{ path('cypress_gallery_asset_delete', {'id': asset.id }) }}" class="action first delete">
         <img src="/bundles/assetsgallery/images/icon/delete.png" alt="delete asset" title="delete asset" />

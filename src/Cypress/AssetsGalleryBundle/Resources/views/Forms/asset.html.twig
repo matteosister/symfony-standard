@@ -3,7 +3,10 @@
 <form action="" class="bp" method="post" {{ form_enctype(form) }}>
     <fieldset>
         {{ form_errors(form) }}
-        {{ form_row(form.filename) }}
+        {{ form_row(form.file) }}
+        {% if asset.id is not null %}
+            {% include 'AssetsGalleryBundle:Slices:asset_preview.html.twig' %}
+        {% endif %}
         {{ form_row(form.name) }}
         {{ form_row(form.description) }}
         {{ form_rest(form) }}

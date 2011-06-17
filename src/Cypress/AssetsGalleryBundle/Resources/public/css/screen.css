@@ -127,12 +127,12 @@ section#assets-gallery a.icon {
 /* line 16, ../../compass/sass/partials/_main.scss */
 section#assets-gallery h1 {
   text-shadow: #dddddd 2px 2px 2px;
-  -moz-border-radius: 0.2em;
-  -webkit-border-radius: 0.2em;
-  -o-border-radius: 0.2em;
-  -ms-border-radius: 0.2em;
-  -khtml-border-radius: 0.2em;
-  border-radius: 0.2em;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   -moz-box-shadow: 0px 0px 0.3em 0.1em #dddddd;
   -webkit-box-shadow: 0px 0px 0.3em 0.1em #dddddd;
   -o-box-shadow: 0px 0px 0.3em 0.1em #dddddd;
@@ -250,20 +250,27 @@ section#assets-gallery form {
 }
 /* line 74, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form fieldset {
-  margin: 2em;
-  padding: 1em;
-  background-color: #EEE;
-  border: 1px solid #CCC;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   -moz-box-shadow: 0px 0px 2em 0.2em #dddddd;
   -webkit-box-shadow: 0px 0px 2em 0.2em #dddddd;
   -o-box-shadow: 0px 0px 2em 0.2em #dddddd;
   box-shadow: 0px 0px 2em 0.2em #dddddd;
+  position: relative;
+  margin: 2em;
+  padding: 1em;
+  background-color: #EEE;
+  border: 1px solid #CCC;
 }
-/* line 81, ../../compass/sass/partials/_main.scss */
+/* line 83, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form section.submit {
   text-align: right;
 }
-/* line 83, ../../compass/sass/partials/_main.scss */
+/* line 85, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form section.submit input {
   display: -moz-inline-box;
   -moz-box-orient: vertical;
@@ -305,16 +312,22 @@ section#assets-gallery form section.submit input[type] {
 *:first-child + html section#assets-gallery form section.submit input[type] {
   padding: 4px 10px 3px 7px;
 }
-/* line 87, ../../compass/sass/partials/_main.scss */
+/* line 89, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form input[type=text] {
   width: 30em;
 }
-/* line 90, ../../compass/sass/partials/_main.scss */
+/* line 92, ../../compass/sass/partials/_main.scss */
 section#assets-gallery form textarea {
   width: 500px;
   height: 10em;
 }
 /* line 96, ../../compass/sass/partials/_main.scss */
+section#assets-gallery form section.preview {
+  position: absolute;
+  top: 0;
+  right: 2em;
+}
+/* line 103, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.form-field {
   overflow: hidden;
   *zoom: 1;
@@ -322,7 +335,7 @@ section#assets-gallery section.form-field {
   position: relative;
   padding: 1em 0;
 }
-/* line 101, ../../compass/sass/partials/_main.scss */
+/* line 108, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.form-field label {
   position: absolute;
   left: 0;
@@ -332,16 +345,16 @@ section#assets-gallery section.form-field label {
   font-size: 1.5em;
   line-height: 1.5em;
 }
-/* line 109, ../../compass/sass/partials/_main.scss */
+/* line 116, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.form-field label:first-letter {
   color: #ff7f00;
 }
-/* line 113, ../../compass/sass/partials/_main.scss */
+/* line 120, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.form-field section.field {
   float: left;
   padding-left: 15em;
 }
-/* line 119, ../../compass/sass/partials/_main.scss */
+/* line 126, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list {
   overflow: hidden;
   *zoom: 1;
@@ -357,7 +370,7 @@ section#assets-gallery section.assets-list {
 * html section#assets-gallery section.assets-list {
   overflow-x: hidden;
 }
-/* line 125, ../../compass/sass/partials/_main.scss */
+/* line 132, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -379,7 +392,12 @@ section#assets-gallery section.assets-list article {
   margin-right: 1em;
   overflow: hidden;
 }
-/* line 137, ../../compass/sass/partials/_main.scss */
+/* line 144, ../../compass/sass/partials/_main.scss */
+section#assets-gallery section.assets-list article .preview {
+  width: 128px;
+  height: 128px;
+}
+/* line 148, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article.hover {
   border: 1px solid #BBB;
   -moz-box-shadow: 0px 0px 1em 0.2em #cccccc;
@@ -387,17 +405,17 @@ section#assets-gallery section.assets-list article.hover {
   -o-box-shadow: 0px 0px 1em 0.2em #cccccc;
   box-shadow: 0px 0px 1em 0.2em #cccccc;
 }
-/* line 141, ../../compass/sass/partials/_main.scss */
+/* line 152, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article a {
   outline: none;
 }
-/* line 144, ../../compass/sass/partials/_main.scss */
+/* line 155, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article h2 {
   font-size: 1.3em;
   text-align: center;
   font-weight: bold;
 }
-/* line 149, ../../compass/sass/partials/_main.scss */
+/* line 160, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article .action {
   height: 16px;
   position: absolute;
@@ -411,7 +429,7 @@ section#assets-gallery section.assets-list article .action {
   padding: 4px 4px 4px 8px;
   left: 0;
 }
-/* line 161, ../../compass/sass/partials/_main.scss */
+/* line 172, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article .action.first {
   -moz-border-radius: 0 10px 10px 0;
   -webkit-border-radius: 0 10px 10px 0;
@@ -422,7 +440,7 @@ section#assets-gallery section.assets-list article .action.first {
   background-color: #EEE;
   top: 12px;
 }
-/* line 166, ../../compass/sass/partials/_main.scss */
+/* line 177, ../../compass/sass/partials/_main.scss */
 section#assets-gallery section.assets-list article .action.second {
   -moz-border-radius: 0 10px 10px 0;
   -webkit-border-radius: 0 10px 10px 0;
