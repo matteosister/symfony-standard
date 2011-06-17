@@ -36,6 +36,8 @@ class GalleryEntitiesListener implements EventSubscriber
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
+        
+        // GalleryFolder
         if ($entity instanceof GalleryFolder) {
             if ($entity->getParent() == null) {
                 $entity->setLevel(1);
@@ -44,6 +46,7 @@ class GalleryEntitiesListener implements EventSubscriber
             }
         }
         
+        // GalleryAsset
         if ($entity instanceof GalleryAsset) {
             $this->manageAssetSave($entity);
         }

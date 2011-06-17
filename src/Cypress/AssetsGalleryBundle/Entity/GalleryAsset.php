@@ -9,6 +9,7 @@
 namespace Cypress\AssetsGalleryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Cypress\AssetsGalleryBundle\Entity\GalleryFolder;
 
 /**
@@ -31,11 +32,12 @@ class GalleryAsset {
     
     /**
      * @ORM\Column
+     * @Assert\File(maxSize="6000000")
      */
     private $filename;
     
     /**
-     * @ORM\Column
+     * @ORM\Column(nullable=true)
      */
     private $description;
     
