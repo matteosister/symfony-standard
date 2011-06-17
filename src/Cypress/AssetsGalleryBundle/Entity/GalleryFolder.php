@@ -97,6 +97,15 @@ class GalleryFolder
     {
         return $this->name;
     }
+    
+    /**
+     * Indented name
+     * useful for entity form field
+     */
+    public function getIndentedName()
+    {
+        return str_repeat('--', $this->getLevel() - 1) . $this;
+    }
 
     /**
      * Set parent

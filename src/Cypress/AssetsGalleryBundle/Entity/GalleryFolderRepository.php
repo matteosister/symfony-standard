@@ -19,4 +19,14 @@ class GalleryFolderRepository extends EntityRepository
         
         return $query->getResult();
     }
+    
+    public function getTreeOrderQueryBuilder()
+    {
+        return $this->getEntityManager()
+                ->createQueryBuilder()
+                ->select('f')
+                ->from('AssetsGalleryBundle:GalleryFolder', 'f')
+                ->join('f.parent', 'parent')
+                ->orderBy('parent.level', 'ASC');
+    }
 }

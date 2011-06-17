@@ -2,8 +2,16 @@
 
 {% block content %}
 <ul class="actions">
-    <li><a class="icon icon-add" href="{{ path('cypress_gallery_asset_manage') }}">Inserisci un nuovo asset</a></li>
-    <li><a class="icon icon-add" href="{{ path('cypress_gallery_folder_manage') }}">Inserisci una nuova cartella</a></li>
+    <li>
+        <a class="icon icon-add" href="{{ path('cypress_gallery_asset_manage') }}">
+            {% trans %}Add a new asset{% endtrans %}
+        </a>
+    </li>
+    <li>
+        <a class="icon icon-add" href="{{ path('cypress_gallery_folder_manage') }}">
+            {% trans %}Add a new folder{% endtrans %}
+        </a>
+    </li>
 </ul>
 
 {% include 'AssetsGalleryBundle:Slices:breadcrumb.html.twig' %}

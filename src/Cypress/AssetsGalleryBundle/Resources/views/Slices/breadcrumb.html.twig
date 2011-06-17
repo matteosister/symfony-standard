@@ -1,7 +1,7 @@
 <ul class="breadcrumb">
     <li class="home">
         {% if folder.root %}
-        <span>HOME</span>
+        <span>{% trans %}HOME{% endtrans %}</span>
         {% else %}
         <a href="{{ path("cypress_gallery_list") }}">HOME</a>
         {% endif %}
