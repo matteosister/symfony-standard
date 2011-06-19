@@ -59,6 +59,7 @@ class GalleryFolder
      
     /**
      * @ORM\OneToMany(targetEntity="GalleryFolder", mappedBy="parent")
+     * @ORM\OrderBy({"lft" = "ASC"})
      */
     private $children;
     

@@ -6,14 +6,28 @@
 
 jQuery.fn.exists = function(){return jQuery(this).length>0;}
 
+var urlCallSort; // from template
+
 $(document).ready( function() {
     $('section.assets-list').sortable({
         cursor: 'crosshair',
-        items:  'article.folder'
+        items:  'article.folder',
+        handle: 'a.action.drag',
+        opacity: 0.5,
+        placeholder: "highlight"
     });
     
     $('section.assets-list').bind( "sortstop", function(event, ui) {
-        console.log($(this).sortable("toArray"));
+        folderId = ui.item.attr('id');
+        newPosition = $(this).sortable('toArray').indexOf(ui.item.attr('id'));
+        
+        $.ajax({
+            url: urlCallSort,
+            type: 'POST',
+            data: 'folder_id=' + folderId + '&new_position=' + newPosition,
+            success: function(msg){
+            }
+        });
     });
     
     $('section.assets-list').disableSelection();
@@ -21,9 +35,7 @@ $(document).ready( function() {
         $(this).children('a.action.delete').click( function() {
             return confirm('Are you sure?');
         });
-        $(this).children('a.action').animate({
-            left: '-=100px'
-        }, 0);
+        setDefaultActionsPosition($(this), 0);
 
         $(this).hover( function() {
             $(this).addClass('hover');
@@ -33,21 +45,25 @@ $(document).ready( function() {
 
         var config = {    
             over: showActions,   
-            timeout: 50,    
+            timeout: 2000,    
             out: hideActions  
         };
-        $(this).hoverIntent(showActions, hideActions);
+        $(this).hoverIntent(config);
         function showActions() {
-            //$(this).children('a.action').fadeIn('fast');
             $(this).children('a.action').animate({
-                left: '+=100px'
-            }, {duration: 400, 'easing': 'easeOutQuad'});
+                opacity: 1,
+                left: "+=5px"
+            }, 200);
         }
         function hideActions() {
-            //$(this).children('a.action').fadeOut('slow');
-            $(this).children('a.action').animate({
-                left: '-=100px'
-            }, {duration: 600, 'easing': 'easeOutQuad'});
+            setDefaultActionsPosition($(this), 400);
+        }
+        function setDefaultActionsPosition(elm, time)
+        {
+            elm.children('a.action').animate({
+                opacity: 0.5,
+                left: "-=5px"
+            }, time);
         }
     });
 });

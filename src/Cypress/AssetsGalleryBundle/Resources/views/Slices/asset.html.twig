@@ -1,10 +1,10 @@
 <article class="asset{% if num is divisibleby(6) %}{{ ' last' }}{% endif %}">
     {% include 'AssetsGalleryBundle:Slices:asset_preview.html.twig' %}
     <h2>{{ asset.name | trim_at_space }}</h2>
-    <a href="{{ path('cypress_gallery_asset_delete', {'id': asset.id }) }}" class="action first delete">
+    <a href="{{ path('cypress_gallery_asset_delete', {'id': asset.id }) }}" class="action delete">
         <img src="/bundles/assetsgallery/images/icon/delete.png" alt="delete asset" title="delete asset" />
     </a>
-    <a href="{{ path('cypress_gallery_asset_manage', {'id': asset.id }) }}" class="action second">
+    <a href="{{ path('cypress_gallery_asset_manage', {'id': asset.id }) }}" class="action edit">
         <img src="/bundles/assetsgallery/images/icon/edit.png" alt="edit asset" title="edit asset" />
     </a>
 </article>

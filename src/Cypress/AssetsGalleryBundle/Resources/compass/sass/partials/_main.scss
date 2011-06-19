@@ -143,6 +143,10 @@ section#assets-gallery {
             margin-right: 0.1em;
             margin-bottom: 0.2em;
             overflow: hidden;
+            &.highlight {
+                background-color: #DDD;
+                border: 1px solid #CCC;
+            }
             &.inlist-actions {
                 height: 3.2em;
                 a {
@@ -178,14 +182,20 @@ section#assets-gallery {
                 border-bottom: 1px solid #BBB;
                 padding: 4px 4px 4px 8px;
                 left: 0;
-                &.first {
+                $action1Top: $actionPad + $border-radius;
+                &.delete {
                     @include border-radius(0 $border-radius $border-radius 0);
                     background-color: #EEE;
-                    top: $actionPad + $border-radius;
+                    top: $action1Top;
                 }
-                &.second {
+                &.edit {
                     @include border-radius(0 $border-radius $border-radius 0);
-                    top: ($actionPad * 2) + $actionHeight + 10px + $border-radius;
+                    top: $action1Top + (1 * 28px);
+                    background-color: #EEE;
+                }
+                &.drag {
+                    @include border-radius(0 $border-radius $border-radius 0);
+                    top: $action1Top + (2 * 28px);
                     background-color: #EEE;
                 }
             }

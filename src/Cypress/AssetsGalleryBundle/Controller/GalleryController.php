@@ -20,6 +20,7 @@ use Cypress\AssetsGalleryBundle\Form\GalleryAssetType;
 use Cypress\AssetsGalleryBundle\Form\GalleryFolderType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -36,12 +37,21 @@ class GalleryController extends ContainerAware
     }
     
     /**
-     * dump method for autocompletion
+     * dumb method for autocompletion
      * @return Doctrine\ORM\EntityManager
      */
     private function getEM()
     {
         return $this->container->get('doctrine')->getEntityManager();
+    }
+    
+    /**
+     * dumb method for autocompletion
+     * @return Symfony\Component\HttpFoundation\Request
+     */
+    private function getRequest()
+    {
+        return $this->container->get('request');
     }
     
     public function listAction($folder_id)
@@ -178,5 +188,28 @@ class GalleryController extends ContainerAware
         return new RedirectResponse($this->container->get('router')->generate(
                 'cypress_gallery_list', array('folder_id' => $parent_id)
         ));
+    }
+    
+    public function sortFolderAction()
+    {
+        $req = $this->getRequest();
+        $folderId = $req->get('folder_id');
+        $newPosition = $req->get('new_position');
+        $repo = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder');
+        $folder = $repo->find($folderId);
+        $siblings = $folder->getParent()->getChildren();
+        foreach ($siblings as $i => $child) {
+            if ($child->getId() == $folder->getId()) {
+                if ($newPosition != $i) {
+                    if ($newPosition > $i) {
+                        $repo->moveDown($folder, $newPosition - $i);
+                    } else {
+                        $repo->moveUp($folder, $i - $newPosition);
+                    }
+                }
+            }
+        }
+        
+        return new Response('OK');
     }
 }

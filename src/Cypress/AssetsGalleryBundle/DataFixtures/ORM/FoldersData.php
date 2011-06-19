@@ -24,18 +24,18 @@ class FoldersData implements FixtureInterface {
         $child2->setParent($root);
         
         $child3 = new GalleryFolder();
-        $child3->setName('second child 1');
-        $child3->setParent($child1);
+        $child3->setName('child 3');
+        $child3->setParent($root);
         
-        $child4 = new GalleryFolder();
-        $child4->setName('second child 2');
-        $child4->setParent($child2);
+//        $child4 = new GalleryFolder();
+//        $child4->setName('second child 2');
+//        $child4->setParent($child2);
         
         $manager->persist($root);
         $manager->persist($child1);
         $manager->persist($child2);
         $manager->persist($child3);
-        $manager->persist($child4);
+        //$manager->persist($child4);
         
         $manager->flush();
     }

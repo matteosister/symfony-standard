@@ -57,9 +57,9 @@ a img {
   border: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/icon}line{font-family:\0000343}}
-.icon-sprite, .icon-add, .icon-back, .icon-delete, .icon-edit {
-  background: url('../images/icon-e068dc9246.png') no-repeat;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/icon}line{font-family:\0000349}}
+.icon-sprite, .icon-add, .icon-back, .icon-delete, .icon-drag, .icon-edit {
+  background: url('../images/icon-2363c39702.png') no-repeat;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/utilities\/sprites\/_base\.scss}line{font-family:\0000359}}
@@ -78,8 +78,13 @@ a img {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/utilities\/sprites\/_base\.scss}line{font-family:\0000359}}
-.icon-edit {
+.icon-drag {
   background-position: 0 -48px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/var\/lib\/gems\/1\.8\/gems\/compass-0\.11\.1\/frameworks\/compass\/stylesheets\/compass\/utilities\/sprites\/_base\.scss}line{font-family:\0000359}}
+.icon-edit {
+  background-position: 0 -64px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\000032}}
@@ -395,20 +400,25 @@ section#assets-gallery section.assets-list article {
   overflow: hidden;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003146}}
+section#assets-gallery section.assets-list article.highlight {
+  background-color: #DDD;
+  border: 1px solid #CCC;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003150}}
 section#assets-gallery section.assets-list article.inlist-actions {
   height: 3.2em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003148}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003152}}
 section#assets-gallery section.assets-list article.inlist-actions a {
   padding: 0 0.46em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003152}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003156}}
 section#assets-gallery section.assets-list article .preview {
   width: 128px;
   height: 128px;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003157}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003161}}
 section#assets-gallery section.assets-list article.hover {
   border: 1px solid #BBB;
   -moz-box-shadow: 0px 0px 1em 0.2em #cccccc;
@@ -416,17 +426,17 @@ section#assets-gallery section.assets-list article.hover {
   -o-box-shadow: 0px 0px 1em 0.2em #cccccc;
   box-shadow: 0px 0px 1em 0.2em #cccccc;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003161}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003165}}
 section#assets-gallery section.assets-list article a {
   outline: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003164}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003168}}
 section#assets-gallery section.assets-list article h2 {
   font-size: 1.3em;
   text-align: center;
   font-weight: bold;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003169}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003173}}
 section#assets-gallery section.assets-list article .action {
   height: 16px;
   position: absolute;
@@ -440,8 +450,8 @@ section#assets-gallery section.assets-list article .action {
   padding: 4px 4px 4px 8px;
   left: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003181}}
-section#assets-gallery section.assets-list article .action.first {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003186}}
+section#assets-gallery section.assets-list article .action.delete {
   -moz-border-radius: 0 10px 10px 0;
   -webkit-border-radius: 0 10px 10px 0;
   -o-border-radius: 0 10px 10px 0;
@@ -451,8 +461,8 @@ section#assets-gallery section.assets-list article .action.first {
   background-color: #EEE;
   top: 12px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003186}}
-section#assets-gallery section.assets-list article .action.second {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003191}}
+section#assets-gallery section.assets-list article .action.edit {
   -moz-border-radius: 0 10px 10px 0;
   -webkit-border-radius: 0 10px 10px 0;
   -o-border-radius: 0 10px 10px 0;
@@ -460,5 +470,16 @@ section#assets-gallery section.assets-list article .action.second {
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
   top: 40px;
+  background-color: #EEE;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/media\/Sata\/internet\/sf2\/src\/Cypress\/AssetsGalleryBundle\/Resources\/compass\/sass\/partials\/_main\.scss}line{font-family:\00003196}}
+section#assets-gallery section.assets-list article .action.drag {
+  -moz-border-radius: 0 10px 10px 0;
+  -webkit-border-radius: 0 10px 10px 0;
+  -o-border-radius: 0 10px 10px 0;
+  -ms-border-radius: 0 10px 10px 0;
+  -khtml-border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
+  top: 68px;
   background-color: #EEE;
 }

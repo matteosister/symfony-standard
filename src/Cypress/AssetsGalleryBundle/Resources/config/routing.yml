@@ -2,13 +2,13 @@
 #    pattern:  /
 #    defaults: { _controller: CypressAssetsGalleryBundle:Default:index }
 
-#LIST
+# LIST
 cypress_gallery_list:
     pattern: /gallery/{folder_id}
     defaults: { _controller: assets_gallery.controller:listAction, folder_id: ~ }
 
 
-#ASSETS 
+# ASSETS 
 cypress_gallery_asset_manage:
     pattern: /gallery/asset/manage/{id}
     defaults: { _controller: assets_gallery.controller:manageAssetAction, id: ~ }
@@ -22,7 +22,7 @@ cypress_gallery_asset_add_in_folder:
     defaults: { _controller: assets_gallery.controller:addAssetInFolder }
     
     
-#FOLDERS
+# FOLDERS
 cypress_gallery_folder_manage:
     pattern: /gallery/folder/manage/{id}
     defaults: { _controller: assets_gallery.controller:manageFolderAction, id: ~ }
@@ -34,3 +34,9 @@ cypress_gallery_folder_delete:
 cypress_gallery_folder_add_in_folder:
     pattern: /gallery/folder/add-in-folder/{id}
     defaults: { _controller: assets_gallery.controller:addFolderInFolder }
+    
+    
+# ACTIONS
+cypress_gallery_sort_folders:
+    pattern: /gallery/folder/sort
+    defaults: { _controller: assets_gallery.controller:sortFolderAction }

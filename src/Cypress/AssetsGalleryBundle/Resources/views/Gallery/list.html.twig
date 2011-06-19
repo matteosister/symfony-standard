@@ -1,5 +1,12 @@
 {% extends 'AssetsGalleryBundle::base.html.twig' %}
 
+{% block js_code %}
+<script>
+    var urlCallSort = "{{ path('cypress_gallery_sort_folders') }}";
+    var parentId = {{ folder.id }};
+</script>
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script src="/bundles/assetsgallery/js/list.js"></script>
