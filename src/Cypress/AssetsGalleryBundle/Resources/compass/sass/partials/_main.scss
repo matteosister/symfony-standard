@@ -24,7 +24,6 @@ section#assets-gallery {
         text-align: center;
         padding: 0.2em 0.2em 0.4em;
     }
-
     .header {
         @include column(23, true);
         @include prepend(0.5);
@@ -128,18 +127,21 @@ section#assets-gallery {
         @include column(23, true);
         @include prepend(0.5);
         @include append(0.5);
+        padding-top: span(0.5);
+        padding-bottom: span(0.5);
         clear: both;
         article {
             @include border-radius($border-radius);
             @include single-box-shadow(#DDD, $blur: 1em, $spread: 0.1em);
-            margin-top: 2em;
+            background-color: #FFF;
             position: relative;
             float: left;
             width: 12.8em;
             height: 15.8em;
             padding: 1em;
             border: 1px solid #DDD;
-            margin-right: 1em;
+            margin-right: 0.1em;
+            margin-bottom: 0.2em;
             overflow: hidden;
             &.inlist-actions {
                 height: 3.2em;

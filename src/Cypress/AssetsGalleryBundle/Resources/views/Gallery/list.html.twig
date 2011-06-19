@@ -1,5 +1,10 @@
 {% extends 'AssetsGalleryBundle::base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/bundles/assetsgallery/js/list.js"></script>
+{% endblock %}
+
 {% block header %}
     <h1>
         <a href="{{ path('cypress_gallery_list') }}">
@@ -23,13 +28,16 @@
 {% endblock %}
 
 {% block content %}
-    <section class="assets-list">
-        {% include 'AssetsGalleryBundle:Slices:inlist-actions.html.twig' %}
+    <section class="assets-list sortable">
+        {% include 'AssetsGalleryBundle:Slices:inlist_actions.html.twig' %}
+        {% set num = 2 %}
         {% for folder in folder.children %}
             {% include 'AssetsGalleryBundle:Slices:folder.html.twig' %}
+            {% set num = num + 1 %}
         {% endfor %}
         {% for asset in assets %}
             {% include 'AssetsGalleryBundle:Slices:asset.html.twig' %}
+            {% set num = num + 1 %}
         {% endfor %}
     </section>
 {% endblock %}

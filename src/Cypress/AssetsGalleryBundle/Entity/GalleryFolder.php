@@ -75,6 +75,7 @@ class GalleryFolder
     public function __construct()
     {
         $this->children = new ArrayCollection();
+        $this->asset = new ArrayCollection();
     }
     
     /**
@@ -160,6 +161,11 @@ class GalleryFolder
             $previuosFolder = $previuosFolder->getParent();
         }
         return array_reverse($tree);
+    }
+    
+    public function isEmpty()
+    {
+        return $this->asset->isEmpty() && $this->children->isEmpty();
     }
 
     /**

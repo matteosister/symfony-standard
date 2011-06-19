@@ -1,6 +1,10 @@
-<article class="folder">
+<article class="folder{% if num is divisibleby(6) %}{{ ' last' }}{% endif %}" id="{{ folder.id }}">
     <a href="{{ path("cypress_gallery_list", { "folder_id": folder.id }) }}">
-        <img src="/bundles/assetsgallery/images/folder.png" alt="{{ folder }}" title="{{ folder }}" />
+        {% if folder.empty %}
+            <img src="/bundles/assetsgallery/images/folder-empty.png" alt="{{ folder }}" title="{{ folder }}" />
+        {% else %}
+            <img src="/bundles/assetsgallery/images/folder.png" alt="{{ folder }}" title="{{ folder }}" />
+        {% endif %}
     </a>
     <h2>{{ folder | trim_at_space }} ({{ folder.children.count }})</h2>
     <a href="{{ path('cypress_gallery_folder_delete', {'id': folder.id }) }}" class="action first delete">
