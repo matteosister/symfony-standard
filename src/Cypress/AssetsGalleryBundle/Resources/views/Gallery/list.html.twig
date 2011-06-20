@@ -9,7 +9,10 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="/bundles/assetsgallery/js/list.js"></script>
+    {% javascripts filter="?yui_js" output="/js/all.js"
+        "@AssetsGalleryBundle/Resources/public/js/list.js"  %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 
 {% block header %}
