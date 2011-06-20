@@ -14,12 +14,8 @@ security:
 
 
     firewalls:
-        profiler:
-            pattern:  ^/_profiler
-            security: false
-
-        wdt:
-            pattern:  ^/_wdt
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
         login:
