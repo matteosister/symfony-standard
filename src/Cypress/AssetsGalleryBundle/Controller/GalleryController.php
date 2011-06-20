@@ -97,7 +97,7 @@ class GalleryController extends ContainerAware
         } else {
             $asset = new GalleryAsset();
         }
-
+        
         return $this->getFormResponse($this->processAssetForm($asset));
     }
     
@@ -119,6 +119,7 @@ class GalleryController extends ContainerAware
             if ($form->isValid()) {
                 $this->getEM()->persist($asset);
                 $this->getEM()->flush();
+                $this->addFlashMessage('success', 'asset saved');
             }
         }
         return $form;
@@ -141,7 +142,28 @@ class GalleryController extends ContainerAware
         $folder = new GalleryFolder();
         $folder->setParent($parent);
         
-        return $this->getFormResponse($this->processFolderForm($folder));
+        $form = $this->container->get('form.factory')->create(new GalleryFolderType(), $folder);
+        
+        if ($this->getRequest()->getMethod() == "POST") {
+            $form->bindRequest($this->getRequest());
+            if ($form->isValid()) {
+                $this->getEM()->persist($folder);
+                $this->getEM()->flush();
+                $this->addFlashMessage('success', 'folder saved');
+                return new RedirectResponse($this->container->get('router')->generate('cypress_gallery_folder_manage', array(
+                    'id' => $folder->getId()
+                )));
+            }
+        }
+        
+        return $this
+            ->container
+            ->get('templating')
+            ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
+                'form'      => $form->createView(),
+                'context'   => 'folder',
+                'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
+            ));
     }
     
     private function processFolderForm(GalleryFolder $folder)
@@ -153,6 +175,7 @@ class GalleryController extends ContainerAware
             if ($form->isValid()) {
                 $this->getEM()->persist($folder);
                 $this->getEM()->flush();
+                $this->addFlashMessage('success', 'folder saved');
             }
         }
         return $form;
@@ -166,14 +189,21 @@ class GalleryController extends ContainerAware
         if ($form->getData() instanceof GalleryFolder) {
             $context = 'folder';
         }
-        return $this
-            ->container
-            ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
-                'form'      => $form->createView(),
-                'context'   => $context,
-                'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
-            ));
+        if ($form->isValid()) {
+            $router = $this->container->get('router');
+            return new RedirectResponse($router->generate('cypress_gallery_'.$context.'_manage', array(
+                'id' => $form->getData()->getId()
+            )));
+        } else {
+            return $this
+                ->container
+                ->get('templating')
+                ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
+                    'form'      => $form->createView(),
+                    'context'   => $context,
+                    'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
+                ));
+        }
     }
     
     public function deleteAssetAction($id)
@@ -184,7 +214,7 @@ class GalleryController extends ContainerAware
             if ($asset->getFolder() != null) {
                 $folder_id = $asset->getFolder()->getId();
             }
-            $this->addFlashMessage('success', 'asset "'. $asset .'" succesfully deleted');
+            $this->addFlashMessage('success', 'asset "'. $asset .'" deleted');
             $this->getEM()->remove($asset);
             $this->getEM()->flush();
         }
@@ -201,7 +231,7 @@ class GalleryController extends ContainerAware
             if (!$folder->getParent()->isRoot()) {
                 $parent_id = $folder->getParent()->getId();
             }
-            $this->addFlashMessage('success', 'folder "'. $folder .'" successfully deleted');
+            $this->addFlashMessage('success', 'folder "'. $folder .'" deleted');
             $this->getEM()->remove($folder);
             $this->getEM()->flush();
         }

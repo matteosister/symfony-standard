@@ -213,7 +213,6 @@ class CompassFilter implements FilterInterface
             }
 
             $config = implode("\n", $config) . "\n";
-            echo $config;
             $this->config = tempnam($tempDir, 'assetic_compass');
             file_put_contents($this->config, $config);
         }

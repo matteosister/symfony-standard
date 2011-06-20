@@ -29,6 +29,7 @@ section#assets-gallery {
         @include append(0.5);
     }
     .flash-message {
+        @include border-radius($border-radius);
         position: absolute;
         top: 1em;
         right: 1em;
@@ -36,6 +37,7 @@ section#assets-gallery {
         font-weight: bold;
         &.success {
             @include success;
+            color: $success-color;
         }
     }
     ul.actions {

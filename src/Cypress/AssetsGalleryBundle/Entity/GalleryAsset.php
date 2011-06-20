@@ -50,6 +50,9 @@ class GalleryAsset {
      */
     private $folder;
     
+    public function __toString() {
+        return $this->name;
+    }
 
     /**
      * Get id

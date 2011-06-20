@@ -1,0 +1,117 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import blueprint/reset
+
+// To configure blueprint, edit the partials/base.sass file.
+@import partials/base
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import blueprint
+
+// Import the non-default scaffolding module.
+@import blueprint/scaffolding
+
+@import compass/utilities/sprites
+@import compass/utilities/tables
+@import compass/css3/border-radius
+@import icon/*.png
++all-icon-sprites
+
+
+// To generate css equivalent to the blueprint css but with your
+// configuration applied, uncomment:
+// @include blueprint
+
+// If you are doing a lot of stylesheet concatenation, it is suggested
+// that you scope your blueprint styles, so that you can better control
+// what pages use blueprint when stylesheets are concatenated together.
+body.bp
+  //+blueprint-typography(true)
+  //+blueprint-utilities
+  //+blueprint-debug
+  //+blueprint-interaction
+  font-size: 62.5%
+  // Remove the scaffolding when you're ready to start doing visual design.
+  // Or leave it in if you're happy with how blueprint looks out-of-the-box
+
+form.bp
+  +blueprint-form
+  section.field
+    label
+      display: block
+      width: 10em
+      float: left
+      height: 2em
+      line-height: 2em
+      margin: 0.5em 0
+      section
+        float: left
+
+#container
+  +blueprint-typography(true)
+  +container
+  position: relative
+  h1
+    +column(10)
+
+nav
+  +column(16, true)
+  font-size: 1.6em
+  ul
+    +inline-list
+
+header
+  +clearfix
+
+section#main
+  +column(26, true)
+  font-size: 1.4em
+
+section.content
+  +column(18)
+  &.all
+    +column(26, true)
+
+aside
+  +column(8, true)
+
+.list,.form
+  table
+    +outer-table-borders(1px, #AAA)
+    +inner-table-borders(1px, #DDD)
+    th
+      font-size: 1.4em
+    .label
+      font-size: 1.2em
+    
+
+a.icon
+  padding-left: 20px
+  height: 16px
+  font-size: 1.2em
+
+.main-actions
+  margin-bottom: 1em
+  ul
+    +no-bullets
+    padding-left: 0 !important
+    margin-left: 0
+
+ul.actions
+  list-style-type: none !important
+  margin: 0 !important
+  padding-left: 0 !important
+
+section.message
+  +border-radius(5px)
+  display: none
+  position: absolute
+  right: 5px
+  top: 5px
+  padding: 5px
+  margin: 4px 0
+  font-size: 1.2em
+  color: #333
+  font-weight: bold
+  &.ok
+    border: 2px solid #0F0
+    background-color: #0F0 + #AAA

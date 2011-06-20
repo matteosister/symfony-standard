@@ -10,7 +10,7 @@
 {% endblock %}
     
 {% block javascripts %}
-    {% javascripts "@assets_gallery_bundle_js" %}
+    {% javascripts "@assets_gallery_bundle_js" output="js/plugins.js" %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

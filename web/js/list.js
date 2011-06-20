@@ -4,8 +4,6 @@
  * Just for fun...
  */
 
-jQuery.fn.exists = function(){return jQuery(this).length>0;}
-
 var urlCallSort; // from template
 
 $(document).ready( function() {
@@ -70,17 +68,5 @@ $(document).ready( function() {
             }, time);
         }
     });
-    
-    // FLASH Messages
-    if ($('.flash-message').exists()) 
-    {
-        $('.flash-message').disableSelection();
-        setTimeout(hideFlash, 5000);
-    }
-    
-    function hideFlash()
-    {
-        $('.flash-message').fadeOut();
-    }
     
 });
