@@ -6,7 +6,7 @@
             <img src="/bundles/assetsgallery/images/folder.png" alt="{{ folder }}" title="{{ folder }}" />
         {% endif %}
     </a>
-    <h2>{{ folder | trim_at_space }} ({{ folder.children.count }})</h2>
+    <h2>{{ folder | trim_at_space }}</h2>
     <a href="{{ path('cypress_gallery_folder_delete', {'id': folder.id }) }}" class="action delete">
         <img src="/bundles/assetsgallery/images/icon/delete.png" alt="delete folder" title="delete folder" />
     </a>

@@ -166,7 +166,8 @@ class GalleryFolder
     
     public function isEmpty()
     {
-        return $this->asset->isEmpty() && $this->children->isEmpty();
+        //return false;
+        return $this->asset->isEmpty();
     }
 
     /**

@@ -31,7 +31,7 @@
         </li>
     </ul>
 
-    {% include 'AssetsGalleryBundle:Slices:breadcrumb.html.twig' %}
+    {# include 'AssetsGalleryBundle:Slices:breadcrumb.html.twig' #}
 {% endblock %}
 
 {% block content %}
@@ -42,7 +42,7 @@
             {% include 'AssetsGalleryBundle:Slices:folder.html.twig' %}
             {% set num = num + 1 %}
         {% endfor %}
-        {% for asset in assets %}
+        {% for asset in folder.asset %}
             {% include 'AssetsGalleryBundle:Slices:asset.html.twig' %}
             {% set num = num + 1 %}
         {% endfor %}

@@ -57,17 +57,34 @@ class GalleryController extends ContainerAware
     public function listAction($folder_id)
     {
         if ($folder_id) {
-            $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->find($folder_id);
+            $qb = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')
+                ->createQueryBuilder('f')
+                ->select('f,c,a,ca,p')
+                ->leftJoin('f.children', 'c')
+                ->leftJoin('f.asset', 'a')
+                ->leftJoin('c.asset', 'ca')
+                ->leftJoin('f.parent', 'p')
+                ->where('f.id = :id')
+                ->setParameter('id', $folder_id);
+            
+            $query = $qb->getQuery();
+            $folder = $query->getSingleResult();
         } else {
-            $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findOneBy(array('level' => 0));
+            $qb = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')
+                ->createQueryBuilder('f')
+                ->select('f,c,a,ca')
+                ->leftJoin('f.children', 'c')
+                ->leftJoin('f.asset', 'a')
+                ->leftJoin('c.asset', 'ca')
+                ->where('f.level = :level')->setParameter('level', 0);
+            $query = $qb->getQuery();
+            $folder = $query->getSingleResult();
         }
-        $assets = $folder->getAsset();
 
         return $this
             ->container
             ->get('templating')
             ->renderResponse('AssetsGalleryBundle:Gallery:list.html.twig', array(
-                'assets'    => $assets,
                 'folder'   => $folder,
                 'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
             ));
