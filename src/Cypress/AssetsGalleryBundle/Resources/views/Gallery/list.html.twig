@@ -9,8 +9,8 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts filter="?yui_js" output="/js/all.js"
-        "@AssetsGalleryBundle/Resources/public/js/list.js"  %}
+    {% javascripts filter="?yui_js"
+        "@AssetsGalleryBundle/Resources/Javascripts/list.js"  %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}
@@ -34,7 +34,7 @@
         </li>
     </ul>
 
-    {# include 'AssetsGalleryBundle:Slices:breadcrumb.html.twig' #}
+    {% include 'AssetsGalleryBundle:Slices:breadcrumb.html.twig' %}
 {% endblock %}
 
 {% block content %}

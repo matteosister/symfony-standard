@@ -34,6 +34,7 @@ $previewHeight: 128px;
 @import "blueprint/buttons";
 @import "compass/typography/lists";
 @import "compass/css3/border-radius";
+@import "blueprint/interaction";
 
 @import "icon/*.png";
 @include all-icon-sprites;

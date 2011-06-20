@@ -9,6 +9,8 @@ jQuery.fn.exists = function(){return jQuery(this).length>0;}
 var urlCallSort; // from template
 
 $(document).ready( function() {
+    
+    // UI Sortable
     $('section.assets-list').sortable({
         cursor: 'crosshair',
         items:  'article.folder',
@@ -31,6 +33,8 @@ $(document).ready( function() {
     });
     
     $('section.assets-list').disableSelection();
+    
+    // List actions
     $('section.assets-list article').each (function() {
         $(this).children('a.action.delete').click( function() {
             return confirm('Are you sure?');
@@ -66,4 +70,17 @@ $(document).ready( function() {
             }, time);
         }
     });
+    
+    // FLASH Messages
+    if ($('.flash-message').exists()) 
+    {
+        $('.flash-message').disableSelection();
+        setTimeout(hideFlash, 5000);
+    }
+    
+    function hideFlash()
+    {
+        $('.flash-message').fadeOut();
+    }
+    
 });

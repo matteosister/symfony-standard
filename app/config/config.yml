@@ -31,9 +31,9 @@ assetic:
         screen_css:
             inputs: "@compass_screen"
             filters: compass
-            
-    #assets_gallery_bundle:
-        
+        assets_gallery_bundle_js:
+            inputs: [ "@AssetsGalleryBundle/Resources/Javascripts/plugins/*.js" ]
+            filters: "?yui_js"
     filters:
         cssrewrite: ~
         scss:       ~

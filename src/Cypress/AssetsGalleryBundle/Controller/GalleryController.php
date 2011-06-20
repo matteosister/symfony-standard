@@ -184,6 +184,7 @@ class GalleryController extends ContainerAware
             if ($asset->getFolder() != null) {
                 $folder_id = $asset->getFolder()->getId();
             }
+            $this->addFlashMessage('success', 'asset "'. $asset .'" succesfully deleted');
             $this->getEM()->remove($asset);
             $this->getEM()->flush();
         }
@@ -197,7 +198,10 @@ class GalleryController extends ContainerAware
         $folder = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->find($id);
         $parent_id = null;
         if ($folder && !$folder->isRoot()) {
-            $parent_id = $folder->getParent()->getId();
+            if (!$folder->getParent()->isRoot()) {
+                $parent_id = $folder->getParent()->getId();
+            }
+            $this->addFlashMessage('success', 'folder "'. $folder .'" successfully deleted');
             $this->getEM()->remove($folder);
             $this->getEM()->flush();
         }
@@ -228,5 +232,11 @@ class GalleryController extends ContainerAware
         }
         
         return new Response('OK');
+    }
+    
+    private function addFlashMessage($name, $message)
+    {
+        $session = $this->container->get('request')->getSession();
+        $session->setFlash($name, $message);
     }
 }
