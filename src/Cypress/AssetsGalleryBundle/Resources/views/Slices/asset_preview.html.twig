@@ -2,5 +2,9 @@
     {% set asset = form.get('value') %}
 {% endif %}
 <section class="preview">
-    <img src="{{ (base_path ~ asset.filename) | apply_filter('cypress_assets_gallery_asset') }}" alt="{{ asset.name }}" title="{{ asset.name }}" />
+    {% if asset.isImage %}
+        <img src="{{ (base_path ~ asset.filename) | apply_filter('cypress_assets_gallery_asset') }}" alt="{{ asset.name }}" title="{{ asset.name }}" />
+    {% else %}
+        <img src="http://www.stdicon.com/{{ asset.mimetype }}?size=128&default=http%3a%2f%2fstdicon.com%2fhtml" />
+    {% endif %}
 </section>

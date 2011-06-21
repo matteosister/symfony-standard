@@ -40,18 +40,10 @@ class GalleryEntitiesListener implements EventSubscriber
     {
         $entity = $args->getEntity();
         
-        // GalleryFolder
-        if ($entity instanceof GalleryFolder) {
-            if ($entity->getParent() == null) {
-                $entity->setLevel(1);
-            } else {
-                $entity->setLevel($entity->getParent()->getLevel() + 1);
-            }
-        }
-        
         // GalleryAsset
         if ($entity instanceof GalleryAsset) {
             $entity->setFilename($this->generateFilename($entity));
+            $entity->setMimetype($entity->getFile()->getClientMimeType());
         }
     }
     
@@ -60,7 +52,8 @@ class GalleryEntitiesListener implements EventSubscriber
         $entity = $args->getEntity();
         
         if ($entity instanceof GalleryAsset) {
-            if ($entity->getFile()->move($this->container->getParameter('assets_gallery.base_path'), $entity->getFilename()) instanceof File) {
+            $file = $entity->getFile()->move($this->container->getParameter('assets_gallery.base_path'), $entity->getFilename());
+            if ($file instanceof File) {
                 $entity->setFile(null);
             } else {
                 throw new UploadException();

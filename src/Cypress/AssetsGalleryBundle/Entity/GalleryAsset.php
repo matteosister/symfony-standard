@@ -31,7 +31,7 @@ class GalleryAsset {
     private $name;
     
     /**
-     *  @Assert\File(maxSize="10000000")
+     *  @Assert\File(maxSize="15000000")
      */
     public $file;
     
@@ -41,14 +41,28 @@ class GalleryAsset {
     private $filename;
     
     /**
+     * @ORM\ManyToOne(targetEntity="GalleryFolder", inversedBy="asset")
+     */
+    private $folder;
+    
+    /**
      * @ORM\Column(nullable=true)
      */
     private $description;
     
     /**
-     * @ORM\ManyToOne(targetEntity="GalleryFolder", inversedBy="asset")
+     * @ORM\Column(nullable=true)
      */
-    private $folder;
+    private $mimetype;
+    
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_image;
+    
+    public function __construct() {
+        $this->is_image = false;
+    }
     
     public function __toString() {
         return $this->name;
@@ -123,6 +137,26 @@ class GalleryAsset {
     {
         return $this->filename;
     }
+    
+    /**
+     * Set folder
+     *
+     * @param Cypress\AssetsGalleryBundle\Entity\GalleryFolder $folder
+     */
+    public function setFolder(GalleryFolder $folder)
+    {
+        $this->folder = $folder;
+    }
+
+    /**
+     * Get folder
+     *
+     * @return Cypress\AssetsGalleryBundle\Entity\GalleryFolder $folder
+     */
+    public function getFolder()
+    {
+        return $this->folder;
+    }
 
     /**
      * Set description
@@ -145,22 +179,43 @@ class GalleryAsset {
     }
 
     /**
-     * Set folder
+     * Set mime-type
      *
-     * @param Cypress\AssetsGalleryBundle\Entity\GalleryFolder $folder
+     * @param string $description
      */
-    public function setFolder(GalleryFolder $folder)
+    public function setMimetype($mimetype)
     {
-        $this->folder = $folder;
+        $this->setIsImage(strpos($mimetype, 'image') !== false);
+        $this->mimetype = $mimetype;
     }
 
     /**
-     * Get folder
+     * Get description
      *
-     * @return Cypress\AssetsGalleryBundle\Entity\GalleryFolder $folder
+     * @return string $description
      */
-    public function getFolder()
+    public function getMimetype()
     {
-        return $this->folder;
+        return $this->mimetype;
+    }
+
+    /**
+     * Set is_image
+     *
+     * @param boolean $isImage
+     */
+    public function setIsImage($isImage)
+    {
+        $this->is_image = $isImage;
+    }
+
+    /**
+     * Get is_image
+     *
+     * @return boolean $isImage
+     */
+    public function getIsImage()
+    {
+        return $this->is_image;
     }
 }
