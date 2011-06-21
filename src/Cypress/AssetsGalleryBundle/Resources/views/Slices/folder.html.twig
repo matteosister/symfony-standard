@@ -1,4 +1,4 @@
-<article class="folder{% if num is divisibleby(6) %}{{ ' last' }}{% endif %}" id="{{ folder.id }}">
+<article class="folder" id="{{ folder.id }}">
     <a href="{{ path("cypress_gallery_list", { "folder_id": folder.id }) }}">
         {% if folder.empty %}
             <img src="/bundles/assetsgallery/images/folder-empty.png" alt="{{ folder }}" title="{{ folder }}" />

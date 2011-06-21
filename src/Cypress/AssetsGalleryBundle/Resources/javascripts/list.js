@@ -5,9 +5,10 @@
  */
 
 var urlCallSort; // from template
+var ajaxLoader;
 
 $(document).ready( function() {
-    
+    ajaxLoader = $('#ajax-loader');
     // UI Sortable
     $('section.assets-list').sortable({
         cursor: 'crosshair',
@@ -18,6 +19,8 @@ $(document).ready( function() {
     });
     
     $('section.assets-list').bind( "sortstop", function(event, ui) {
+        ajaxLoader.fadeIn('fast');
+        $('section.assets-list').sortable('disable');
         folderId = ui.item.attr('id');
         newPosition = $(this).sortable('toArray').indexOf(ui.item.attr('id'));
         
@@ -25,10 +28,29 @@ $(document).ready( function() {
             url: urlCallSort,
             type: 'POST',
             data: 'folder_id=' + folderId + '&new_position=' + newPosition,
-            success: function(msg){
+            success: function(){
+                flash = addFlash('folders sorted', 'success');
+                setTimeout(hide, 5000, flash);
+                ajaxLoader.fadeOut('slow');
+                $('section.assets-list').sortable('enable');
             }
         });
     });
+    
+    function hide(what)
+    {
+        what.fadeOut();
+    }
+    
+    function addFlash(message, type)
+    {
+        var flash = $('<div>');
+        flash.addClass('flash-message');
+        flash.addClass(type);
+        flash.html(message);
+        $('#flashes').prepend(flash);
+        return flash;
+    }
     
     $('section.assets-list').disableSelection();
     

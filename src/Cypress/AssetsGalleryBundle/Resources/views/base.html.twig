@@ -18,9 +18,11 @@
 {% block body %}
     <section id="assets-gallery">
         {% block flash_messages %}
+        <section id="flashes">
             {% if app.session.hasFlash('success') %}
                 <section class="flash-message success">{{ app.session.getFlash('success') }}</section>
             {% endif %}
+        </section>
         {% endblock %}
         {% block js_code %}{% endblock %}
         <section class="header">

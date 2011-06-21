@@ -7,6 +7,11 @@
 jQuery.fn.exists = function(){return jQuery(this).length>0;}
 
 $(document).ready(function() {
+    handleFlashMessages();
+});
+
+function handleFlashMessages()
+{
     // FLASH Messages
     if ($('.flash-message').exists()) 
     {
@@ -18,4 +23,4 @@ $(document).ready(function() {
     {
         $('.flash-message').fadeOut();
     }
-});
+}

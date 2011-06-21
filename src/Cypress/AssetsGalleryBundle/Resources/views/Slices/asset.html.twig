@@ -1,4 +1,4 @@
-<article class="asset{% if num is divisibleby(6) %}{{ ' last' }}{% endif %}">
+<article class="asset">
     {% include 'AssetsGalleryBundle:Slices:asset_preview.html.twig' %}
     <h2>{{ asset.name | trim_at_space }}</h2>
     <a href="{{ path('cypress_gallery_asset_delete', {'id': asset.id }) }}" class="action delete">

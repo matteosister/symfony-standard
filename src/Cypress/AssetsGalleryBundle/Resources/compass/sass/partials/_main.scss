@@ -5,6 +5,12 @@ section#assets-gallery {
     font-size: 62.5%;
     font-family: 'Ubuntu', arial, serif;
     color: $font-color;
+    #ajax-loader {
+        display: none;
+        position: absolute;
+        bottom: span(1);
+        right: 15px;
+    }
     a {
         outline: none;
     }
@@ -27,17 +33,22 @@ section#assets-gallery {
         @include column(23, true);
         @include prepend(0.5);
         @include append(0.5);
+        position: relative;
     }
-    .flash-message {
-        @include border-radius($border-radius);
+    #flashes {
         position: absolute;
         top: 1em;
         right: 1em;
-        font-size: 1.4em;
-        font-weight: bold;
-        &.success {
-            @include success;
-            color: $success-color;
+        .flash-message {
+            @include border-radius($border-radius);
+            font-size: 1.4em;
+            font-weight: bold;
+            &.success {
+                @include success;
+            }
+            &.notice {
+                @include notice;
+            }
         }
     }
     ul.actions {
@@ -57,7 +68,6 @@ section#assets-gallery {
     ul.breadcrumb {
         @include no-bullets;
         @include clearfix;
-        @include column(23, true);
         border: 1px solid #dedede;
         height: 2.8em;
         li {
@@ -151,7 +161,7 @@ section#assets-gallery {
             height: 15.8em;
             padding: 1em;
             border: 1px solid #DDD;
-            margin-right: 0.1em;
+            margin-right: 0.16em;
             margin-bottom: 0.2em;
             overflow: hidden;
             &.highlight {
