@@ -2,14 +2,7 @@
 
 {% block header %}
     <h1>{% trans with {'context': context} %}Manage %context%{% endtrans %}</h1>
-    <ul class="actions">
-        <li>
-            <a class="icon icon-back" href="{{ path('cypress_gallery_list') }}">
-                {% trans %}Back to list{% endtrans %}
-            </a>
-        </li>
-    </ul>
-    {% include 'AssetsGalleryBundle:Slices:breadcrumb.html.twig' %}
+    {% include 'AssetsGalleryBundle:Slices:form_breadcrumb.html.twig' %}
 {% endblock %}
 
 {% block content %}

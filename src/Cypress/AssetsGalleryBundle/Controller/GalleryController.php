@@ -85,8 +85,9 @@ class GalleryController extends ContainerAware
             ->container
             ->get('templating')
             ->renderResponse('AssetsGalleryBundle:Gallery:list.html.twig', array(
-                'folder'   => $folder,
-                'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
+                'folder'     => $folder,
+                'breadcrumb' => $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->getPath($folder),
+                'base_path'  => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
             ));
     }
     
@@ -107,7 +108,31 @@ class GalleryController extends ContainerAware
         $asset = new GalleryAsset();
         $asset->setFolder($folder);
         
-        return $this->getFormResponse($this->processAssetForm($asset));
+        $form = $this->container->get('form.factory')->create(new GalleryAssetType(), $asset);
+        
+        if ($this->getRequest()->getMethod() == "POST") {
+            $form->bindRequest($this->getRequest());
+            if ($form->isValid()) {
+                $this->getEM()->persist($asset);
+                $this->getEM()->flush();
+                $this->addFlashMessage('success', 'asset saved');
+                return new RedirectResponse($this->container->get('router')->generate('cypress_gallery_asset_manage', array(
+                    'id' => $asset->getId()
+                )));
+            }
+        }
+        
+        return $this
+            ->container
+            ->get('templating')
+            ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
+                'form'       => $form->createView(),
+                'context'    => 'asset',
+                'new'        => true,
+                'folder'     => $folder,
+                'breadcrumb' => $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->getPath($folder),
+                'base_path'  => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
+            ));
     }
     
     private function processAssetForm(GalleryAsset $asset)
@@ -160,9 +185,12 @@ class GalleryController extends ContainerAware
             ->container
             ->get('templating')
             ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
-                'form'      => $form->createView(),
-                'context'   => 'folder',
-                'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
+                'form'       => $form->createView(),
+                'context'    => 'folder',
+                'new'        => true,
+                'folder'     => $parent,
+                'breadcrumb' => $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->getPath($parent),
+                'base_path'  => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
             ));
     }
     
@@ -185,10 +213,14 @@ class GalleryController extends ContainerAware
     {
         if ($form->getData() instanceof GalleryAsset) {
             $context = 'asset';
+            $folder = $form->getData()->getFolder();
+            $asset = $form->getData();
         }
         if ($form->getData() instanceof GalleryFolder) {
             $context = 'folder';
+            $folder = $form->getData();
         }
+        
         if ($form->isValid()) {
             $router = $this->container->get('router');
             return new RedirectResponse($router->generate('cypress_gallery_'.$context.'_manage', array(
@@ -199,9 +231,13 @@ class GalleryController extends ContainerAware
                 ->container
                 ->get('templating')
                 ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
-                    'form'      => $form->createView(),
-                    'context'   => $context,
-                    'base_path' => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
+                    'form'       => $form->createView(),
+                    'context'    => $context,
+                    'new'        => false,
+                    'asset'      => isset($asset) ? $asset : null,
+                    'breadcrumb' => $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->getPath($folder),
+                    'folder'     => $context == 'folder' ? $form->getData() : $form->getData()->getFolder(),
+                    'base_path'  => '/'.$this->container->getParameter('assets_gallery.base_path').'/'
                 ));
         }
     }

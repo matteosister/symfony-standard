@@ -32,7 +32,7 @@ assetic:
             inputs: "@compass_screen"
             filters: compass
         assets_gallery_bundle_js:
-            inputs: [ "@AssetsGalleryBundle/Resources/javascripts/plugins/*.js", "@AssetsGalleryBundle/Resources/javascripts/all.js" ]
+            inputs: [ "@AssetsGalleryBundle/Resources/javascripts/plugins/*.js", "@AssetsGalleryBundle/Resources/javascripts/assets_gallery.js" ]
             filters: "?yui_js"
     filters:
         cssrewrite: ~

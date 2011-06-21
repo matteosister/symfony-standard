@@ -89,13 +89,16 @@ section#assets-gallery {
         }
     }
     form {
-        @include prepend-top(2em);
-        @include column(24, true);
+        @include column(23, true);
+        @include prepend(0.5);
+        @include append(0.5);
+        padding-top: span(0.5);
+        padding-bottom: span(0.5);
+        clear: both;
         fieldset {
             @include border-radius($border-radius);
             @include single-box-shadow(#DDD, $blur: 2em, $spread: 0.2em);
             position: relative;
-            margin: 2em;
             padding: 1em;
             background-color: #EEE;
             border: 1px solid #CCC;

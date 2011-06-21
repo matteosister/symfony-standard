@@ -160,6 +160,9 @@ class GalleryFolder
         while (!$previuosFolder->isRoot()) {
             $tree[] = $previuosFolder;
             $previuosFolder = $previuosFolder->getParent();
+            if ($previuosFolder == null) {
+                break;
+            }
         }
         return array_reverse($tree);
     }

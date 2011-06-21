@@ -1,18 +1,19 @@
 <ul class="breadcrumb">
-    <li class="home">
-        {% if folder.root %}
-        <span>{% trans %}HOME{% endtrans %}</span>
+    {% for the_folder in breadcrumb %}
+        {% if the_folder.lft == 1 %}
+            <li class="home">
+                {% if folder.id == the_folder.id %}
+                    <span>HOME</span>
+                {% else %}
+                    <a href="{{ path("cypress_gallery_list") }}">HOME</a>
+                {% endif %}
+            </li>
         {% else %}
-        <a href="{{ path("cypress_gallery_list") }}">HOME</a>
-        {% endif %}
-    </li>
-    {% if not folder.root %}
-        {% for parent in folder.fullParentTree %}
-            {% if not loop.last %}
-                <li><a href="{{ path("cypress_gallery_list", { "folder_id": parent.id }) }}">{{ parent }}</a></li>
+            {% if folder.id == the_folder.id %}
+                <li><span>{{ the_folder }}</span></li>
             {% else %}
-                <li><span>{{ parent }}</span></li>
+                <li><a href="{{ path("cypress_gallery_list", { "folder_id": the_folder.id }) }}">{{ the_folder }}</a></li>
             {% endif %}
-        {% endfor %}
-    {% endif %}
+        {% endif %}
+    {% endfor %}
 </ul>
