@@ -4,39 +4,39 @@
 
 # LIST
 cypress_gallery_list:
-    pattern: /gallery/{folder_id}
+    pattern: /{folder_id}
     defaults: { _controller: assets_gallery.controller:listAction, folder_id: ~ }
 
 
 # ASSETS 
 cypress_gallery_asset_manage:
-    pattern: /gallery/asset/manage/{id}
+    pattern: /asset/manage/{id}
     defaults: { _controller: assets_gallery.controller:manageAssetAction, id: ~ }
     
 cypress_gallery_asset_delete:
-    pattern: /gallery/asset/{id}/delete
+    pattern: /asset/{id}/delete
     defaults: { _controller: assets_gallery.controller:deleteAssetAction }
     
 cypress_gallery_asset_add_in_folder:
-    pattern: /gallery/asset/add-in-folder/{id}
+    pattern: /asset/add-in-folder/{id}
     defaults: { _controller: assets_gallery.controller:addAssetInFolder }
     
     
 # FOLDERS
 cypress_gallery_folder_manage:
-    pattern: /gallery/folder/manage/{id}
+    pattern: /folder/manage/{id}
     defaults: { _controller: assets_gallery.controller:manageFolderAction, id: ~ }
     
 cypress_gallery_folder_delete:
-    pattern: /gallery/folder/{id}/delete
+    pattern: /folder/{id}/delete
     defaults: { _controller: assets_gallery.controller:deleteFolderAction }
     
 cypress_gallery_folder_add_in_folder:
-    pattern: /gallery/folder/add-in-folder/{id}
+    pattern: /folder/add-in-folder/{id}
     defaults: { _controller: assets_gallery.controller:addFolderInFolder }
     
     
 # ACTIONS
 cypress_gallery_sort_folders:
-    pattern: /gallery/folder/sort
+    pattern: /folder/sort
     defaults: { _controller: assets_gallery.controller:sortFolderAction }

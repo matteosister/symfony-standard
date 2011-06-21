@@ -10,7 +10,9 @@
 {% endblock %}
     
 {% block javascripts %}
-    {% javascripts "@assets_gallery_bundle_js" output="js/plugins.js" %}
+    {% javascripts output="js/assets_gallery.js" filter="?yui_js"
+            "@AssetsGalleryBundle/Resources/javascripts/plugins/*.js"
+            "@AssetsGalleryBundle/Resources/javascripts/assets_gallery.js" %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

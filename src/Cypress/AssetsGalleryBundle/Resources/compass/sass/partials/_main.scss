@@ -8,8 +8,8 @@ section#assets-gallery {
     #ajax-loader {
         display: none;
         position: absolute;
-        bottom: span(1);
-        right: 15px;
+        bottom: 50px;
+        right: 25px;
     }
     a {
         outline: none;
@@ -22,12 +22,15 @@ section#assets-gallery {
         @include single-text-shadow(#DDD, 2px, 2px, 2px);
         @include border-radius($border-radius);
         @include single-box-shadow(#DDD, $blur: 0.3em, $spread: 0.1em);
+        @include bg-gradient;
         font-size: 3em;
         margin: 0.5em 0;
         border: 1px solid #CCC;
-        background-color: #EEE;
         text-align: center;
         padding: 0.2em 0.2em 0.4em;
+        a {
+            color: #333 !important;
+        }
     }
     .header {
         @include column(23, true);
@@ -157,6 +160,7 @@ section#assets-gallery {
         article {
             @include border-radius($border-radius);
             @include single-box-shadow(#DDD, $blur: 1em, $spread: 0.1em);
+            @include bg-gradient;
             background-color: #FFF;
             position: relative;
             float: left;
@@ -168,7 +172,7 @@ section#assets-gallery {
             margin-bottom: 0.2em;
             overflow: hidden;
             &.highlight {
-                background-color: #DDD;
+                @include bg-gradient(#CCC);
                 border: 1px solid #CCC;
             }
             &.inlist-actions {
@@ -221,6 +225,7 @@ section#assets-gallery {
                     @include border-radius(0 $border-radius $border-radius 0);
                     top: $action1Top + (2 * 28px);
                     background-color: #EEE;
+                    display: none;
                 }
             }
         }

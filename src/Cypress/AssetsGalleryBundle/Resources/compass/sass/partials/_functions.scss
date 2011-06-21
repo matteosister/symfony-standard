@@ -1,4 +1,5 @@
-@mixin defaultlinks() {
+@mixin defaultlinks() 
+{
     a {
         @include link-colors($complementary, $main-color, $complementary-dark, $complementary-dark);
         text-decoration: none !important;
@@ -6,4 +7,10 @@
             text-decoration: underline !important;
         }
     }
+}
+
+@mixin bg-gradient($color: #EEE) 
+{
+    background-color: $color;
+    @include linear-gradient(($color 0%, #FFF 100%), top);
 }

@@ -27,6 +27,7 @@ _imagine:
 
 gallery:
     resource: "@AssetsGalleryBundle/Resources/config/routing.yml"
+    prefix: /gallery
     
 #fos_user_security:
 #    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
