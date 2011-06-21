@@ -56,6 +56,9 @@ class GalleryController extends ContainerAware
     
     public function listAction($folder_id)
     {
+        if ($this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findAll() == null) {
+            throw new \Exception('You must create a root folder for your asset gallery');
+        }
         if ($folder_id) {
             $qb = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')
                 ->createQueryBuilder('f')
