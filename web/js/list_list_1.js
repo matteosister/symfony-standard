@@ -9,6 +9,7 @@ var ajaxLoader;
 
 $(document).ready( function() {
     ajaxLoader = $('#ajax-loader');
+    $('a.action.drag').show();
     // UI Sortable
     $('section.assets-list').sortable({
         cursor: 'crosshair',
@@ -69,7 +70,7 @@ $(document).ready( function() {
 
         var config = {    
             over: showActions,   
-            timeout: 2000,    
+            timeout: 1000,    
             out: hideActions  
         };
         $(this).hoverIntent(config);

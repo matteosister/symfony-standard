@@ -146,25 +146,12 @@ class GalleryFolder
     }
     
     /**
-     * Get recursively the parents until root
-     * @return array
+     * Return true if the folder do not have children
+     * @return boolean
      */
-    public function getFullParentTree()
+    public function getIsLeaf()
     {
-        if ($this->isRoot()) {
-            return array();
-        }
-        $tree = array();
-        $tree[] = $this;
-        $previuosFolder = $this->getParent();
-        while (!$previuosFolder->isRoot()) {
-            $tree[] = $previuosFolder;
-            $previuosFolder = $previuosFolder->getParent();
-            if ($previuosFolder == null) {
-                break;
-            }
-        }
-        return array_reverse($tree);
+        return $this->rgt - $this->lft == 1;
     }
     
     public function isEmpty()

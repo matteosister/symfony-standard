@@ -154,6 +154,17 @@ class GalleryController extends ContainerAware
         return $this->getFormResponse($this->processFolderForm($folder));
     }
     
+    public function manageAssetAction($id)
+    {
+        if ($id) {
+            $asset = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryAsset')->find($id);
+        } else {
+            $asset = new GalleryAsset();
+        }
+        
+        return $this->getFormResponse($this->processAssetForm($asset));
+    }
+    
     public function addFolderInFolder($id)
     {
         $parent = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->find($id);
@@ -295,10 +306,14 @@ class GalleryController extends ContainerAware
     
     public function folderSelectorAction()
     {
+        $root = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryFolder')->findOneBy(array('level' => 0));
+        
         return $this
             ->container
             ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:selector.html.twig', array());
+            ->renderResponse('AssetsGalleryBundle:Gallery:selector.html.twig', array(
+                'root' => $root
+            ));
     }
     
     private function addFlashMessage($name, $message)

@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Cypress\AssetsGalleryBundle\Entity\GalleryFolder;
 
 /**
- * @ORM\Entity(repositoryClass="Cypress\AssetsGalleryBundle\Entity\GalleryAssetRepository")
+ * @ORM\Entity
  * @ORM\Table(name="cypress_gallery_assets")
  */
 class GalleryAsset {

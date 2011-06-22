@@ -3,15 +3,17 @@
 {% form_theme form 'AssetsGalleryBundle:Forms:themes.html.twig' %}
 
 {% block content %}
-<form action="" class="bp" method="post" {{ form_enctype(form) }}>
-    <fieldset>
-        {{ form_errors(form) }}
-        {{ form_row(form.name) }}
-        {{ form_row(form.parent) }}
-        {{ form_rest(form) }}
-        <section class="submit">
-            <input type="submit" value="submit" />
-        </section>
-    </fieldset>
-</form>
+<section class="assets-gallery-form">
+    <form action="" class="bp" method="post" {{ form_enctype(form) }}>
+        <fieldset>
+            {{ form_errors(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.parent) }}
+            {{ form_rest(form) }}
+            <section class="submit">
+                <input type="submit" value="submit" />
+            </section>
+        </fieldset>
+    </form>
+</section>
 {% endblock %}

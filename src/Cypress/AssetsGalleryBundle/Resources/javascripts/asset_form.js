@@ -14,3 +14,8 @@ $(document).ready( function() {
         width: 400
     });
 });
+
+function selectFolder(id)
+{
+    $('#' + folder_widget_id).val(id);
+}

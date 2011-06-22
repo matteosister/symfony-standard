@@ -14,17 +14,6 @@
 
 {% block content %}
     <ul class="treeview">
-        <li>
-            <span class="icon icon-folder">folder1</span>
-        </li>
-        <li>
-            <span class="icon icon-folder">folder2</span>
-        </li>
-        <li>
-            <span class="icon icon-folder">folder3</span>
-            <ul>
-                <li><span class="icon icon-folder">folder1</span></li>
-            </ul>
-        </li>
+        {% include "AssetsGalleryBundle:Slices:folder_tree_branch.html.twig" with { 'folder': root } %}
     </ul>
 {% endblock %}
