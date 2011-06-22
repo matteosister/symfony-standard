@@ -173,6 +173,12 @@ section#assets-gallery {
         padding-top: span(0.5);
         padding-bottom: span(0.5);
         clear: both;
+        p.empty {
+            font-size: 1.4em;
+            display: block;
+            float: left;
+            margin-left: 1em;
+        }
         article {
             @include border-radius($border-radius);
             @include single-box-shadow(#DDD, $blur: 1em, $spread: 0.1em);

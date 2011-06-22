@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
         
         $bundles[] = new Vivacom\CmsBundle\CmsBundle();
@@ -39,7 +40,7 @@ class AppKernel extends Kernel
         // Admin bundle deps
         $bundles[] = new Sonata\jQueryBundle\SonatajQueryBundle();
         $bundles[] = new Sonata\BluePrintBundle\SonataBluePrintBundle();
-        $bundles[] = new Sonata\AdminBundle\SonataAdminBundle();
+        //$bundles[] = new Sonata\AdminBundle\SonataAdminBundle();
         $bundles[] = new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle();
 
         return $bundles;

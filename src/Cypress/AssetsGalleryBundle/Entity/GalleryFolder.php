@@ -64,7 +64,7 @@ class GalleryFolder
     private $children;
     
     /**
-     * @ORM\OneToMany(targetEntity="GalleryAsset", mappedBy="folder")
+     * @ORM\OneToMany(targetEntity="GalleryAsset", mappedBy="folder", cascade={"remove"})
      * @ORM\OrderBy({"name" = "ASC"});
      */
     private $asset;

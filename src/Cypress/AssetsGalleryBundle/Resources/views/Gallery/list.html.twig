@@ -22,18 +22,6 @@
             {% trans %}Assets Gallery{% endtrans %}
         </a>
     </h1>
-    {#<ul class="actions">
-        <li>
-            <a class="icon icon-add" href="{{ path('cypress_gallery_asset_manage') }}">
-                {% trans %}Add a new asset{% endtrans %}
-            </a>
-        </li>
-        <li>
-            <a class="icon icon-add" href="{{ path('cypress_gallery_folder_manage') }}">
-                {% trans %}Add a new folder{% endtrans %}
-            </a>
-        </li>
-    </ul>#}
     <span class="hide" id="ajax-loader"><img src="/bundles/assetsgallery/images/ajax-loader.gif" /></span>
     {% include 'AssetsGalleryBundle:Slices:breadcrumb.html.twig' %}
 {% endblock %}
@@ -47,6 +35,9 @@
         {% for asset in folder.asset %}
             {% include 'AssetsGalleryBundle:Slices:asset.html.twig' %}
         {% endfor %}
+        {% if folder.children.count == 0 and folder.asset.count == 0 %}
+            <p class="empty">No folder or assets here! Use the buttons on the left to add something</p>
+        {% endif %}
     </section>
 {% endblock %}
 
