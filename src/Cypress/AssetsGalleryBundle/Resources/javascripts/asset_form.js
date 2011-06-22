@@ -11,7 +11,8 @@ $(document).ready( function() {
     $('#folder-chooser').show();
     var link = $('#folder-chooser').children('a');
     link.fancybox({
-        width: 400
+        width:  600,
+        height: 600
     });
 });
 
