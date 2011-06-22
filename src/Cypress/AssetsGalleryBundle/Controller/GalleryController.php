@@ -128,7 +128,7 @@ class GalleryController extends ContainerAware
         return $this
             ->container
             ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
+            ->renderResponse('AssetsGalleryBundle:Forms:asset.html.twig', array(
                 'form'       => $form->createView(),
                 'context'    => 'asset',
                 'new'        => true,
@@ -187,7 +187,7 @@ class GalleryController extends ContainerAware
         return $this
             ->container
             ->get('templating')
-            ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
+            ->renderResponse('AssetsGalleryBundle:Forms:folder.html.twig', array(
                 'form'       => $form->createView(),
                 'context'    => 'folder',
                 'new'        => true,
@@ -233,7 +233,7 @@ class GalleryController extends ContainerAware
             return $this
                 ->container
                 ->get('templating')
-                ->renderResponse('AssetsGalleryBundle:Gallery:form.html.twig', array(
+                ->renderResponse('AssetsGalleryBundle:Forms:'.$context.'.html.twig', array(
                     'form'       => $form->createView(),
                     'context'    => $context,
                     'new'        => false,

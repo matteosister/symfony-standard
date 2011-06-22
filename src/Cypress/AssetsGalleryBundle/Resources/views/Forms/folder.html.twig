@@ -1,5 +1,8 @@
+{% extends "AssetsGalleryBundle:Gallery:form.html.twig" %}
+
 {% form_theme form 'AssetsGalleryBundle:Forms:themes.html.twig' %}
 
+{% block content %}
 <form action="" class="bp" method="post" {{ form_enctype(form) }}>
     <fieldset>
         {{ form_errors(form) }}
@@ -11,3 +14,4 @@
         </section>
     </fieldset>
 </form>
+{% endblock %}

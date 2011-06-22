@@ -92,9 +92,6 @@ section#assets-gallery {
         }
     }
     form {
-        @include column(23, true);
-        @include prepend(0.5);
-        @include append(0.5);
         padding-top: span(0.5);
         padding-bottom: span(0.5);
         clear: both;
@@ -146,6 +143,19 @@ section#assets-gallery {
         section.field {
             float: left;
             padding-left: 15em;
+        }
+    }
+
+    section.assets-gallery-form {
+        @include clearfix;
+        @include column(23, true);
+        @include prepend(0.5);
+        @include append(0.5);
+        #folder-chooser {
+            display: none;
+            font-size: 1.2em;
+            display: inline;
+            padding-left: 1em;
         }
     }
     

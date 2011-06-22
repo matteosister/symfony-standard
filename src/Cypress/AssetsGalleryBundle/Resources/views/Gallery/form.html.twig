@@ -1,10 +1,7 @@
 {% extends "AssetsGalleryBundle::base.html.twig" %}
 
 {% block header %}
-    <h1>{% trans with {'context': context} %}Manage %context%{% endtrans %}</h1>
+    <h1>Manage {{ context }}</h1>
     {% include 'AssetsGalleryBundle:Slices:form_breadcrumb.html.twig' %}
 {% endblock %}
 
-{% block content %}
-    {% include "AssetsGalleryBundle:Forms:" ~ context ~ ".html.twig" %}
-{% endblock %}
