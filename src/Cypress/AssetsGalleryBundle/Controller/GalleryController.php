@@ -11,7 +11,6 @@
 
 namespace Cypress\AssetsGalleryBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Cypress\AssetsGalleryBundle\Entity\GalleryAsset;
@@ -94,16 +93,7 @@ class GalleryController extends ContainerAware
             ));
     }
     
-    public function manageAssetAction($id)
-    {
-        if ($id) {
-            $asset = $this->getEM()->getRepository('AssetsGalleryBundle:GalleryAsset')->find($id);
-        } else {
-            $asset = new GalleryAsset();
-        }
-        
-        return $this->getFormResponse($this->processAssetForm($asset));
-    }
+    
     
     public function addAssetInFolder($id)
     {
@@ -301,6 +291,14 @@ class GalleryController extends ContainerAware
         }
         
         return new Response('OK');
+    }
+    
+    public function folderSelectorAction()
+    {
+        return $this
+            ->container
+            ->get('templating')
+            ->renderResponse('AssetsGalleryBundle:Gallery:selector.html.twig', array());
     }
     
     private function addFlashMessage($name, $message)

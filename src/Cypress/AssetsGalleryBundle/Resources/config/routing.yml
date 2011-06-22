@@ -35,6 +35,9 @@ cypress_gallery_folder_add_in_folder:
     pattern: /folder/add-in-folder/{id}
     defaults: { _controller: assets_gallery.controller:addFolderInFolder }
     
+cypress_gallery_folder_selector:
+    pattern: /folder/selector
+    defaults: { _controller: assets_gallery.controller:folderSelectorAction }
     
 # ACTIONS
 cypress_gallery_sort_folders:

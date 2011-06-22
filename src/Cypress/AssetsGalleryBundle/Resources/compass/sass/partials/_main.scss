@@ -68,6 +68,12 @@ section#assets-gallery {
             }
         }
     }
+    ul.treeview {
+        font-size: 1.3em;
+        .icon {
+            padding-left: 20px;
+        }
+    }
     ul.breadcrumb {
         @include no-bullets;
         @include clearfix;

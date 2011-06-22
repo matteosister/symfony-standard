@@ -11,7 +11,13 @@
     
 {% block javascripts %}
     {% javascripts output="js/assets_gallery.js" filter="?yui_js"
-            "@AssetsGalleryBundle/Resources/javascripts/plugins/*.js"
+            "@AssetsGalleryBundle/Resources/javascripts/plugins/jquery-1.6.1.min.js"
+            "@AssetsGalleryBundle/Resources/javascripts/plugins/jquery-ui-1.8.13.custom.min.js"
+            "@AssetsGalleryBundle/Resources/javascripts/plugins/jquery.hoverIntent.minified.js"
+            "@AssetsGalleryBundle/Resources/javascripts/plugins/jquery.fancybox-1.3.4.pack.js"
+            "@AssetsGalleryBundle/Resources/javascripts/plugins/jquery.easing-1.3.pack.js"
+            "@AssetsGalleryBundle/Resources/javascripts/plugins/jquery.mousewheel-3.0.4.pack.js"
+            "@AssetsGalleryBundle/Resources/javascripts/plugins/jquery.treeview.js"
             "@AssetsGalleryBundle/Resources/javascripts/assets_gallery.js" %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

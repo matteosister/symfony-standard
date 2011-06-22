@@ -1,5 +1,10 @@
 {% extends "AssetsGalleryBundle::base.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/assetsgallery/css/fancybox/jquery.fancybox-1.3.4.css') }}" media="screen, projection" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 {% block header %}
     <h1>Manage {{ context }}</h1>
     {% include 'AssetsGalleryBundle:Slices:form_breadcrumb.html.twig' %}
