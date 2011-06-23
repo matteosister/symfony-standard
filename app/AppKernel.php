@@ -26,7 +26,7 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
         
-        $bundles[] = new Vivacom\CmsBundle\CmsBundle();
+        //$bundles[] = new Vivacom\CmsBundle\CmsBundle();
         //$bundles[] = new Cypress\CompassGemBundle\CypressCompassGemBundle();
         //$bundles[] = new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle();
         //$bundles[] = new Cypress\BlogBundle\CypressBlogBundle();
