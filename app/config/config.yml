@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.ini }
     - { resource: security.yml }
-    - { resource: "@CmsBundle/Resources/config/services.yml" }
+    #- { resource: "@CmsBundle/Resources/config/services.yml" }
 
 framework:
     secret:          %secret%
@@ -32,6 +32,7 @@ assetic:
             inputs: "@compass_screen"
             filters: compass
     filters:
+        compass:    ~
         cssrewrite: ~
         scss:       ~
         sass:       ~

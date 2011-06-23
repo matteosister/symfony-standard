@@ -13,13 +13,13 @@ homepage:
 #    prefix: /admin
     
     
-blog:
-    resource: "@CypressBlogBundle/Resources/config/frontend_routing.yml"
-    prefix: /blog
-    
-blog_backend:
-    resource: "@CypressBlogBundle/Resources/config/backend_routing.yml"
-    prefix: /blog/backend
+#blog:
+#    resource: "@CypressBlogBundle/Resources/config/frontend_routing.yml"
+#    prefix: /blog
+#    
+#blog_backend:
+#    resource: "@CypressBlogBundle/Resources/config/backend_routing.yml"
+#    prefix: /blog/backend
 
 _imagine:
     resource: .

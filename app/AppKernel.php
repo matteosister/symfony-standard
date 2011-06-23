@@ -27,9 +27,9 @@ class AppKernel extends Kernel
         }
         
         $bundles[] = new Vivacom\CmsBundle\CmsBundle();
-        $bundles[] = new Cypress\CompassGemBundle\CypressCompassGemBundle();
+        //$bundles[] = new Cypress\CompassGemBundle\CypressCompassGemBundle();
         //$bundles[] = new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle();
-        $bundles[] = new Cypress\BlogBundle\CypressBlogBundle();
+        //$bundles[] = new Cypress\BlogBundle\CypressBlogBundle();
         $bundles[] = new Cypress\AssetsGalleryBundle\AssetsGalleryBundle();
         $bundles[] = new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle();
         $bundles[] = new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle();
