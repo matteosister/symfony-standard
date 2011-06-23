@@ -66,6 +66,10 @@
     git=git://github.com/avalanche123/AvalancheImagineBundle.git
     target=/bundles/Avalanche/Bundle/ImagineBundle
 
+[imagine]
+    git=git://github.com/avalanche123/Imagine.git
+    target=/imagine
+
 [AssetsGalleryBundle]
     git=git@github.com:matteosister/AssetsGalleryBundle.git
     target=/bundles/Cypress/AssetsGalleryBundle
