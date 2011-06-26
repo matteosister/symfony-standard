@@ -72,3 +72,23 @@
 [AssetsGalleryBundle]
     git=git@github.com:matteosister/AssetsGalleryBundle.git
     target=/bundles/Cypress/AssetsGalleryBundle
+
+[FOSUserBundle]
+    git=git://github.com/FriendsOfSymfony/UserBundle.git
+    target=/bundles/FOS/UserBundle
+
+[jQueryBundle]
+	git=git@github.com:sonata-project/jQueryBundle.git
+    target=/bundles/Sonata/jQueryBundle
+
+[BluePrintBundle]
+	git=git@github.com:sonata-project/BluePrintBundle.git
+    target=/bundles/Sonata/BluePrintBundle
+
+[SonataAdminBundle]
+	git=git@github.com:sonata-project/AdminBundle.git
+    target=/bundles/Sonata/AdminBundle
+
+[MenuBundle]
+	git= git@github.com:sonata-project/MenuBundle.git
+    target=/bundles/Knplabs/Bundle/MenuBundle
