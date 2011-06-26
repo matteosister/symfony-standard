@@ -2,6 +2,8 @@ web/bundles/
 web/media/
 web/uploads/
 web/assets_gallery/
+web/js
+web/css
 app/bootstrap*
 app/cache/*
 app/logs/*

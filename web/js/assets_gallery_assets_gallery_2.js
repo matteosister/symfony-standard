@@ -1,1 +1,0 @@
-jQuery.fn.exists=function(){return jQuery(this).length>0};$(document).ready(function(){handleFlashMessages()});function handleFlashMessages(){if($(".flash-message").exists()){$(".flash-message").disableSelection();setTimeout(a,5000)}function a(){$(".flash-message").fadeOut()}};
