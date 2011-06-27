@@ -93,5 +93,9 @@
     target=/bundles/Sonata/AdminBundle
 
 [MenuBundle]
-	git= git@github.com:sonata-project/MenuBundle.git
+	git=git@github.com:sonata-project/MenuBundle.git
     target=/bundles/Knplabs/Bundle/MenuBundle
+
+[HelloBundleRest]
+    git=git://github.com/liip/HelloBundle.git
+    target=bundles/Liip/HelloBundle
