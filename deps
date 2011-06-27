@@ -57,9 +57,12 @@
     git=git://github.com/stof/DoctrineExtensionsBundle.git
     target=/bundles/Stof/DoctrineExtensionsBundle
 
+[doctrine-fixtures]
+    git=http://github.com/doctrine/data-fixtures.git
+
 [DoctrineFixturesBundle]
     git=git://github.com/symfony/DoctrineFixturesBundle.git
-    target=/doctrine-fixtures
+    target=bundles/Symfony/Bundle/DoctrineFixturesBundle
 
 [AvalancheImagineBundle]
     git=git://github.com/avalanche123/AvalancheImagineBundle.git

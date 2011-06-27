@@ -12,3 +12,13 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+    
+    
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        dbname:   sf2_test
+        user:     sf2_test
+        password: ~
+        charset:  UTF8
