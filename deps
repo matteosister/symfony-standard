@@ -99,3 +99,15 @@
 [HelloBundleRest]
     git=git://github.com/liip/HelloBundle.git
     target=bundles/Liip/HelloBundle
+
+[ContainerWrapperBundle]
+    git=git://github.com/liip/ContainerWrapperBundle.git
+    target=bundles/Liip/ContainerWrapperBundle
+
+[RestBundle]
+    git=git://github.com/FriendsOfSymfony/RestBundle.git
+    target=bundles/FOS/RestBundle
+
+[FacebookBundle]
+    git=git://github.com/FriendsOfSymfony/FacebookBundle.git
+    target=bundles/FOS/FacebookBundle

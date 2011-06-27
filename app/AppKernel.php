@@ -42,6 +42,10 @@ class AppKernel extends Kernel
         $bundles[] = new Sonata\BluePrintBundle\SonataBluePrintBundle();
         //$bundles[] = new Sonata\AdminBundle\SonataAdminBundle();
         $bundles[] = new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle();
+        
+        //$bundles[] = new Liip\HelloBundle\LiipHelloBundle();
+        //$bundles[] = new FOS\RestBundle\FOSRestBundle();
+        //$bundles[] = new FOS\FacebookBundle\FOSFacebookBundle();
 
         return $bundles;
     }
