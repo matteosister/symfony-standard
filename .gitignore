@@ -9,3 +9,4 @@ build/
 vendor/
 nbproject
 .sass-cache
+deps.lock
