@@ -4,6 +4,7 @@ imports:
     #- { resource: "@CmsBundle/Resources/config/services.yml" }
 
 framework:
+    #esi:             ~
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }

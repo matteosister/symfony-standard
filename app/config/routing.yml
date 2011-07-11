@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #homepage:
 #    resource: "@CmsBundle/Resources/config/routing.yml"
 #    prefix:   /cms
@@ -36,3 +37,9 @@ gallery:
 #fos_user_user:
 #    resource: "@FOSUserBundle/Resources/config/routing/user.xml"
 #    prefix: /user
+=======
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal
+>>>>>>> upstream/HEAD
