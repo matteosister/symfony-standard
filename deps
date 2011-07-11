@@ -34,7 +34,7 @@
     target=/bundles/Sensio/Bundle/FrameworkExtraBundle
 
 [JMSSecurityExtraBundle]
-    git=http://github.com/schmittjoh/SecurityExtraBundle.git
+    git=https://github.com/schmittjoh/JMSSecurityExtraBundle.git
     target=/bundles/JMS/SecurityExtraBundle
 
 [SensioDistributionBundle]
@@ -54,7 +54,7 @@
     target=/gedmo-doctrine-extensions
 
 [DoctrineExtensionsBundle]
-    git=git://github.com/stof/DoctrineExtensionsBundle.git
+    git=https://github.com/stof/StofDoctrineExtensionsBundle.git
     target=/bundles/Stof/DoctrineExtensionsBundle
 
 [doctrine-fixtures]
@@ -65,7 +65,7 @@
     target=bundles/Symfony/Bundle/DoctrineFixturesBundle
 
 [AvalancheImagineBundle]
-    git=git://github.com/avalanche123/AvalancheImagineBundle.git
+    git=cypress:~/gitrepos/AssetsGalleryBundle
     target=/bundles/Avalanche/Bundle/ImagineBundle
 
 [imagine]
@@ -77,7 +77,7 @@
     target=/bundles/Cypress/AssetsGalleryBundle
 
 [FOSUserBundle]
-    git=git://github.com/FriendsOfSymfony/UserBundle.git
+    git=https://github.com/sonata-project/SonataUserBundle.git
     target=/bundles/FOS/UserBundle
 
 [jQueryBundle]
@@ -85,11 +85,11 @@
     target=/bundles/Sonata/jQueryBundle
 
 [BluePrintBundle]
-	git=git@github.com:sonata-project/BluePrintBundle.git
+	git=https://github.com/sonata-project/SonataBluePrintBundle.git
     target=/bundles/Sonata/BluePrintBundle
 
 [SonataAdminBundle]
-	git=git@github.com:sonata-project/AdminBundle.git
+	git=git://github.com/sonata-project/SonataAdminBundle.git
     target=/bundles/Sonata/AdminBundle
 
 [MenuBundle]
