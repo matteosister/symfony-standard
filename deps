@@ -41,11 +41,7 @@
     target=/bundles/Sensio/Bundle/FrameworkExtraBundle
 
 [JMSSecurityExtraBundle]
-<<<<<<< HEAD
     git=https://github.com/schmittjoh/JMSSecurityExtraBundle.git
-=======
-    git=http://github.com/schmittjoh/JMSSecurityExtraBundle.git
->>>>>>> upstream/HEAD
     target=/bundles/JMS/SecurityExtraBundle
 
 [SensioDistributionBundle]
@@ -59,7 +55,6 @@
 [AsseticBundle]
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
-<<<<<<< HEAD
 
 [DoctrineExtensions]
     git=git://github.com/l3pp4rd/DoctrineExtensions.git
@@ -123,6 +118,4 @@
 [FacebookBundle]
     git=git://github.com/FriendsOfSymfony/FacebookBundle.git
     target=bundles/FOS/FacebookBundle
-=======
     version=v1.0.0RC1
->>>>>>> upstream/HEAD
